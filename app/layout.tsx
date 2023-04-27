@@ -1,7 +1,25 @@
+import { SideBar } from './components'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { AiOutlineHome, AiOutlineLock } from 'react-icons/ai'
+import { SiReact } from 'react-icons/si'
+import { MdOutlineGroups } from 'react-icons/md'
+import { FiMessageCircle, FiSettings } from 'react-icons/fi'
+import { IoMdHelpCircleOutline } from 'react-icons/io'
+import { IoExitOutline } from 'react-icons/io5'
 
 const inter = Inter({ subsets: ['latin'] })
+
+const routes = [
+  { icon: <SiReact size={25} />, text: 'Brand Name', link: "#" },
+  { icon: <AiOutlineHome size={25} />, text: 'Dashboard', link: "#" },
+  { icon: <MdOutlineGroups size={25} />, text: 'Customers', link: "#" },
+  { icon: <FiMessageCircle size={25} />, text: 'Messages', link: "#" },
+  { icon: <IoMdHelpCircleOutline size={30} />, text: 'Help', link: "#" },
+  { icon: <FiSettings size={25} />, text: 'Settings', link: "#" },
+  { icon: <AiOutlineLock size={25} />, text: 'Password', link: "#" },
+  { icon: <IoExitOutline size={25} />, text: 'Sign Out', link: "#" }
+];
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <SideBar items={routes}>
+          {children}
+        </SideBar>
+      </body>
     </html>
   )
 }
