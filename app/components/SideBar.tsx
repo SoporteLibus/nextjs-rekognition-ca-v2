@@ -3,20 +3,35 @@ import styles from '@/styles/sidebar.module.css'
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
 import { MenuItemProps, MenuProps } from '../types';
+import argullogo from '../../public/logo2.png'
+import Image from 'next/image';
+import Link from 'next/link';
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, text, setHover, hover, link }) => {
+const MenuItem: React.FC<MenuItemProps> = ({ icon, text, link }) => {
   return (
-    <li onMouseOver={() => setHover(!hover)} className={`${hover ? 'hovered' : ''}`} >
-      <a href={link}>
+    <li>
+      <Link href={link}> 
         <span className={styles.icon}>{icon}</span>
         <span className={styles.title}>{text}</span>
-      </a>
+      </Link>
     </li>
   );
 };
 
+const LogoBar = () => {
+  return (
+    <div className={styles.logosidebar}>
+      <Image src={argullogo}
+        height={25}
+        width={25}
+        alt='Argul logo'
+        priority={true}
+      />
+    </div>
+  )
+}
+
 const SideBar: React.FC<MenuProps> = ({ children, items }) => {
-  const [hover, setHover] = useState<boolean>(false);
   const [hide, setHide] = useState<boolean>(true);
 
   const toggleHideText = () => {
@@ -27,13 +42,17 @@ const SideBar: React.FC<MenuProps> = ({ children, items }) => {
       {/* =============== Navigation ================ */}
     <div className={`${hide ? styles.navigationactive : styles.navigation}`}>
       <ul>
+        <li>
+          <Link href='/'>
+            <span className={styles.icon}><LogoBar /></span>
+            <span className={styles.titlelogo}>Argul y Cia</span>
+          </Link>
+        </li>
         {items.map((item, index) => (
           <MenuItem
             key={index}
             icon={item.icon}
             text={item.text}
-            setHover={setHover}
-            hover={hover}
             link={item.link}
           />
         ))}

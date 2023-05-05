@@ -9,17 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "18.16.1",
-    "@types/react": "18.2.0",
-    "@types/react-dom": "18.2.1",
-    "@types/styled-components": "^5.1.26",
+    "@aws-sdk/client-rekognition": "3.326.0",
+    "@mediapipe/face_mesh": "0.4.1633559619",
+    "@tensorflow-models/face-landmarks-detection": "1.0.2",
+    "@tensorflow/tfjs": "4.4.0",
+    "@tensorflow/tfjs-backend-webgl": "4.4.0",
+    "@tensorflow/tfjs-converter": "4.4.0",
+    "@tensorflow/tfjs-core": "4.4.0",
+    "@types/node": "18.16.3",
+    "@types/react": "18.2.4",
+    "@types/react-dom": "18.2.3",
+    "@types/styled-components": "5.1.26",
+    "aws-crt": "1.15.16",
+    "axios": "1.4.0",
     "eslint": "8.39.0",
-    "eslint-config-next": "13.3.1",
-    "next": "13.3.1",
+    "eslint-config-next": "13.3.4",
+    "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.8.0",
-    "styled-components": "^5.3.10",
+    "react-icons": "4.8.0",
+    "react-webcam": "7.0.1",
+    "sweetalert2": "11.7.5",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "encoding": "0.1.13"
   }
 }
