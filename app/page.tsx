@@ -1,13 +1,8 @@
 "use client"
-import styles from '@/styles/page.module.css'
-import { useRef, useState } from 'react';
-import Webcam from 'react-webcam';
+import { Dashboard } from './pages/dashboard'
 
 export default function Home() {
-
   return (
-    <main className={styles.main}>
-      Dashboard
-    </main>
+    <Dashboard />
   )
 }

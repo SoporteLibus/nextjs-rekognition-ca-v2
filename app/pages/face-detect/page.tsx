@@ -4,8 +4,8 @@ import * as tf from "@tensorflow/tfjs";
 import '@tensorflow/tfjs-backend-webgl';
 import Webcam from "react-webcam";
 import { MediaPipeFaceMeshTfjsModelConfig, FaceLandmarksDetector } from '@tensorflow-models/face-landmarks-detection';
-import { alertError, alertSuccess } from '@/app/utils/alert';
 import axios from 'axios';
+import { alertError, alertSuccess } from '@/app/utils';
 
 export default function FaceDetect() {
   // Referencia utilizada para el elemento Webcam

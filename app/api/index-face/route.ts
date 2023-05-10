@@ -1,4 +1,3 @@
-import uuid from '@/app/utils/uuid';
 import { RekognitionClient, IndexFacesCommand } from "@aws-sdk/client-rekognition";
 
 // Credenciales globales para la configuracion de AWS
@@ -22,8 +21,6 @@ export async function POST(request: Request) {
   const base64Img = imageSrc.replace('data:image/jpeg;base64,', '');
   // Se transforma a binario para enviarlo como parametro a la api
   const imgBuffer = Buffer.from(base64Img, 'base64');
-  // Crea un id unico para cada imagen
-  const imageId = uuid();
   // Se registra un rostro
   const params = {
     CollectionId: collection,

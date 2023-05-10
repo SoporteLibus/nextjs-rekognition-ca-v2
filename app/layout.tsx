@@ -10,7 +10,7 @@ import { IoExitOutline } from 'react-icons/io5'
 const inter = Inter({ subsets: ['latin'] })
 
 const routes = [
-  { icon: <AiOutlineHome size={25} />, text: 'Dashboard', link: "dashboard" },
+  { icon: <AiOutlineHome size={25} />, text: 'Dashboard', link: "/" },
   { icon: <MdOutlineGroups size={25} />, text: 'Customers', link: "customers" },
   { icon: <FiMessageCircle size={25} />, text: 'Messages', link: "messages" },
   { icon: <IoMdHelpCircleOutline size={30} />, text: 'Help', link: "help" },

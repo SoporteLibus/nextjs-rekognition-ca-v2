@@ -2,8 +2,8 @@
 import styles from '@/styles/sidebar.module.css'
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
-import { MenuItemProps, MenuProps } from '../types';
-import argullogo from '../../public/logo2.png'
+import { MenuItemProps, MenuProps } from '../../types';
+import argullogo from '../../../public/logo2.png'
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -72,8 +72,14 @@ const SideBar: React.FC<MenuProps> = ({ children, items }) => {
             </label>
         </div>
 
-        <div className={styles.user}>
-          <img src="/argulycia.jpg" alt="User image" />
+          <div className={styles.user}>
+            
+            <Image
+              src="http://172.18.6.114:5005/uploads/9e743289-642a-425a-a99d-6443e014dbcb.jpeg"
+              alt="User image"
+              width={25}
+              height={25}
+            />
         </div>
       </div>
       {children}

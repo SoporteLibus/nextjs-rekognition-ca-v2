@@ -1,5 +1,11 @@
-export * from './api/index-face/route';
 export * from './components';
+export { default as SideBar } from './components/sidebar/SideBar';
 export { default as layout } from './layout';
 export { default as page } from './page';
+export * from './pages/dashboard';
+export * from './pages/face-detect';
+export * from './pages/face-register';
 export * from './types';
+export * from './utils/alerts/alert';
+export * from './utils';
+export { default as uuid } from './utils/uuid/uuid';

@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { UserApi } from "../types";
+import { UserApi } from "../../types";
 
 export const alertSuccess = (object: UserApi) => {
   const info = `
