@@ -3,14 +3,16 @@ import style from '@/styles/cards.module.css'
 import React from 'react';
 
 const CardComponent: React.FC<CardList> = ({numbers, text, icon}) => {
-  <div className={style.card}>
+  return (
+    <div className={style.card}>
       <div>
         <div className={style.numbers}>{numbers}</div>
         <div className={style.cardName}>{text}</div>
       </div>
 
       <div className={style.iconBx}>{icon}</div>
-  </div>
+    </div>
+  )
 }
 
 const Card: React.FC<CardItems> = ({items}) => {

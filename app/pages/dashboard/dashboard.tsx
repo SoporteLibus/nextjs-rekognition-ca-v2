@@ -10,6 +10,12 @@ const itemsList = [
   { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
   { name: "Angel", docket: 1200, lastname: "Coceres", status: "In progress" },
   { name: "Mateo", docket: 1200, lastname: "Lonzayes", status: "On time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
+  { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
   { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" }
 ]
 

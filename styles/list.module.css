@@ -11,17 +11,25 @@
 .details .recentOrders {
     position: relative;
     display: grid;
-    min-height: 200px;
+    height: 500px;
     background: var(--white);
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    overflow-y: scroll;
 }
 
 .details .cardHeader {
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+    background-color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    border-bottom: var(--blue);
 }
 
 .cardHeader h2 {
@@ -117,11 +125,14 @@
 .recentCustomers {
     position: relative;
     display: grid;
-    min-height: 500px;
-    padding: 20px;
+    height: 500px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     background: var(--white);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
+    overflow-y: scroll;
 }
 
 .recentCustomers .imgBx {
@@ -141,26 +152,27 @@
     object-fit: cover;
 }
 
-.recentCustomers table tr td {
+.recentCustomers .divBox {
     padding: 12px 10px;
+    display: inline-flex;
 }
 
-.recentCustomers table tr td h4 {
+.recentCustomers .divBox h4 {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.2rem;
 }
 
-.recentCustomers table tr td h4 span {
+.recentCustomers .divBox h4 span {
     font-size: 14px;
     color: var(--black2);
 }
 
-.recentCustomers table tr:hover {
+.recentCustomers .divBox:hover {
     background: var(--blue);
     color: var(--white);
 }
 
-.recentCustomers table tr:hover td h4 span {
+.recentCustomers .divBox:hover h4 span {
     color: var(--white);
 }

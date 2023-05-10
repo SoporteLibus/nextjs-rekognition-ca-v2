@@ -75,7 +75,7 @@ const SideBar: React.FC<MenuProps> = ({ children, items }) => {
           <div className={styles.user}>
             
             <Image
-              src="http://172.18.6.114:5005/uploads/9e743289-642a-425a-a99d-6443e014dbcb.jpeg"
+              src="/argulycia.jpg"
               alt="User image"
               width={25}
               height={25}

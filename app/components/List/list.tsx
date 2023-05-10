@@ -2,6 +2,7 @@
 import { ListObjects, Tr } from "@/app/types"
 import React from "react"
 import style from '@/styles/list.module.css'
+import ProfileList from "../profile-list/profilelist"
 
 const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
     return (
@@ -30,9 +31,9 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
             <table>
                 <thead>
                     <tr>
-                        {titlelist.map((item) => 
-                            <td>{item}</td>
-                        )}
+                        {titlelist.map((item, index) => (
+                        <td key={index}>{item}</td>
+                    ))}
                     </tr>
                 </thead>
 
@@ -49,6 +50,7 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                 </tbody>
             </table>
         </div>
+        <ProfileList />
     </div>
   )
 }
