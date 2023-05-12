@@ -19,7 +19,7 @@ const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
     )
 }
 
-const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
+const List: React.FC<ListObjects> = ({title, title2, titlelist, items, items2}) => {
   return (
     <div className={style.details}>
         <div className={style.recentOrders}>
@@ -50,7 +50,7 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                 </tbody>
             </table>
         </div>
-        <ProfileList />
+        <ProfileList title={title2} body={items2} />
     </div>
   )
 }

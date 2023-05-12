@@ -21,10 +21,15 @@
     overflow-y: scroll;
 }
 
+.details .recentOrders::-webkit-scrollbar {
+    display: none;
+}
+
 .details .cardHeader {
     position: sticky;
     top: 0;
     padding-top: 20px;
+    padding-bottom: 10px;
     background-color: var(--white);
     display: flex;
     justify-content: space-between;
@@ -126,6 +131,7 @@
     position: relative;
     display: grid;
     height: 500px;
+    width: 100%;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 20px;
@@ -135,16 +141,12 @@
     overflow-y: scroll;
 }
 
-.recentCustomers .imgBx {
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    overflow: hidden;
+.recentCustomers::-webkit-scrollbar {
+    display: none;
 }
 
-.recentCustomers .imgBx img {
-    position: absolute;
+.recentCustomers .divBox .imgBx img {
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -153,14 +155,26 @@
 }
 
 .recentCustomers .divBox {
-    padding: 12px 10px;
+    padding: 5px;
     display: inline-flex;
+    width: 100%;
+    gap: 5px;
 }
 
 .recentCustomers .divBox h4 {
+    margin-left: 5px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.2rem;
+    width: 100%;
+}
+
+.recentCustomers .divBox .present {
+    color: green;
+}
+
+.recentCustomers .divBox .ausent {
+    color: red;
 }
 
 .recentCustomers .divBox h4 span {

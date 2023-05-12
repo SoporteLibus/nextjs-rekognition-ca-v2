@@ -21,14 +21,41 @@ const itemsList = [
 
 const cardList = [
   { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
+  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
+  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
+  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
+  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
   { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" }
+]
+
+const profileList = [
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" },
+  { image: "/logo2.png", name: "Angel", lastname: "Coceres", status: "present" },
+  { image: "/logo2.png", name: "Mateo", lastname: "Lonzayes", status: "ausent" }
 ]
 
 const Dashboard = () => {
     return (
     <>
       <Card items={cardList} />
-      <List title='Ausencias/Presencias' titlelist={titleList} items={itemsList} />
+        <List
+          title='Fichadas'
+          title2="Ausencias/Presencias"
+          titlelist={titleList}
+          items={itemsList}
+          items2={profileList}
+        />
     </>
     )
 }

@@ -1,44 +1,48 @@
 import style from '@/styles/list.module.css'
+import Image from 'next/image'
+import React from 'react'
 
-const ProfileList = () => {
+interface Prof {
+    name: string
+    lastname: string
+    image: string
+    status: string
+}
+
+interface ProfList {
+    title: string
+    body: {name: string, lastname: string, image: string, status: string}[]
+}
+
+const Profile: React.FC<Prof> = ({name,lastname,image,status}) => {
+    return (
+        <div className={style.divBox}>
+            <Image src={image} width={40} height={40} alt="Profile Image" />
+            <h4>{name} <br />
+                <span>{lastname}</span>
+            </h4>
+            {status == "present" ? <p className={style.present}>Presente</p> :
+                <p className={style.ausent}>Ausente</p>}
+        </div>
+    )
+}
+
+const ProfileList: React.FC<ProfList> = ({title,body}) => {
   return (
     <div className={style.recentCustomers}>
         <div className={style.cardHeader}>
-            <h2>Recent Customers</h2>
+            <h2>{title}</h2>
         </div>
 
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
-        <div className={style.divBox}>
-            <div className={style.imgBx}><img src="/logo2.png" alt="" /></div>
-            <h4>David <br/> <span>Italy</span></h4>
-        </div>
+        {body.map((item, index) => (
+            <Profile
+                key={index}
+                name={item.name}
+                lastname={item.lastname}
+                image={item.image}
+                status={item.status}
+            />
+        ))}
     </div>
   )
 }

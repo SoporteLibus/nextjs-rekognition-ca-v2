@@ -10,7 +10,7 @@
 .cardBox .card {
     position: relative;
     background: var(--white);
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;

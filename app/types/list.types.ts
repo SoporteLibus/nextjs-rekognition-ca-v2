@@ -7,6 +7,8 @@ export interface Tr {
 
 export interface ListObjects {
     title: string
+    title2: string
     titlelist: string[]
-    items: {name: string, docket: number, lastname: string, status: string}[];
+    items: { name: string, docket: number, lastname: string, status: string }[];
+    items2: { name: string, lastname: string, image: string, status: string }[]
 }
