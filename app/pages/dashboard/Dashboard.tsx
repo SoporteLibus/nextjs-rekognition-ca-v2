@@ -1,5 +1,5 @@
 import { List } from "@/app/components";
-import Card from "@/app/components/card/card";
+import Card from "@/app/components/card/Card";
 import { AiOutlineEye } from 'react-icons/ai'
 
 const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]

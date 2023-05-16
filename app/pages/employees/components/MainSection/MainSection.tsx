@@ -4,18 +4,11 @@ import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 import Card from "./components/Card";
 import ModelPopup from "../ModelPopup/ModelPopup";
-import EditDetailsModal from "../ModelPopup/EditDetailsModal";
-import { axiosGet, axiosPut } from "@/app/services";
+import { axiosGet } from "@/app/services";
 
-interface SetEmployeesId {
-  setEmployeeId: any
-}
-
-const MainSection: React.FC<SetEmployeesId> = ({ setEmployeeId }) => {
+const MainSection = () => {
   const [showModal, setShowModal] = useState(false)
-  const [editModal, setEditModal] = useState(false)
   const [employees, setEmployees] = useState<any>([])
-  const [empById, setEmpById] = useState([])
   const [reRender, setReRender] = useState(false)
 
   const getAllEmployee = async () => {
@@ -44,7 +37,7 @@ const MainSection: React.FC<SetEmployeesId> = ({ setEmployeeId }) => {
 
   useEffect(() => {
     getAllEmployee()
-  }, [showModal, editModal, reRender])
+  }, [showModal, reRender])
 
   return (
     <>
@@ -72,7 +65,7 @@ const MainSection: React.FC<SetEmployeesId> = ({ setEmployeeId }) => {
           <div className={style.employees}>
             {
               employees && employees.map((emp: any) => {
-                return <div key={emp._id} onClick={() => setEmployeeId(emp.legajo)}>
+                return <div key={emp._id}>
                   <Card
                     empData={emp}
                     handleReRender={handleReRender} />

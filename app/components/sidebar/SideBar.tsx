@@ -2,36 +2,13 @@
 import styles from '@/styles/sidebar.module.css'
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
-import { MenuItemProps, MenuProps } from '../../types';
-import argullogo from '../../../public/logo2.png'
+import { MenuProps } from '../../types';
 import Image from 'next/image';
 import Link from 'next/link';
+import LogoBar from './components/LogoBar';
+import MenuItem from './components/MenuItem';
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, text, link }) => {
-  return (
-    <li>
-      <Link href={link}> 
-        <span className={styles.icon}>{icon}</span>
-        <span className={styles.title}>{text}</span>
-      </Link>
-    </li>
-  );
-};
-
-const LogoBar = () => {
-  return (
-    <div className={styles.logosidebar}>
-      <Image src={argullogo}
-        height={25}
-        width={25}
-        alt='Argul logo'
-        priority={true}
-      />
-    </div>
-  )
-}
-
-const SideBar: React.FC<MenuProps> = ({ children, items }) => {
+const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
   const [hide, setHide] = useState<boolean>(true);
 
   const toggleHideText = () => {
@@ -54,6 +31,7 @@ const SideBar: React.FC<MenuProps> = ({ children, items }) => {
             icon={item.icon}
             text={item.text}
             link={item.link}
+            setAuth={setAuth}
           />
         ))}
       </ul>

@@ -1,1 +1,2 @@
-export * from './axios.services';
+export * from './adminuser.services';
+export * from './global.services';

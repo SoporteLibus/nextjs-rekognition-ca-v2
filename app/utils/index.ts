@@ -1,3 +1,3 @@
-export * from './alerts/alert';
-export * from './capitalize/capitalize';
-export { default as uuid } from './uuid/uuid';
+export * from './alerts/Alert';
+export * from './capitalize/Capitalize';
+export { default as Uuid } from './uuid/Uuid';

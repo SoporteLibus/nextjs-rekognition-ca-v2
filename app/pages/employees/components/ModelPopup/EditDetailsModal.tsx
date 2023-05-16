@@ -10,20 +10,20 @@ const EditDetailsModal = ({ empById, setEditModal, setModal }: any) => {
     const [lastName, setLastName] = useState(apellido)
     const [Email, setEmail] = useState(email)
     const [Phone, setPhone] = useState(telefono)
-    const [Job, setJob] = useState(dni)
-    const [dateOfJoining, setDateOfJoining] = useState(legajo)
+    const [Dni, setDni] = useState(dni)
+    const [Legajo, setLegajo] = useState(legajo)
     const [Image, setImage] = useState(foto)
 
     const handleEdit = async () => {
         setLoading(true)
         try {
             const res = await axiosPut(`actualizar/${legajo}`, {
-                nombre: firstName, apellido: lastName, dni: Job,
-                email: Email, legajo: dateOfJoining, telefono: Phone
+                nombre: firstName, apellido: lastName, dni: Dni,
+                email: Email, legajo: Legajo, telefono: Phone
             })
             setLoading(false)
             setEditModal(false)
-            console.log("ResEdit>>",res)
+            window.location.reload()
         }
         catch (err) {
             console.log(err)
@@ -94,21 +94,21 @@ const EditDetailsModal = ({ empById, setEditModal, setModal }: any) => {
                             <label htmlFor="">Dni</label>
                             <input type="text"
                                 required
-                                onChange={(e) => setJob(e.target.value)}
-                                value={Job}
+                                onChange={(e) => setDni(e.target.value)}
+                                value={Dni}
                             />
                         </div>
                         <div className={style.inputbox}>
                             <label htmlFor="">Legajo</label>
                             <input type="text"
                                 required
-                                onChange={(e) => setDateOfJoining(e.target.value)}
-                                value={dateOfJoining}
+                                onChange={(e) => setLegajo(e.target.value)}
+                                value={Legajo}
                             />
                         </div>
                     </div>
                     <div className={style.modalFooter}>
-                        <button className={style.addbtn} type="submit">{loading ? 'Editando' : 'Editar y Guardar'}</button>
+                        <button className={style.addbtn} type="submit">{loading ? 'Editando' : 'Guardar'}</button>
                         <button className={style.addbtn}
                             type="submit"
                             onClick={() => setModal(false)}

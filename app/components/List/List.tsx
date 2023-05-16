@@ -2,7 +2,7 @@
 import { ListObjects, Tr } from "@/app/types"
 import React from "react"
 import style from '@/styles/list.module.css'
-import ProfileList from "../profile-list/profilelist"
+import ProfileList from "../profile-list/ProfileList"
 
 const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
     return (
