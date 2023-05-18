@@ -3,23 +3,20 @@ import style from '../../styles/modelpopup.module.css'
 import { axiosPost } from "@/app/services";
 
 const ModelPopup = ({ setShowModal }: any) => {
-  const [loading, setLoading] = useState(false)
-  const [firstname, setFirstname] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [image, setImage] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [job, setJob] = useState("")
-  const [dateofjoining, setDateofJoining] = useState("")
+  const [firstName, setFirstname] = useState("")
+  const [lastName, setLastname] = useState("")
+  const [Area, setArea] = useState("")
+  const [Email, setEmail] = useState("")
+  const [Phone, setPhone] = useState("")
+  const [Dni, setDni] = useState("")
+  const [Legajo, setLegajo] = useState("")
 
   //console.log(empById)
 
   const createEmployee = async (values: any) => {
-    setLoading(true)
     try {
       const res = await axiosPost('listar/', values)
       console.log(res)
-      setLoading(false)
       setShowModal(false)
     }
     catch (err) {
@@ -29,8 +26,10 @@ const ModelPopup = ({ setShowModal }: any) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const { value }: any = e.target
-    createEmployee(value)
+    createEmployee({
+      nombre: firstName, apellido: lastName, dni: Dni,
+      email: Email, legajo: Legajo, telefono: Phone, area: Area
+    })
   }
   
   return (
@@ -46,61 +45,65 @@ const ModelPopup = ({ setShowModal }: any) => {
           >
             <div className={style.inputcontainer}>
               <div className={style.inputbox}>
-                <label htmlFor="">First Name</label>
+                <label htmlFor="">Nombre</label>
                 <input type="text" required
                   onChange={(e) => setFirstname(e.target.value)}
-                  value={firstname}
+                  value={firstName}
                 />
               </div>
               <div className={style.inputbox}>
-                <label htmlFor="">Last Name</label>
+                <label htmlFor="">Apellido</label>
                 <input type="text" required
                   onChange={(e) => setLastname(e.target.value)}
-                  value={lastname}
+                  value={lastName}
                 />
               </div>
             </div>
             <div className={style.inputbox}>
-              <label htmlFor="">image</label>
+              <label htmlFor="">Area</label>
               <input type="text" required
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
+                onChange={(e) => setArea(e.target.value)}
+                value={Area}
               />
             </div>
 
             <div className={style.inputcontainer}>
               <div className={style.inputbox}>
-                <label htmlFor="">Email Address</label>
+                <label htmlFor="">Email</label>
                 <input type="email" required
                   onChange={(e) => setEmail(e.target.value)}
-                  value={email}
+                  value={Email}
                 />
               </div>
               <div className={style.inputbox}>
-                <label htmlFor="">Phone</label>
+                <label htmlFor="">Telefono</label>
                 <input type="text" required
                   onChange={(e) => setPhone(e.target.value)}
-                  value={phone}
+                  value={Phone}
                 />
               </div>
             
             </div>
             <div className={style.inputbox}>
-              <label htmlFor="">Job-position</label>
+              <label htmlFor="">Dni</label>
               <input type="text" required
-                onChange={(e) => setJob(e.target.value)}
-                value={job}
+                onChange={(e) => setDni(e.target.value)}
+                value={Dni}
               />
             </div>
             <div className={style.inputbox}>
-              <label htmlFor="">Date of Joining</label>
-              <input type="date" required
-                onChange={(e) => setDateofJoining(e.target.value)}
-                value={dateofjoining}
+              <label htmlFor="">Legajo</label>
+              <input type="text" required
+                onChange={(e) => setLegajo(e.target.value)}
+                value={Legajo}
               />
             </div>
             <div className={style.modalFooter}>
-              <button className={style.addbtn} type="submit">{loading ? 'Guardando...' : 'Guardar'}</button>
+              <button className={style.addbtn} type="submit">Guardar</button>
+              <button className={style.addbtn}
+                type="button"
+                onClick={() => setShowModal(false)}
+              >Cerrar</button>
             </div>
 
           </div>

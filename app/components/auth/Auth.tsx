@@ -1,22 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { AiOutlineHome} from 'react-icons/ai'
 import { MdOutlineGroups } from 'react-icons/md'
 import { IoMdHelpCircleOutline } from 'react-icons/io'
 import { IoExitOutline } from 'react-icons/io5'
 import Login from "../login/Login";
 import SideBar from "../sidebar/SideBar";
-import { useRouter } from 'next/navigation';
-
-export const Home= () => {
-  const { push } = useRouter();
-
-  useEffect(() => {
-     push('/hello-nextjs');
-  }, []);
-  return <p></p>;
-};
-
+import { getCookie } from "cookies-next";
+import Loading from "./loading";
 
 const routes = [
   { icon: <AiOutlineHome size={25} />, text: 'Inicio', link: "/" },
@@ -29,19 +20,33 @@ interface Auth {
     children: React.ReactNode
 }
 
-const AuthLogin: React.FC<Auth> = ({children}) => {
+const AuthLogin: FC<Auth> = ({children}) => {
     const [auth, setAuth] = useState(false)
+    const [loading, setLoading] = useState(true)
+    
     useEffect(() => {
-        localStorage.getItem("user") ? setAuth(true) : setAuth(false)
+        getCookie("user") ? (
+            setAuth(true),
+            setLoading(false)
+        ) : (
+            setAuth(false),
+            setLoading(true)
+        )
     }, [auth])
-    return (
-        auth ?
+
+    if (loading && !auth) {
+        return <><Loading/></>
+    } else if (auth) {
+        return (
             <SideBar items={routes} setAuth={setAuth} >
                 {children}
             </SideBar>
-            :
+        )
+    } else {
+        return (
             <Login setAuth={setAuth} />
-    )
+        )
+    }
 }
 
 export default AuthLogin

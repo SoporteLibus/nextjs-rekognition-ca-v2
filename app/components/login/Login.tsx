@@ -21,8 +21,6 @@ const Login: React.FC<LoginProp> = ({ setAuth }) => {
 			if (res.data.user.activo) {
 				setCookie("token", res.data.token);
 				setCookie("user", JSON.stringify(res.data.user));
-				localStorage.setItem("token", res.data.token)
-				localStorage.setItem("user", JSON.stringify(res.data.user))
 				setAuth && setAuth(true)
 			}
 			

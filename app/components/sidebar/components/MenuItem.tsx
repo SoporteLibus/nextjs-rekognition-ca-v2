@@ -1,14 +1,17 @@
 import { MenuItemProps } from "@/app/types";
 import Link from "next/link";
-import styles from '@/styles/sidebar.module.css'
+import styles from '@/styles/sidebar.module.css';
+import { deleteCookie } from "cookies-next";
 
 const MenuItem: React.FC<MenuItemProps> = ({ icon, text, link, setAuth }) => {
+  
   return (
     <li>
       {
         text == "Salir" ?
           <Link href={link} onClick={() => {
-            localStorage.clear()
+            deleteCookie("token")
+            deleteCookie("user")
             setAuth && setAuth(false)
           }} > 
           <span className={styles.icon}>{icon}</span>

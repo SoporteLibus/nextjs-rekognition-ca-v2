@@ -1,6 +1,7 @@
 import axios from "axios"
-import { baseURL } from "./global.services"
 import { User } from "../types"
+
+const baseURL = "http://172.18.6.35:5005/"
 
 export const axiosLogin = (url: string, data: User) =>{
     return axios.post(`${baseURL}${url}`, data, {

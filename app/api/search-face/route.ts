@@ -1,5 +1,6 @@
 import { RekognitionClient, SearchFacesByImageCommand } from "@aws-sdk/client-rekognition";
 import axios from "axios";
+// import { cookies } from 'next/headers';
 
 // Credenciales globales para la configuracion de AWS
 const client = new RekognitionClient({
@@ -14,7 +15,10 @@ const client = new RekognitionClient({
 const collection = `${process.env.COLLECTION_NAME}`
 
 async function fetchData(object: string) {
-  const res = await axios.put(`http://172.18.6.166:5005/fichar/normal/${object}`, ["jornada", "entrada"])
+  // const nextCookies = cookies()
+  // const token = nextCookies.get('token')
+  // console.log("cookie>>>",token?.value)
+  const res = await axios.put(`http://172.18.6.138:5005/api/v1/rrhh/empleados/fichar/${object}`)
     .then(response => response.data)
     .catch(error => error)
   return res

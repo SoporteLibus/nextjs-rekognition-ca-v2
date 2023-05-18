@@ -5,16 +5,19 @@ import { IoMdAdd } from "react-icons/io";
 import Card from "./components/Card";
 import ModelPopup from "../ModelPopup/ModelPopup";
 import { axiosGet } from "@/app/services";
+import Loading from "./components/loading";
 
 const MainSection = () => {
   const [showModal, setShowModal] = useState(false)
   const [employees, setEmployees] = useState<any>([])
   const [reRender, setReRender] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const getAllEmployee = async () => {
     try {
       const res = await axiosGet('listar/')
       setEmployees(res.data)
+      console.log("AllEmployees>>",employees)
     }
     catch (err) {
       console.log(err)
@@ -24,7 +27,12 @@ const MainSection = () => {
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const res = await axiosGet(`buscar?keyword=${e.target?.value}`)
-      setEmployees(res.data)
+      if (res.data.data) {
+        setEmployees(res.data.data)
+        console.log(res.data.data)
+      } else {
+        getAllEmployee()
+      }
     }
     catch (err) {
       console.log(err)
@@ -37,6 +45,9 @@ const MainSection = () => {
 
   useEffect(() => {
     getAllEmployee()
+    setTimeout(() => {
+      setLoading(false)
+    }, 5000);
   }, [showModal, reRender])
 
   return (
@@ -53,14 +64,15 @@ const MainSection = () => {
             <div className={style.searchBox}>
               <input
                 type="text"
-                placeholder="Busqueda por legajo"
+                placeholder="Busqueda por nombre o legajo"
                 onChange={handleSearch}
               />
               <BiSearch size={20} />
             </div>
             <button className={style.addbtn}
-              onClick={() => setShowModal(true)}
-            ><IoMdAdd size="20" color="#fffff" />Agregar</button>
+              onClick={() => setShowModal(true)}>
+                <IoMdAdd size="20" color="#fffff" />Agregar
+            </button>
           </div>
           <div className={style.employees}>
             {
@@ -73,7 +85,14 @@ const MainSection = () => {
               })
             }
           </div>
-          {employees.length == 0 && <center>Sin datos de Empleados</center>}
+          {(employees.length == 0 && loading) ?
+            <Loading />
+              : 
+            (employees.length > 0 && loading) ?
+            <div></div>
+              :
+            <center>Sin datos de empleados...</center>
+          }
         </div>
       </div>
     </>
