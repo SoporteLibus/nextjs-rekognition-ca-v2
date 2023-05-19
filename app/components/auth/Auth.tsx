@@ -30,7 +30,7 @@ const AuthLogin: FC<Auth> = ({children}) => {
             setLoading(false)
         ) : (
             setAuth(false),
-            setLoading(true)
+            setLoading(false)
         )
     }, [auth])
 

@@ -10,10 +10,8 @@ interface Card {
   handleReRender: any
 }
 
-
-
 const Card: React.FC<Card> = ({ empData, handleReRender }) => {
-  const { nombre, apellido, legajo, email, foto } = empData
+  const { nombre, apellido, legajo, email, foto, sexo } = empData
   const [dropDown, setDropdown] = useState(false)
   const [showModalEmp, setShowModalEmp] = useState(false)
   const [editModal, setEditModal] = useState(false)
@@ -51,7 +49,8 @@ const Card: React.FC<Card> = ({ empData, handleReRender }) => {
         </div>
         <div onClick={() => setShowModalEmp(true)}>
           <div className={style.profileImage}>
-            <img src={foto} alt={nombre} />
+              <img src={foto ? foto : (sexo == "m") ? "/avatar-h.jpeg" : "/avatar-m.webp"}
+                alt={nombre} />
           </div>
           <div className={style.empdetail}>
             <h3>{Capitalize(nombre)} {Capitalize(apellido)}</h3>

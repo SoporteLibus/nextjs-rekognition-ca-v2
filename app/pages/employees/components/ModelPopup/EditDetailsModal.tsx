@@ -61,8 +61,17 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         setLoading(true)
         try {
             await axiosPut(`actualizar/${legajo}`, {
-                nombre: Nombre, apellido: Apellido, dni: Dni,
-                email: Email, legajo: Legajo, telefono: Telefono
+                nombre: Nombre, apellido: Apellido, area: Area, activo: Activo, calle: Calle,
+                categoria: Categoria, centro_de_costo: CentroCosto, ciudad: Ciudad,
+                codigo_postal: CodigoPostal, contratacion: Contratacion, convenio: Convenio,
+                cuil: Cuil, departamento: Dpto, dni: Dni, email: Email,
+                estado_ambiental: EstadoAmbiental, examen_preocupacional: EPreocupacional,
+                fecha_egreso: FechaEgreso, fecha_ingreso: FechaIngreso, fecha_nacimiento: FechaNacimiento,
+                gerencia: Gerencia, grupo: Grupo, legajo: Legajo,
+                nivel_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
+                pais: Pais, piso: Piso, provincia: Provincia, rotacion: Rotacion, sector: Sector,
+                sexo: Sexo, telefono: Telefono, telefono_urgencia: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
+                turno: Turno
             })
             setLoading(false)
             setEditModal(false)
@@ -88,15 +97,9 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                     <div className={style.modalInner}
 
                     >
-                    <Widget/>
-                        {/* <div className={style.inputbox}>
-                            <label htmlFor="">Legajo</label>
-                            <input type="text"
-                                required
-                                onChange={(e) => setLegajo(e.target.value)}
-                                value={Legajo}
-                            />
-                        </div>
+                    <Widget tabHeaders={["Informacion", "Contratacion", "Observaciones"]} >
+                    
+                    <div>
                         <div className={style.inputcontainer}>
                             <div className={style.inputbox}>
                                 <label htmlFor="">Apellido</label>
@@ -115,101 +118,41 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 />
                             </div>
                         </div>
-                        <div className={style.inputbox}>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Cuil</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setCuil(e.target.value)}
                                     value={Cuil}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Contratacion</label>
+                            </div>
+                            <div className={style.inputbox}>
+                                <label htmlFor="">Dni</label>
                                 <input type="text"
                                     required
-                                    onChange={(e) => setContratacion(e.target.value)}
-                                    value={Contratacion}
+                                    onChange={(e) => setDni(e.target.value)}
+                                    value={Dni}
                                 />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Fecha de Ingreso</label>
-                                <input type="date"
-                                    required
-                                    onChange={(e) => setFechaIngreso(new Date(e.target.value))}
-                                    value={FechaIngreso.toString()}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Gerencia</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setGerencia(e.target.value)}
-                                    value={Gerencia}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Area</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setArea(e.target.value)}
-                                    value={Area}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Sector</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setSector(e.target.value)}
-                                    value={Sector}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Centro de Costo</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setCentroCosto(e.target.value)}
-                                    value={CentroCosto}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Convenio</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setConvenio(e.target.value)}
-                                    value={Convenio}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Categoria</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setCategoria(e.target.value)}
-                                    value={Categoria}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                            <label htmlFor="">Dni</label>
-                            <input type="text"
-                                required
-                                onChange={(e) => setDni(e.target.value)}
-                                value={Dni}
-                            />
-                        </div>
-                        <div className={style.inputbox}>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Fecha de Nacimiento</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setFechaNacimiento(new Date(e.target.value))}
                                     value={FechaNacimiento.toString()}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Sexo</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setSexo(e.target.value)}
                                     value={Sexo}
                                 />
+                            </div>
                         </div>
                         <div className={style.inputcontainer}>
                             <div className={style.inputbox}>
@@ -220,6 +163,16 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                     value={Email}
                                 />
                             </div>
+                            <div className={style.inputbox}>
+                                <label htmlFor="">Nivel de Educacion</label>
+                                <input type="text"
+                                    required
+                                    onChange={(e) => setNivelEducacion(e.target.value)}
+                                    value={NivelEducacion}
+                                />
+                            </div>
+                        </div>
+                        <div className={style.inputcontainer}>
                             <div className={style.inputbox}>
                                 <label htmlFor="">Telefono</label>
                                 <input type="text"
@@ -237,132 +190,223 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 />
                             </div>
                         </div>
-                        <div className={style.inputbox}>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Calle</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setCalle(e.target.value)}
                                     value={Calle}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Numero</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setNumero(e.target.value)}
                                     value={Numero}
                                 />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Departamento</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setDpto(e.target.value)}
                                     value={Dpto}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Piso</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setPiso(e.target.value)}
                                     value={Piso}
                                 />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Pais</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setPais(e.target.value)}
                                     value={Pais}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Provincia</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setProvincia(e.target.value)}
                                     value={Provincia}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                        </div>        
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Ciudad</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setCiudad(e.target.value)}
                                     value={Ciudad}
                                 />
-                        </div>
-                        <div className={style.inputbox}>
+                            </div>
+                            <div className={style.inputbox}>
                                 <label htmlFor="">Codigo Postal</label>
                                 <input type="text"
                                     required
                                     onChange={(e) => setCodigoPostal(e.target.value)}
                                     value={CodigoPostal}
                                 />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Nivel de Educacion</label>
+                    </div>
+                    <div>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                <label htmlFor="">Legajo</label>
                                 <input type="text"
                                     required
-                                    onChange={(e) => setNivelEducacion(e.target.value)}
-                                    value={NivelEducacion}
+                                    onChange={(e) => setLegajo(e.target.value)}
+                                    value={Legajo}
                                 />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Contratacion</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setContratacion(e.target.value)}
+                                        value={Contratacion}
+                                    />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                            <label htmlFor="">Activo</label>
-                            <select name="Activo" onChange={(e) => setActivo(!activo)}>
-                                <option value="true">Si</option>
-                                <option value="false">No</option>
-                            </select>
+                        
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Fecha de Ingreso</label>
+                                    <input type="date"
+                                        required
+                                        onChange={(e) => setFechaIngreso(new Date(e.target.value))}
+                                        value={FechaIngreso.toString()}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Gerencia</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setGerencia(e.target.value)}
+                                        value={Gerencia}
+                                    />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                            <label htmlFor="">Fecha de Egreso</label>
-                            <input type="text"
-                                    required
-                                    onChange={(e) => setFechaEgreso(new Date(e.target.value))}
-                                    value={FechaEgreso.toString()}
-                                />
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Area</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setArea(e.target.value)}
+                                        value={Area}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Sector</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setSector(e.target.value)}
+                                        value={Sector}
+                                    />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Estado Ambiental</label>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Centro de Costo</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setCentroCosto(e.target.value)}
+                                        value={CentroCosto}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Convenio</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setConvenio(e.target.value)}
+                                        value={Convenio}
+                                    />
+                            </div>
+                        </div>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Categoria</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setCategoria(e.target.value)}
+                                        value={Categoria}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                <label htmlFor="">Activo</label>
+                                <select name="Activo" onChange={(e) => setActivo(!activo)}>
+                                    <option value="true">Si</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                <label htmlFor="">Fecha de Egreso</label>
                                 <input type="text"
-                                    required
-                                    onChange={(e) => setEstadoAmbiental(e.target.value)}
-                                    value={EstadoAmbiental}
-                                />
+                                        required
+                                        onChange={(e) => setFechaEgreso(new Date(e.target.value))}
+                                        value={FechaEgreso.toString()}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Estado Ambiental</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setEstadoAmbiental(e.target.value)}
+                                        value={EstadoAmbiental}
+                                    />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Preocupacional</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setEPreocupacional(e.target.value)}
-                                    value={EPreocupacional}
-                                />
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Preocupacional</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setEPreocupacional(e.target.value)}
+                                        value={EPreocupacional}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Tipo de Liquidacion</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setTipoLiquidacion(e.target.value)}
+                                        value={TipoLiquidacion}
+                                    />
+                            </div>
                         </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Tipo de Liquidacion</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setTipoLiquidacion(e.target.value)}
-                                    value={TipoLiquidacion}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Rotacion</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setRotacion(e.target.value)}
-                                    value={Rotacion}
-                                />
-                        </div>
-                        <div className={style.inputbox}>
-                                <label htmlFor="">Turno</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setTurno(e.target.value)}
-                                    value={Turno}
-                                />
+                        <div className={style.inputcontainer}>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Rotacion</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setRotacion(e.target.value)}
+                                        value={Rotacion}
+                                    />
+                            </div>
+                            <div className={style.inputbox}>
+                                    <label htmlFor="">Turno</label>
+                                    <input type="text"
+                                        required
+                                        onChange={(e) => setTurno(e.target.value)}
+                                        value={Turno}
+                                    />
+                            </div>
                         </div>
                         <div className={style.inputbox}>
                                 <label htmlFor="">Grupo</label>
@@ -371,7 +415,9 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                     onChange={(e) => setGrupo(e.target.value)}
                                     value={Grupo}
                                 />
-                        </div> */}
+                        </div>
+                    </div>
+                    <div>
                         {/* <div className={style.inputbox}>
                                 <label htmlFor="">Jornada</label>
                                 <input type="text"
@@ -399,14 +445,16 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 value={Liquidacion}
                             />
                         </div> */}
-                        {/* <div className={style.inputbox}>
+                        <div className={style.inputbox}>
                             <label htmlFor="">Observaciones</label>
                             <input type="text"
                                 required
                                 onChange={(e) => setObservaciones(e.target.value)}
                                 value={Observaciones}
                             />
-                        </div> */}
+                        </div>
+                    </div>
+                    </Widget>
                     </div>
                     <div className={style.modalFooter}>
                         <button className={style.addbtn} type="submit">{loading ? 'Editando' : 'Guardar'}</button>

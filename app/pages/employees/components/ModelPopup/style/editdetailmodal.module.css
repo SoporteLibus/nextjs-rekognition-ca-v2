@@ -2,32 +2,24 @@
     height: 100%;
 }
 
-/* body {
-    display: grid;
-    place-items: center;
-    margin: 0;
-    font-family: "Euclid Circular A", "Poppins";
-    line-height: 1.5;
-    background: #f1f0ff;
-    color: #58547b;
-} */
-
 .widget {
     background: #ffffff;
     width: var(--tab-width);
     border-radius: 8px;
+    width: 100%;
 }
 
 .widget>header {
     position: relative;
     display: flex;
+    gap: 20px;
     border-bottom: 1px solid #e2e1ef;
     width: 100%;
 }
 
 .widget>header>button {
     font-size: 15px;
-    width: var(--button-width);
+    width: 165px;
     cursor: pointer;
     background: transparent;
     color: #918db7;
@@ -42,13 +34,13 @@
 
 .widget>header>button.active {
     color: var(--red);
-    width: 90px;
+    width: 165px;
 }
 
 .content {
     position: relative;
     overflow: hidden;
-    height: 140px;
+    height: 750px;
 }
 
 .contentinner {
@@ -56,7 +48,7 @@
     top: 0;
     left: 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: calc(var(--tab-width) * 3);
     transition: 0.3s;
 }
@@ -65,7 +57,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    width: 90px;
+    width: 165px;
     height: 3px;
     background: var(--red);
     transition: 0.2s;
@@ -84,5 +76,4 @@
 
 .contentinner>div {
     width: inherit;
-    padding: 20px;
 }

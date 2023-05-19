@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Data } from '../pages/employees/types';
 import { getCookie } from "cookies-next";
+import { ApiEmployeesData } from '../types';
 
 const cookie = getCookie("token");
 
@@ -16,7 +16,7 @@ export const axiosGet = (url: string) =>{
         headers: Authorization
     })
 }
-export const axiosPost = (url: string, data: Data) =>{
+export const axiosPost = (url: string, data: ApiEmployeesData) =>{
     return axios.post(`${baseURL}${url}`, data, {
         headers: Authorization
     })
@@ -26,7 +26,7 @@ export const axiosDelete = (url: string) =>{
         headers: Authorization
     })
 }
-export const axiosPut = (url: string, data: Data) =>{
+export const axiosPut = (url: string, data: ApiEmployeesData) =>{
     return axios.put(`${baseURL}${url}`, data,{
         headers: Authorization
     })

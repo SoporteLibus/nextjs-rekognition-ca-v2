@@ -12,21 +12,22 @@ const MainSection = () => {
   const [employees, setEmployees] = useState<any>([])
   const [reRender, setReRender] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [search, setSearch] = useState("")
 
   const getAllEmployee = async () => {
     try {
       const res = await axiosGet('listar/')
       setEmployees(res.data)
-      console.log("AllEmployees>>",employees)
     }
     catch (err) {
       console.log(err)
     }
   }
 
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     try {
-      const res = await axiosGet(`buscar?keyword=${e.target?.value}`)
+      const res = await axiosGet(`buscar?keyword=${search}`)
       if (res.data.data) {
         setEmployees(res.data.data)
         console.log(res.data.data)
@@ -62,12 +63,17 @@ const MainSection = () => {
           </h1>
           <div className={style.employeeHeader}>
             <div className={style.searchBox}>
-              <input
-                type="text"
-                placeholder="Busqueda por nombre o legajo"
-                onChange={handleSearch}
-              />
-              <BiSearch size={20} />
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder="Busqueda por nombre o legajo"
+                  onChange={e => setSearch(e.target.value)}
+                />
+                <button style={{ border: "none" }}
+                  type="submit">
+                  <BiSearch size={20} />
+                </button>
+              </form>
             </div>
             <button className={style.addbtn}
               onClick={() => setShowModal(true)}>
@@ -88,7 +94,7 @@ const MainSection = () => {
           {(employees.length == 0 && loading) ?
             <Loading />
               : 
-            (employees.length > 0 && loading) ?
+            (employees.length > 0 && !loading) ?
             <div></div>
               :
             <center>Sin datos de empleados...</center>

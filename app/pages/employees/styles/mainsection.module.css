@@ -34,24 +34,27 @@
 .searchBox {
   background-color: #ecedf6;
   height: 2rem;
-  width: 20rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4px 12px;
   border-radius: 8px;
 }
-.searchBox > input {
+.searchBox form {
+  display: flex;
+  flex-direction: row;
+}
+.searchBox form > input {
   background-color: transparent;
   font: inherit;
   border: none;
   width: 100%;
   font-size: 0.9rem;
 }
-.searchBox > input::placeholder{
+.searchBox form > input::placeholder{
     color: #B3B4C0;
 }
-.searchBox > input:focus {
+.searchBox form > input:focus {
   outline: none;
 }
 .employees {
@@ -73,6 +76,8 @@
   overflow: hidden;
 }
 .cardinner {
+  min-width: 268px;
+  min-height: 260px;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -87,13 +92,13 @@
   place-items: center;
 }
 .profileImage > img {
-  width: 7rem;
-  height: 7rem;
-  object-fit: cover;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .empdetail {
-  margin-top: 3rem;
+  margin-top: 10px;
   text-align: center;
 }
 .empdetail > h3{

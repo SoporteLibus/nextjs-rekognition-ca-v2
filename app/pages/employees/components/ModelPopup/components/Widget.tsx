@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import style from '../style/editdetailmodal.module.css'
 
-const buttonWidth = 64;
-const tabWidth = 300;
-const tabHeaders = ["home", "lock", "settings"];
-const tabContent = [];
+const buttonWidth = 185;
+const tabWidth = 608;
 
-const Widget = () => {
+interface WidgetProps {
+    children: React.ReactNode
+    tabHeaders: string[]
+}
+
+const Widget: React.FC<WidgetProps> = ({children, tabHeaders}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -36,9 +39,9 @@ const Widget = () => {
           className={style.contentinner}
           style={{
             translate: `-${activeIndex ? activeIndex * tabWidth : 0}px 0`,
-          }}
-        >
-          <div>
+          }}>
+            {children}
+          {/* <div>
             <h2 className={style.h2}>Home</h2>
             <p className={style.p}>
               This is the tab content, you can put anything you like in here.
@@ -55,7 +58,7 @@ const Widget = () => {
             <p className={style.p}>
               This is the tab content, you can put anything you like in here.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

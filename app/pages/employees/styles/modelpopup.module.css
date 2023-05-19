@@ -12,7 +12,6 @@
     justify-content: center;
     z-index: 10;
     transition: 1s ease-in-out;
-    overflow: scroll;
 }
 .modalBox{
     width: 40rem;
@@ -21,7 +20,7 @@
 }
 .inputcontainer{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     gap: 20px;
 }
 .modalHeader{
@@ -58,7 +57,8 @@
     font-weight: 500;
     text-transform: uppercase;
 }
-.inputbox > input{
+.inputbox > input,
+.inputbox > select{
     background-color: transparent;
   font: inherit;
   border: none;
@@ -69,7 +69,8 @@
   border: 1px solid rgba(0,0,0,.1);
   margin-top: 10px;
 }
-.inputbox > input:focus{
+.inputbox > input:focus,
+.inputbox > select:focus{
     outline: none;
 }
 .addbtn {

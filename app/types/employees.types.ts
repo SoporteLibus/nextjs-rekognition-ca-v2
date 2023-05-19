@@ -1,4 +1,5 @@
 export interface ApiEmployeesData{
+    _id?: string,
     legajo: string,
     apellido: string,
     nombre: string,
@@ -34,10 +35,10 @@ export interface ApiEmployeesData{
     rotacion:string,
     turno:string,
     grupo:string,
-    jornada: Jornadas[],
-    liquidacion: Liquidacion[],
+    jornada?: Jornadas[],
+    liquidacion?: Liquidacion[],
     observaciones: string,
-    foto: string,
+    foto?: string,
 }
 interface Jornadas{
    fecha: Date;
