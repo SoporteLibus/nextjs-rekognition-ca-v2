@@ -1,6 +1,6 @@
 import { MenuItemProps } from "@/app/types";
 import Link from "next/link";
-import styles from '@/styles/sidebar.module.css';
+import styles from '@/app/styles/sidebar.module.css';
 import { deleteCookie } from "cookies-next";
 
 const MenuItem: React.FC<MenuItemProps> = ({ icon, text, link, setAuth }) => {

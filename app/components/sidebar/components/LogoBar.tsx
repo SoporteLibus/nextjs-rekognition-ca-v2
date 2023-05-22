@@ -1,6 +1,6 @@
 import Image from "next/image"
 import argullogo from '@/public/logo2.png'
-import styles from '@/styles/sidebar.module.css'
+import styles from '@/app/styles/sidebar.module.css'
 
 const LogoBar = () => {
   return (

@@ -16,5 +16,4 @@ export const Capitalize = (word: string) => {
     } catch (error) {
         console.log(error)
     }
-    
 }

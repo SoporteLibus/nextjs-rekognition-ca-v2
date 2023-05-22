@@ -1,4 +1,4 @@
-import style from '@/styles/list.module.css'
+import style from '@/app/styles/list.module.css'
 import Image from 'next/image'
 import React from 'react'
 

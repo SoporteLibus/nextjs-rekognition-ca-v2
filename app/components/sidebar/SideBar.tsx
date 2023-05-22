@@ -1,5 +1,5 @@
 "use client"
-import styles from '@/styles/sidebar.module.css'
+import styles from '@/app/styles/sidebar.module.css'
 import React, { useState } from 'react'
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
 import { MenuProps } from '../../types';
