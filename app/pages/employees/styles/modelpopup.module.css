@@ -52,6 +52,10 @@
    margin-top: 10px;
    width: 100%;
 }
+.inputbox div {
+    display: flex;
+    justify-content: center;
+}
 .label{
     font-size: 0.8rem;
     font-weight: 500;

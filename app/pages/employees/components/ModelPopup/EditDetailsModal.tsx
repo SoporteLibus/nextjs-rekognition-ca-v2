@@ -3,6 +3,7 @@ import style from '../../styles/modelpopup.module.css'
 import { axiosPut } from '@/app/services';
 import { ApiEmployeesData } from '@/app/types';
 import Widget from './components/Widget';
+import Image from 'next/image';
 
 interface EditDetailsModalProps {
     empById: ApiEmployeesData
@@ -16,7 +17,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         sexo, email, telefono, telefono_urgencia, calle, numero, departamento, piso,
         pais, provincia, ciudad, codigo_postal, nivel_educacion, activo, fecha_egreso,
         estado_ambiental, examen_preocupacional, tipo_liquidacion, rotacion, turno,
-        grupo, jornada, liquidacion, observaciones} = empById
+        grupo, jornada, liquidacion, observaciones, foto} = empById
     const [loading, setLoading] = useState(false)
     const [Legajo, setLegajo] = useState(legajo)
     const [Apellido, setApellido] = useState(apellido)
@@ -53,8 +54,8 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
     const [Rotacion, setRotacion] = useState(rotacion)
     const [Turno, setTurno] = useState(turno)
     const [Grupo, setGrupo] = useState(grupo)
-    const [Jornada, setJornada] = useState(jornada)
-    const [Liquidacion, setLiquidacion] = useState(liquidacion)
+    const [Foto, setFoto] = useState(foto)
+    const [FotoNueva, setFotoNueva] = useState<string | null>(null)
     const [Observaciones, setObservaciones] = useState(observaciones)
 
     const handleEdit = async () => {
@@ -418,37 +419,23 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                         </div>
                     </div>
                     <div>
-                        {/* <div className={style.inputbox}>
-                                <label htmlFor="">Jornada</label>
-                                <input type="text"
-                                    required
-                                    onChange={(e) => setJornada(e.target.value)}
-                                    value={Jornada}
-                                />
-                        </div> */}
-                        {/* <div className={style.inputbox}>
-                            <ul id="menu">
-                                <li>
-                                    <input type="checkbox" name="list" id="nivel1-1" />
-                                    <label htmlFor="nivel1-1">Nivel 1</label>
-                                    <ul className={style.interior}>
-                                            <li><a href="#">Nivel 2</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div> */}
-                        {/* <div className={style.inputbox}>
-                            <label htmlFor="">Liquidacion</label>
+                        <div className={style.inputbox}>
+                            <label htmlFor="">Foto</label>
                             <input type="text"
-                                required
-                                onChange={(e) => setLiquidacion(e.target.value)}
-                                value={Liquidacion}
+                                onChange={(e) => setFoto(e.target.value)}
+                                value={Foto}
                             />
-                        </div> */}
+                        </div>
+                        <div className={style.inputbox}>
+                            <label htmlFor="">Cargar Foto nueva</label>
+                            <input type="file"
+                                onChange={(e) => e.target.files && e.target.files.length > 0 && setFotoNueva(URL.createObjectURL(e.target.files[0]))}
+                            />
+                            {FotoNueva && <div><Image width={400} height={400} src={FotoNueva} alt="Imagen seleccionada" /></div>}
+                        </div>
                         <div className={style.inputbox}>
                             <label htmlFor="">Observaciones</label>
                             <input type="text"
-                                required
                                 onChange={(e) => setObservaciones(e.target.value)}
                                 value={Observaciones}
                             />

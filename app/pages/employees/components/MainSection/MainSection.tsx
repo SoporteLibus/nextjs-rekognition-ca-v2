@@ -69,7 +69,7 @@ const MainSection = () => {
                   placeholder="Busqueda por nombre o legajo"
                   onChange={e => setSearch(e.target.value)}
                 />
-                <button style={{ border: "none" }}
+                <button style={{ border: "none", cursor: "pointer" }}
                   type="submit">
                   <BiSearch size={20} />
                 </button>
