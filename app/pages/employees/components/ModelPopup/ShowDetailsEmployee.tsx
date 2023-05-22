@@ -21,14 +21,6 @@ const ShowDetailEmployee: React.FC<Dochet> = ({ docket, setModal }) => {
                             type="button"
                             onClick={() => setModal(false)}
                         >Cerrar</button>
-                        <button className={style.addbtn}
-                            type="button"
-                            onClick={() => setModal(false)}
-                        >Editar</button>
-                        <button className={style.addbtn}
-                            type="button"
-                            onClick={() => setModal(false)}
-                        >Detalles</button>
                     </div>
                 </div>
             </form>

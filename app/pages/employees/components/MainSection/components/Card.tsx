@@ -53,7 +53,8 @@ const Card: React.FC<Card> = ({ empData, handleReRender }) => {
                 alt={nombre} />
           </div>
           <div className={style.empdetail}>
-            <h3>{Capitalize(nombre)} {Capitalize(apellido)}</h3>
+              <h3>{Capitalize(nombre)}</h3>
+              <h3>{Capitalize(apellido)}</h3>
             <p>{email}</p>
           </div>    
         </div>

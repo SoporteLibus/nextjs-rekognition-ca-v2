@@ -30,8 +30,8 @@ const LeftNav: React.FC<EmployeeId> = ({ employeeDocket }) => {
       <h1>{Capitalize(empByDocket.nombre)} {Capitalize(empByDocket.apellido)}</h1>
       <p>Email: {empByDocket.email}</p>
       <p>Telefono: {empByDocket.telefono}</p>
-      <p className={style.date}>Legajo: {empByDocket.legajo}</p>
       <p>Dni: {empByDocket.dni}</p>
+      <p className={style.date}>Legajo: {empByDocket.legajo}</p>
     </div>
   )
 }
