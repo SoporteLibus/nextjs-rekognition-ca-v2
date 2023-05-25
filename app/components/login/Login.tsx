@@ -33,36 +33,47 @@ const Login: React.FC<LoginProp> = ({ setAuth }) => {
 		}
 	}
   	return (
-	<div className={style.session}>
-		<div className={style.sessionbox}>
-			<div className={style.left}>
-				<svg enableBackground="new 0 0 300 302.5" version="1.1" viewBox="0 0 300 302.5" xmlns="http://www.w3.org/2000/svg">
-					<path className="st01" d="m126 302.2c-2.3 0.7-5.7 0.2-7.7-1.2l-105-71.6c-2-1.3-3.7-4.4-3.9-6.7l-9.4-126.7c-0.2-2.4 1.1-5.6 2.8-7.2l93.2-86.4c1.7-1.6 5.1-2.6 7.4-2.3l125.6 18.9c2.3 0.4 5.2 2.3 6.4 4.4l63.5 110.1c1.2 2 1.4 5.5 0.6 7.7l-46.4 118.3c-0.9 2.2-3.4 4.6-5.7 5.3l-121.4 37.4zm63.4-102.7c2.3-0.7 4.8-3.1 5.7-5.3l19.9-50.8c0.9-2.2 0.6-5.7-0.6-7.7l-27.3-47.3c-1.2-2-4.1-4-6.4-4.4l-53.9-8c-2.3-0.4-5.7 0.7-7.4 2.3l-40 37.1c-1.7 1.6-3 4.9-2.8 7.2l4.1 54.4c0.2 2.4 1.9 5.4 3.9 6.7l45.1 30.8c2 1.3 5.4 1.9 7.7 1.2l52-16.2z"/>
-				</svg>      
+		<div className={style.center}>
+			<div className={style.card}>
+				<div className={style.card2}>
+					<form className={style.form} onSubmit={Submit}>
+						<p className={style.heading}>Iniciar Sesion</p>
+						<div className={style.field}>
+							<svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" className={style.inputicon}>
+								<path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 
+									5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 
+									4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 
+									2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 
+									2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 
+									2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
+								</path>
+							</svg>
+							<input type="text" 
+								className={style.inputfield} 
+								placeholder="Email" 
+								autoComplete="off" 
+								onChange={(e) => setEmail(e.target.value)}
+								value={email}
+								required
+							/>
+						</div>
+						<div className={style.field}>
+							<svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" className={style.inputicon}>
+								<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+							</svg>
+							<input type="password" 
+								className={style.inputfield} 
+								placeholder="Contraseña" 
+								onChange={(e) => setPassword(e.target.value)}
+								value={password}
+								required
+							/>
+						</div>
+						<button type='submit' className={style.button2}>Entrar</button>
+					</form>
+				</div>
 			</div>
-			<form className={style.form} onSubmit={Submit} action="" autoComplete="off"> 
-				<h4>Iniciar Sesion</h4>
-				<p>Bienvenido:</p>
-				<div className={style.floatinglabel}>
-					<label htmlFor="email">Email:</label>
-					<input placeholder="Ingresar"
-						type="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required />
-				</div>
-				<div className={style.floatinglabel}>
-					<label htmlFor="password">Contraseña:</label>
-					<input placeholder="Ingresar"
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required />
-				</div>
-				<button className={style.button} type="submit">Entrar</button>
-			</form>
 		</div>
-	</div>
-  )
+  	)
 }
 export default Login

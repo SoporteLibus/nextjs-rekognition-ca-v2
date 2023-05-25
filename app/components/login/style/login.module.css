@@ -1,231 +1,97 @@
-.h4 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #000;
-    opacity: .85;
-}
-
-.label {
-    font-size: 12.5px;
-    color: #000;
-    opacity: .8;
-    font-weight: 400;
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .form {
-    padding: 40px 30px;
-    background: #fefefe;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 20px;
-    width: 300px;
-    height: 400px;
+    gap: 10px;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    background-color: #171717;
+    border-radius: 20px;
 }
 
-.form p {
-    line-height: 155%;
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #000;
-    opacity: .65;
-    font-weight: 400;
-    max-width: 200px;
-    margin-bottom: 40px;
-}
-
-.form .h4 {
-    margin-bottom: 20px;
-    color: rgba(#000, .5);
-}
-
-.form h4 span {
-    color: rgba(#000, 1);
-    font-weight: 700;
-}
-
-.a.discrete {
-    color: rgba(#000, .4);
-    font-size: 14px;
-    border-bottom: solid 1px rgba(#000, .0);
-    padding-bottom: 4px;
-    margin-left: auto;
-    font-weight: 300;
-    transition: all .3s ease;
-    margin-top: 40px;
-}
-
-.form .a .discrete:hover {
-    border-bottom: solid 1px rgba(#000, .2);
-}
-
-.form .button {
-    width: auto;
-    min-width: 100px;
-    border-radius: 24px;
+.heading {
     text-align: center;
-    padding: 15px 40px;
-    margin-top: 5px;
-    background-color: saturate(var(--primary), 30%);
-    font-size: 14px;
-    margin-left: auto;
-    font-weight: 500;
-    box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, .13);
+    margin: 2em;
+    color: rgb(0, 255, 200);
+    font-size: 1.2em;
+}
+
+.field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 25px;
+    padding: 0.6em;
     border: none;
-    transition: all .3s ease;
-    outline: 0;
-    cursor: pointer;
+    outline: none;
+    color: white;
+    background-color: #171717;
+    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
 }
 
-.form .button:hover {
-    transform: translateY(-3px);
+.inputicon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: rgb(0, 255, 200);
 }
 
-.form .button:hover:active {
-    transform: scale(.99);
-}
-
-.form .floatinglabel input {
-    font-size: 16px;
-    padding: 20px 0px;
-    height: 56px;
+.inputfield {
+    background: none;
     border: none;
-    border-bottom: solid 1px rgba(0, 0, 0, .1);
-    background: #fff;
+    outline: none;
     width: 100%;
-    box-sizing: border-box;
-    transition: all .3s linear;
-    color: #000;
-    font-weight: 400;
+    color: rgb(0, 255, 200);
 }
 
-.form .floatinglabel input:focus {
-    border-bottom: solid 1px var(--primary);
-    outline: 0;
-    box-shadow: 0 2px 6px -8px rgba(var(--primary), .45);
-}
-
-.floatinglabel {
-    position: relative;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.floatinglabel .label {
-    position: absolute;
-    top: calc(50% - 7px);
-    left: 0;
-    opacity: 0;
-    transition: all .3s ease;
-    padding-left: 44px;
-}
-
-.floatinglabel input {
-    width: calc(100% - 44px);
-    margin-left: auto;
+.form .btn {
     display: flex;
-}
-
-.floatinglabel .icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 56px;
-    width: 44px;
-    display: flex;
-}
-
-.floatinglabel .icon svg {
-    height: 30px;
-    width: 30px;
-    margin: auto;
-    opacity: .15;
-    transition: all .3s ease;
-}
-
-.floatinglabel .icon svg path {
-    transition: all .3s ease;
-}
-
-.floatinglabel input:not(:placeholder-shown) {
-    padding: 28px 0px 12px 0px;
-}
-
-.floatinglabel input:not(:placeholder-shown)+.label {
-    transform: translateY(-10px);
-    opacity: .7;
-}
-
-.floatinglabel input:valid:not(:placeholder-shown)+.label+.icon svg {
-    opacity: 1;
-}
-
-.floatinglabel input:valid:not(:placeholder-shown)+.label+.icon svg path {
-    fill: var(--primary);
-}
-
-.floatinglabel input:not(:valid):not(:focus)+.label+.icon {
-    animation-name: shake-shake;
-    animation-duration: .3s;
-}
-
-@keyframes shake-shake {
-    0% {
-        transform: translateX(var(--displacementNegative));
-    }
-
-    20% {
-        transform: translateX(var(--displacement));
-    }
-
-    40% {
-        transform: translateX(var(--displacementNegative));
-    }
-
-    60% {
-        transform: translateX(var(--displacement));
-    }
-
-    80% {
-        transform: translateX(var(--displacementNegative));
-    }
-
-    100% {
-        transform: translateX(0px);
-    }
-}
-
-.session {
-    display: flex;
+    justify-content: center;
     flex-direction: row;
-    padding-left: 150px;
-    padding-top: 150px;
-    height: 100%;
-    width: 100%;
-    height: auto;
-    background: #ffffff;
-    border-radius: 4px;
+    margin-top: 2.5em;
 }
 
-.sessionbox {
-    display: flex;
-    flex-direction: row;
-    box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, .45);
+.button2 {
+    padding: 0.5em;
+    padding-left: 2.3em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    color: rgb(0, 0, 0);
 }
 
-.left {
-    width: 220px;
-    height: auto;
-    min-height: 400px;
-    position: relative;
-    background-image: url("https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: cover;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+.button2:hover {
+    background-image: linear-gradient(163deg, #00642f 0%, #13034b 100%);
+    color: rgb(0, 255, 200);
 }
 
-.left svg {
-    height: 40px;
-    width: auto;
-    margin: 20px;
+.card {
+    background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+    border-radius: 22px;
+    transition: all .3s;
+    width: 300px;
+}
+
+.card2 {
+    border-radius: 0;
+    transition: all .2s;
+}
+
+.card2:hover {
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
 }

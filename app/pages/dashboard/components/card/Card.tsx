@@ -1,5 +1,5 @@
 import { CardItems, CardList } from '@/app/types';
-import style from '@/app/styles/cards.module.css'
+import style from '../../style/cards.module.css'
 import React from 'react';
 
 const CardComponent: React.FC<CardList> = ({numbers, text, icon}) => {
@@ -9,7 +9,6 @@ const CardComponent: React.FC<CardList> = ({numbers, text, icon}) => {
         <div className={style.numbers}>{numbers}</div>
         <div className={style.cardName}>{text}</div>
       </div>
-
       <div className={style.iconBx}>{icon}</div>
     </div>
   )

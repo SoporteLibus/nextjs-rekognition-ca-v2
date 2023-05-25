@@ -1,5 +1,5 @@
 import { List } from "@/app/components";
-import Card from "@/app/components/card/Card";
+import Card from "@/app/pages/dashboard/components/card/Card";
 import { AiOutlineEye } from 'react-icons/ai'
 
 const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
@@ -25,7 +25,7 @@ const cardList = [
   { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
   { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
   { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
-  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" }
+  { icon: <AiOutlineEye size={55} />, numbers: 1.504, text: "Daily Views" },
 ]
 
 const profileList = [
@@ -46,18 +46,18 @@ const profileList = [
 ]
 
 const Dashboard = () => {
-    return (
+  return (
     <>
       <Card items={cardList} />
-        <List
-          title='Fichadas'
-          title2="Ausencias/Presencias"
-          titlelist={titleList}
-          items={itemsList}
-          items2={profileList}
-        />
+      <List
+        title='Fichadas'
+        title2="Ausencias/Presencias"
+        titlelist={titleList}
+        items={itemsList}
+        items2={profileList}
+      />
     </>
-    )
+  )
 }
 
 export default Dashboard;

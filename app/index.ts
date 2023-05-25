@@ -1,7 +1,7 @@
-export { default as list } from './components/List/List';
-export { default as card } from './components/card/Card';
+export { default as list } from './pages/dashboard/components/List/List';
+export { default as card } from './pages/dashboard/components/card/Card';
 export * from './components';
-export { default as profilelist } from './components/profile-list/ProfileList';
+export { default as profilelist } from './pages/dashboard/components/profile-list/ProfileList';
 export { default as SideBar } from './components/sidebar/SideBar';
 export { default as layout } from './layout';
 export { default as page } from './page';

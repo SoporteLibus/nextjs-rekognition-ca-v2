@@ -1,7 +1,7 @@
 "use client"
 import { ListObjects, Tr } from "@/app/types"
 import React from "react"
-import style from '@/app/styles/list.module.css'
+import style from '../../style/list.module.css'
 import ProfileList from "../profile-list/ProfileList"
 
 const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
