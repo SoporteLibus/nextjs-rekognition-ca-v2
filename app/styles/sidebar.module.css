@@ -246,3 +246,130 @@
     width: 80%;
     height: 80%;
 }
+
+/* Mobile */
+@media (max-width: 700px) {    
+    .navigationactive {
+        position: fixed;
+        width: 100%;
+        height: 60px;
+        background: var(--black1);
+        border-left: 10px solid var(--black1);
+        transition: 0.5s;
+        overflow: hidden;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+    }
+    .mainactive {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        min-height: 100vh;
+        background: var(--white);
+        transition: 0.5s;
+        padding-bottom: 60px;
+    }
+    .toggle {
+        display: none;
+    }
+    .search {
+        width: 300px;
+    }
+    .navigation ul,
+    .navigationactive ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        flex: 1 1 60px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .navigation ul li,
+    .navigationactive ul li {
+        position: relative;
+        list-style: none;
+        width: auto;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .navigation ul li:hover,
+    .navigation ul li.hovered,
+    .navigationactive ul li:hover,
+    .navigationactive ul li.hovered {
+        background-color: var(--white);
+    }
+
+    .navigation ul li a,
+    .navigationactive ul li a {
+        position: relative;
+        display: flex;
+        text-decoration: none;
+        color: var(--red);
+    }
+
+    .navigation ul li:hover a,
+    .navigation ul li.hovered a,
+    .navigationactive ul li:hover a,
+    .navigationactive ul li.hovered a {
+        color: var(--red);
+        width: auto;
+    }
+
+    .navigation ul li a .icon,
+    .navigationactive ul li a .icon {
+        position: relative;
+        display: block;
+        height: 60px;
+        line-height: 75px;
+        text-align: center;
+    }
+
+    .navigation ul li a .title,
+    .navigationactive ul li a .title {
+        display: none;
+    }
+
+    .navigation ul li a .titlelogo,
+    .navigationactive ul li a .titlelogo {
+        display: none;
+    }
+
+    /* --------- curve outside ---------- */
+    .navigation ul li:hover a::before,
+    .navigation ul li.hovered a::before,
+    .navigationactive ul li:hover a::before,
+    .navigationactive ul li.hovered a::before {
+        content: "";
+        position: absolute;
+        right: -50px;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        box-shadow: -35px -35px 0 10px var(--white);
+        pointer-events: none;
+    }
+
+    .navigation ul li:hover a::after,
+    .navigation ul li.hovered a::after,
+    .navigationactive ul li:hover a::after,
+    .navigationactive ul li.hovered a::after {
+        content: "";
+        position: absolute;
+        left: -50px;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        box-shadow: 35px -35px 0 10px var(--white);
+        pointer-events: none;
+    }
+}

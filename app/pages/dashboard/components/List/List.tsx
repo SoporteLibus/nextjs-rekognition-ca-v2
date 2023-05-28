@@ -11,7 +11,7 @@ const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
             <td>{lastname}</td>
             <td>{docket}</td>
             <td>
-                {status == "On time" ? <span className={style.statusdelivered}>A horario</span> :
+                {status == "On time" ? <span className={style.statusdelivered}>Puntual</span> :
                 status == "Out of time" ? <span className={style.statuspending}>Tarde</span> :
                 <span className={style.statusreturn}>Error</span>}
             </td>

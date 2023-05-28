@@ -5,8 +5,8 @@ import { AiOutlineEye } from 'react-icons/ai'
 const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
 
 const itemsList = [
-  { name: "Angel", docket: 1200, lastname: "Coceres", status: "On time" },
-  { name: "Mateo", docket: 1200, lastname: "Lonzayes", status: "Error" },
+  { name: "Angel David", docket: 1200, lastname: "Coceres", status: "On time" },
+  { name: "Mateo", docket: 1200, lastname: "Lonzayes Perales", status: "Error" },
   { name: "Gustavo", docket: 1200, lastname: "Adorno", status: "Out of time" },
   { name: "Angel", docket: 1200, lastname: "Coceres", status: "In progress" },
   { name: "Mateo", docket: 1200, lastname: "Lonzayes", status: "On time" },

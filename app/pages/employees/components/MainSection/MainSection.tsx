@@ -77,7 +77,7 @@ const MainSection = () => {
             </div>
             <button className={style.addbtn}
               onClick={() => setShowModal(true)}>
-                <IoMdAdd size="20" color="#fffff" />Agregar
+                <IoMdAdd size="20" color="#fffff" />
             </button>
           </div>
           <div className={style.employees}>

@@ -41,24 +41,6 @@ const Widget: React.FC<WidgetProps> = ({children, tabHeaders}) => {
             translate: `-${activeIndex ? activeIndex * tabWidth : 0}px 0`,
           }}>
             {children}
-          {/* <div>
-            <h2 className={style.h2}>Home</h2>
-            <p className={style.p}>
-              This is the tab content, you can put anything you like in here.
-            </p>
-          </div>
-          <div>
-            <h2 className={style.h2}>Account</h2>
-            <p className={style.p}>
-              This is the tab content, you can put anything you like in here.
-            </p>
-          </div>
-          <div>
-            <h2 className={style.h2}>Settings</h2>
-            <p className={style.p}>
-              This is the tab content, you can put anything you like in here.
-            </p>
-          </div> */}
         </div>
       </div>
     </div>

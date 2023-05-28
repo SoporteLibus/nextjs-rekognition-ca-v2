@@ -7,14 +7,23 @@
     width: var(--tab-width);
     border-radius: 8px;
     width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.widget::-webkit-scrollbar {
+    display: none;
 }
 
 .widget>header {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: flex;
     gap: 20px;
     border-bottom: 1px solid #e2e1ef;
     width: 100%;
+    background-color: var(--white);
+    z-index: 999;
 }
 
 .widget>header>button {
@@ -39,8 +48,7 @@
 
 .content {
     position: relative;
-    overflow: hidden;
-    height: 750px;
+    height: 300px;
 }
 
 .contentinner {
@@ -75,5 +83,6 @@
 }
 
 .contentinner>div {
-    width: inherit;
+    width: 608px;
+    margin-right: 2rem;
 }
