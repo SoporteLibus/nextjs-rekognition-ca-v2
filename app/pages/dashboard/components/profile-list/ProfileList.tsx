@@ -1,6 +1,5 @@
 import { Capitalize } from '@/app/utils'
 import style from '../../style/list.module.css'
-import Image from 'next/image'
 import React from 'react'
 
 interface Prof {
@@ -18,9 +17,9 @@ interface ProfList {
 const Profile: React.FC<Prof> = ({name,lastname,image,status}) => {
     return (
         <div className={style.divBox}>
-            <Image src={image} width={40} height={40} alt="Profile Image" />
-            <h4>{lastname} <br />
-                <span>{name}</span>
+            <img src={image} width={40} height={40} alt="Profile Image" />
+            <h4>{Capitalize(lastname)} <br />
+                <span>{Capitalize(name)}</span>
             </h4>
             {status == "present" ? <p className={style.present}>Presente</p> :
                 <p className={style.ausent}>Ausente</p>}

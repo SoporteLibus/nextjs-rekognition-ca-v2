@@ -163,6 +163,10 @@
     gap: 5px;
 }
 
+.recentCustomers .divBox img {
+    border-radius: 50%;
+}
+
 .recentCustomers .divBox h4 {
     margin-left: 5px;
     font-size: 16px;
