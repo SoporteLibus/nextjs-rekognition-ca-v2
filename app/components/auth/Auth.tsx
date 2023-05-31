@@ -8,11 +8,15 @@ import Login from "../login/Login";
 import SideBar from "../sidebar/SideBar";
 import { getCookie } from "cookies-next";
 import Loading from "./loading";
+import {AiOutlineClockCircle} from "react-icons/ai"
 
 const routes = [
   { icon: <AiOutlineHome size={25} />, text: 'Inicio', link: "/" },
   { icon: <MdOutlineGroups size={25} />, text: 'Empleados', link: "pages/employees" },
-  { icon: <IoExitOutline size={25} />, text: 'Salir', link: "/" }
+  { icon: <AiOutlineClockCircle size={25} />, text: 'Reloj', link: "pages/management"},
+  { icon: <IoExitOutline size={25} />, text: 'Salir', link: "/" },
+  
+
 ];
 
 interface Auth {
