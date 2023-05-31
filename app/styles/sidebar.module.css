@@ -3,8 +3,8 @@
     position: fixed;
     width: 250px;
     height: 100%;
-    background: var(--black1);
-    border-left: 10px solid var(--black1);
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
     transition: 0.5s;
     overflow: hidden;
 }
@@ -13,8 +13,8 @@
     position: fixed;
     width: 80px;
     height: 100%;
-    background: var(--black1);
-    border-left: 10px solid var(--black1);
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
     transition: 0.5s;
     overflow: hidden;
 }
@@ -56,14 +56,14 @@
     width: 100%;
     display: flex;
     text-decoration: none;
-    color: var(--red);
+    color: var(--white);
 }
 
 .navigation ul li:hover a,
 .navigation ul li.hovered a,
 .navigationactive ul li:hover a,
 .navigationactive ul li.hovered a {
-    color: var(--red);
+    color: var(--black1);
 }
 
 .navigation ul li a .icon,
@@ -97,7 +97,6 @@
     text-align: start;
     white-space: nowrap;
     color: var(--white);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 /* --------- curve outside ---------- */
@@ -235,7 +234,7 @@
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
-    background-color: whitesmoke;
+    background-color: transparent;
     margin: 10px;
 }
 

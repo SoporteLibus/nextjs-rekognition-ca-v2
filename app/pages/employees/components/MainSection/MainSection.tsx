@@ -9,7 +9,7 @@ import Loading from "./components/loading";
 
 const MainSection = () => {
   const [showModal, setShowModal] = useState(false)
-  const [employees, setEmployees] = useState<any>([])
+  const [employees, setEmployees] = useState([])
   const [reRender, setReRender] = useState(false)
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
@@ -17,10 +17,10 @@ const MainSection = () => {
   const getAllEmployee = async () => {
     try {
       const res = await axiosGet('listar/')
-      setEmployees(res.data)
+      setEmployees(res.data.data)
     }
     catch (err) {
-      console.log(err)
+      console.log("No se pudieron obtener los empleados")
     }
   }
 
@@ -30,7 +30,6 @@ const MainSection = () => {
       const res = await axiosGet(`buscar?keyword=${search}`)
       if (res.data.data) {
         setEmployees(res.data.data)
-        console.log(res.data.data)
       } else {
         getAllEmployee()
       }

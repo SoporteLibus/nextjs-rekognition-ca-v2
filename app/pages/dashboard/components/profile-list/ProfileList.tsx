@@ -1,3 +1,4 @@
+import { Capitalize } from '@/app/utils'
 import style from '../../style/list.module.css'
 import Image from 'next/image'
 import React from 'react'
@@ -18,8 +19,8 @@ const Profile: React.FC<Prof> = ({name,lastname,image,status}) => {
     return (
         <div className={style.divBox}>
             <Image src={image} width={40} height={40} alt="Profile Image" />
-            <h4>{name} <br />
-                <span>{lastname}</span>
+            <h4>{lastname} <br />
+                <span>{name}</span>
             </h4>
             {status == "present" ? <p className={style.present}>Presente</p> :
                 <p className={style.ausent}>Ausente</p>}

@@ -4,8 +4,5 @@ export { default as MainSection } from './employees/components/MainSection/MainS
 export { default as Card } from './employees/components/MainSection/components/Card';
 export { default as EditDetailsModal } from './employees/components/ModelPopup/EditDetailsModal';
 export { default as ModelPopup } from './employees/components/ModelPopup/ModelPopup';
-export { default as TopNav } from './employees/components/TopNav/TopNav';
 export { default as Employees } from './employees/page';
 export * from './employees/types';
-export * from './face-detect';
-export * from './face-register';

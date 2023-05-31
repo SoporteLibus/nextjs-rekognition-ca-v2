@@ -13,8 +13,9 @@
     background: var(--white);
     padding: 20px;
     display: flex;
+    align-items: center;
+    gap: 20px;
     flex: 1 1 250px;
-    justify-content: space-between;
     width: 200px;
     cursor: pointer;
     border-radius: 20px;
@@ -36,6 +37,8 @@
 }
 
 .cardBox .card .iconBx {
+    display: flex;
+    align-items: center;
     font-size: 3.5rem;
     color: var(--black2);
 }

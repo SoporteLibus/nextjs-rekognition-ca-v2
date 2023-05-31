@@ -33,7 +33,7 @@ const ModelPopup = ({ setShowModal }: any) => {
   const [Piso, setPiso] = useState("")
   const [Pais, setPais] = useState("")
   const [Provincia, setProvincia] = useState("")
-  const [Ciudad, setCiudad] = useState("")
+  const [Localidad, setLocalidad] = useState("")
   const [CodigoPostal, setCodigoPostal] = useState("")
   const [NivelEducacion, setNivelEducacion] = useState("")
   const [Activo, setActivo] = useState(true)
@@ -45,12 +45,12 @@ const ModelPopup = ({ setShowModal }: any) => {
   const [Turno, setTurno] = useState("")
   const [Grupo, setGrupo] = useState("")
   const [Foto, setFoto] = useState("")
-  const [FotoNueva, setFotoNueva] = useState<string | null>(null)
+  const [FotoNueva, setFotoNueva] = useState<any>(null)
   const [Observaciones, setObservaciones] = useState("")
 
   const createEmployee = async (values: ApiEmployeesData) => {
     try {
-      const res = await axiosPost('listar/', values)
+      const res = await axiosPost('registrar/', values)
       console.log(res)
       setShowModal(false)
     }
@@ -60,21 +60,52 @@ const ModelPopup = ({ setShowModal }: any) => {
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    createEmployee({
-      nombre: Nombre, apellido: Apellido, area: Area, activo: Activo, calle: Calle,
-      categoria: Categoria, centro_de_costo: CentroCosto, ciudad: Ciudad,
-      codigo_postal: CodigoPostal, contratacion: Contratacion, convenio: Convenio,
-      cuil: Cuil, departamento: Dpto, dni: Dni, email: Email,
-      estado_ambiental: EstadoAmbiental, examen_preocupacional: EPreocupacional,
-      fecha_egreso: FechaEgreso, fecha_ingreso: FechaIngreso, fecha_nacimiento: FechaNacimiento,
-      gerencia: Gerencia, grupo: Grupo, legajo: Legajo,
-      nivel_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
-      pais: Pais, piso: Piso, provincia: Provincia, rotacion: Rotacion, sector: Sector,
-      sexo: Sexo, telefono: Telefono, telefono_urgencia: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
-      turno: Turno
-    })
-  }
+    e.preventDefault();
+    if (FotoNueva) {
+      const formData = new FormData();
+      formData.append("image", FotoNueva);
+      createEmployee({
+        nombre: Nombre,
+        apellido: Apellido,
+        area: Area,
+        activo: Activo,
+        calle: Calle,
+        categoria: Categoria,
+        centro_de_costo: CentroCosto,
+        localidad: Localidad,
+        codigo_postal: CodigoPostal,
+        contratacion: Contratacion,
+        convenio: Convenio,
+        cuil: Cuil,
+        dpto: Dpto,
+        dni: Dni,
+        email: Email,
+        estado_ambiental: EstadoAmbiental,
+        examen_preocupacional: EPreocupacional,
+        fecha_egreso: FechaEgreso,
+        fecha_ingreso: FechaIngreso,
+        fecha_nacimiento: FechaNacimiento,
+        gerencia: Gerencia,
+        grupo: Grupo,
+        legajo: Legajo,
+        nivel_de_educacion: NivelEducacion,
+        numero: Numero,
+        observaciones: Observaciones,
+        pais: Pais,
+        piso: Piso,
+        provincia: Provincia,
+        rotacion: Rotacion,
+        sector: Sector,
+        sexo: Sexo,
+        telefono: Telefono,
+        telefono_urgencias: TelUrgencia,
+        tipo_liquidacion: TipoLiquidacion,
+        turno: Turno,
+        image: FotoNueva,
+      });
+      console.log("Fotonueva>>>", formData);
+    }
+  };
   
   return (
         <div className={style.modalContainer}>
@@ -199,11 +230,11 @@ const ModelPopup = ({ setShowModal }: any) => {
                             />
                         </div>        
                         <div className={style.inputcontainer}>
-                            <InputForm title="Ciudad"
+                            <InputForm title="Localidad"
                                 required={true}
                                 type="text"
-                                onChange={e => setCiudad(e.target.value)}
-                                value={Ciudad}
+                                onChange={e => setLocalidad(e.target.value)}
+                                value={Localidad}
                             />
                             <InputForm title="Codigo Postal"
                                 required={true}
@@ -340,14 +371,14 @@ const ModelPopup = ({ setShowModal }: any) => {
                             value={Foto}
                         />
                         <InputForm title="Cargar Foto Nueva"
-                            required={false}
+                            required={true}
                             type="file"
-                            onChange={e => e.target.files && e.target.files.length > 0 && setFotoNueva(URL.createObjectURL(e.target.files[0]))}
+                            onChange={e => e.target.files && e.target.files.length > 0 && setFotoNueva(e.target.files[0])}
                         />
                         {FotoNueva && <>
                             <br/>
                                 <center>
-                                    <div><Image width={250} height={250} src={FotoNueva} alt="Imagen seleccionada" /></div>
+                                    <div><Image width={250} height={250} src={URL.createObjectURL(FotoNueva)} alt="Imagen seleccionada" /></div>
                                 </center>
                         </>}
                         <InputForm title="Observaciones"

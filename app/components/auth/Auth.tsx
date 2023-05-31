@@ -12,7 +12,6 @@ import Loading from "./loading";
 const routes = [
   { icon: <AiOutlineHome size={25} />, text: 'Inicio', link: "/" },
   { icon: <MdOutlineGroups size={25} />, text: 'Empleados', link: "pages/employees" },
-  { icon: <IoMdHelpCircleOutline size={30} />, text: 'Ayuda', link: "help" },
   { icon: <IoExitOutline size={25} />, text: 'Salir', link: "/" }
 ];
 
@@ -29,13 +28,15 @@ const AuthLogin: FC<Auth> = ({children}) => {
             setAuth(true),
             setLoading(false)
         ) : (
-            setAuth(true),
+            setAuth(false),
             setLoading(false)
         )
     }, [auth])
 
     if (loading && !auth) {
-        return <><Loading/></>
+        return <>
+            <Loading />
+        </>
     } else if (auth) {
         return (
             <SideBar items={routes} setAuth={setAuth} >

@@ -136,7 +136,7 @@
 /* Checkbox */
 .checkboxwrapper input[type="checkbox"] {
     background-image: -webkit-linear-gradient(hsla(0,0%,0%,.1), hsla(0,0%,100%,.1)),
-                        -webkit-linear-gradient(left, #918db7 50%, rgb(25, 190, 10) 50%);
+                        -webkit-linear-gradient(left, #ff1414 50%, rgb(25, 190, 10) 50%);
     background-size: 100% 100%, 200% 100%;
     background-position: 0 0, 15px 0;
     border-radius: 15px;

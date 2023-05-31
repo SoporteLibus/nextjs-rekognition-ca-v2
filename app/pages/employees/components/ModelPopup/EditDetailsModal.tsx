@@ -16,8 +16,8 @@ interface EditDetailsModalProps {
 const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditModal, setModal }) => {
     const { legajo, apellido, nombre, cuil, contratacion, fecha_ingreso, gerencia,
         area, sector, centro_de_costo, convenio, categoria, dni, fecha_nacimiento,
-        sexo, email, telefono, telefono_urgencia, calle, numero, departamento, piso,
-        pais, provincia, ciudad, codigo_postal, nivel_educacion, activo, fecha_egreso,
+        sexo, email, telefono, telefono_urgencias, calle, numero, dpto, piso,
+        pais, provincia, localidad, codigo_postal, nivel_de_educacion, activo, fecha_egreso,
         estado_ambiental, examen_preocupacional, tipo_liquidacion, rotacion, turno,
         grupo, observaciones, foto} = empById
     const [loading, setLoading] = useState(false)
@@ -38,16 +38,16 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
     const [Sexo, setSexo] = useState(sexo)
     const [Email, setEmail] = useState(email)
     const [Telefono, setTelefono] = useState(telefono)
-    const [TelUrgencia, setTelUrgencia] = useState(telefono_urgencia)
+    const [TelUrgencia, setTelUrgencia] = useState(telefono_urgencias)
     const [Calle, setCalle] = useState(calle)
     const [Numero, setNumero] = useState(numero)
-    const [Dpto, setDpto] = useState(departamento)
+    const [Dpto, setDpto] = useState(dpto)
     const [Piso, setPiso] = useState(piso)
     const [Pais, setPais] = useState(pais)
     const [Provincia, setProvincia] = useState(provincia)
-    const [Ciudad, setCiudad] = useState(ciudad)
+    const [Localidad, setLocalidad] = useState(localidad)
     const [CodigoPostal, setCodigoPostal] = useState(codigo_postal)
-    const [NivelEducacion, setNivelEducacion] = useState(nivel_educacion)
+    const [NivelEducacion, setNivelEducacion] = useState(nivel_de_educacion)
     const [Activo, setActivo] = useState(activo)
     const [FechaEgreso, setFechaEgreso] = useState<Date>(new Date(fecha_egreso))
     const [EstadoAmbiental, setEstadoAmbiental] = useState(estado_ambiental)
@@ -65,15 +65,15 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         try {
             await axiosPut(`actualizar/${legajo}`, {
                 nombre: Nombre, apellido: Apellido, area: Area, activo: Activo, calle: Calle,
-                categoria: Categoria, centro_de_costo: CentroCosto, ciudad: Ciudad,
+                categoria: Categoria, centro_de_costo: CentroCosto, localidad: Localidad,
                 codigo_postal: CodigoPostal, contratacion: Contratacion, convenio: Convenio,
-                cuil: Cuil, departamento: Dpto, dni: Dni, email: Email,
+                cuil: Cuil, dpto: Dpto, dni: Dni, email: Email,
                 estado_ambiental: EstadoAmbiental, examen_preocupacional: EPreocupacional,
                 fecha_egreso: FechaEgreso, fecha_ingreso: FechaIngreso, fecha_nacimiento: FechaNacimiento,
                 gerencia: Gerencia, grupo: Grupo, legajo: Legajo,
-                nivel_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
+                nivel_de_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
                 pais: Pais, piso: Piso, provincia: Provincia, rotacion: Rotacion, sector: Sector,
-                sexo: Sexo, telefono: Telefono, telefono_urgencia: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
+                sexo: Sexo, telefono: Telefono, telefono_urgencias: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
                 turno: Turno
             })
             setLoading(false)
@@ -92,7 +92,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
 
     return (
         <div className={style.modalContainer}>
-            <form action="" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className={style.modalBox}>
                     <div className={style.modalHeader}>
                         <h2>Actualizar datos del Empleado</h2>
@@ -213,11 +213,11 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                             />
                         </div>        
                         <div className={style.inputcontainer}>
-                            <InputForm title="Ciudad"
+                            <InputForm title="Localidad"
                                 required={true}
                                 type="text"
-                                onChange={e => setCiudad(e.target.value)}
-                                value={Ciudad}
+                                onChange={e => setLocalidad(e.target.value)}
+                                value={Localidad}
                             />
                             <InputForm title="Codigo Postal"
                                 required={true}
@@ -304,7 +304,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 onChange={(e) => setFechaEgreso(new Date(e.target.value))}
                                 value={FechaEgreso.toISOString().split('T')[0]}
                             />
-                            <InputForm title="EstadoAmbiental"
+                            <InputForm title="Estado Ambiental"
                                 required={true}
                                 type="text"
                                 onChange={e => setEstadoAmbiental(e.target.value)}

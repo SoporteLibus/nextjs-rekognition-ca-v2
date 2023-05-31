@@ -49,7 +49,7 @@ const Card: React.FC<Card> = ({ empData, handleReRender }) => {
         </div>
         <div onClick={() => setShowModalEmp(true)}>
           <div className={style.profileImage}>
-              <img src={foto ? foto : (sexo == "m") ? "/avatar-h.jpeg" : "/avatar-m.webp"}
+              <img src={foto ? foto : (sexo == "m" || sexo == "M") ? "/avatar-h.jpeg" : "/avatar-m.webp"}
                 alt={nombre} />
           </div>
           <div className={style.empdetail}>

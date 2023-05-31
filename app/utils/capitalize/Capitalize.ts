@@ -1,6 +1,7 @@
 export const Capitalize = (word: string) => {
     try {
-        if (word.indexOf(" ") !== -1) {
+        if (word !== undefined) {
+            if (word.indexOf(" ") !== -1) {
             // Dividir el string en un array de nombres
             let nombres = word.split(" ");
             // Iterar sobre cada nombre y convertir la primera letra en mayúscula
@@ -9,11 +10,18 @@ export const Capitalize = (word: string) => {
             })
             // Unir los nombres nuevamente en un solo string
             let resultado = resNombre.join(" ");
+            
             return resultado
-        } else {
-            return word.charAt(0).toUpperCase() + word.substring(1)
+            } else {
+                return word.charAt(0).toUpperCase() + word.substring(1)
+            }
         }
+        
     } catch (error) {
-        console.log(error)
+        if (word === undefined) {
+            console.log("Capitalize detecto una variable 'undefined'")
+        } else {
+            console.log(error)
+        }
     }
 }
