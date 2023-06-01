@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
-import "../../styles/calendar.css"
+import "./styles/calendar.css"
 
 const CalendarTsx=()=>{
 

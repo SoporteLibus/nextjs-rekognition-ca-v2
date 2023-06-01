@@ -1,0 +1,198 @@
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.details .recentOrders {
+    position: relative;
+    flex: 1 1 500px;
+    height: 500px;
+    background: var(--white);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    overflow-y: scroll;
+    box-shadow:  -5px -5px 10px #a8a8a8,
+             5px 5px 10px #ffffff;
+}
+
+.details .recentOrders::-webkit-scrollbar {
+    display: none;
+}
+
+.details .cardHeader {
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: var(--blue);
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.cardHeader .btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details table thead td {
+    font-weight: 600;
+}
+
+.details .recentOrders table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child {
+    border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.details .recentOrders table tr td {
+    padding: 10px;
+}
+
+.details .recentOrders table tr td:last-child {
+    text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(2) {
+    text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(3) {
+    text-align: center;
+}
+
+.statusdelivered {
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statuspending {
+    padding: 2px 4px;
+    background: #e9b10a;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusreturn {
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusinProgress {
+    padding: 2px 4px;
+    background: #1795ce;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recentCustomers {
+    position: relative;
+    flex: 1 1 300px;
+    height: 500px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow-y: scroll;
+    box-shadow:  -5px -5px 10px #a8a8a8,
+             5px 5px 10px #ffffff;
+}
+
+.recentCustomers::-webkit-scrollbar {
+    display: none;
+}
+
+.recentCustomers .divBox .imgBx img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recentCustomers .divBox {
+    padding: 5px;
+    display: inline-flex;
+    width: 100%;
+    gap: 5px;
+}
+
+.recentCustomers .divBox img {
+    border-radius: 50%;
+}
+
+.recentCustomers .divBox h4 {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2rem;
+    width: 100%;
+}
+
+.recentCustomers .divBox .present {
+    color: green;
+}
+
+.recentCustomers .divBox .ausent {
+    color: red;
+}
+
+.recentCustomers .divBox h4 span {
+    font-size: 14px;
+    color: var(--black2);
+}
+
+.recentCustomers .divBox:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.recentCustomers .divBox:hover h4 span {
+    color: var(--white);
+}
