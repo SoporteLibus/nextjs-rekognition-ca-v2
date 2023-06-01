@@ -15,8 +15,6 @@ const routes = [
   { icon: <MdOutlineGroups size={25} />, text: 'Empleados', link: "pages/employees" },
   { icon: <AiOutlineClockCircle size={25} />, text: 'Reloj', link: "pages/management"},
   { icon: <IoExitOutline size={25} />, text: 'Salir', link: "/" },
-  
-
 ];
 
 interface Auth {

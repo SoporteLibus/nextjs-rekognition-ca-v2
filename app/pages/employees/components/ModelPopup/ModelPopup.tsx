@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import style from '../../styles/modelpopup.module.css'
-import { axiosPost } from "@/app/services";
 import { ApiEmployeesData } from "@/app/types";
 import Widget from "./components/Widget";
 import Image from "next/image";
 import InputForm from "./components/InputForm";
 import InputCheckBoxForm from "./components/InputCheckBoxForm";
+import axios from "axios";
+import { getCookie } from "cookies-next";
+import Swal from "sweetalert2";
 
 const ModelPopup = ({ setShowModal }: any) => {
   const [loading, setLoading] = useState(false)
@@ -45,17 +47,31 @@ const ModelPopup = ({ setShowModal }: any) => {
   const [Turno, setTurno] = useState("")
   const [Grupo, setGrupo] = useState("")
   const [Foto, setFoto] = useState("")
-  const [FotoNueva, setFotoNueva] = useState<any>(null)
+  const [FotoNueva, setFotoNueva] = useState<File | null>(null)
   const [Observaciones, setObservaciones] = useState("")
 
-  const createEmployee = async (values: ApiEmployeesData) => {
+    const createEmployee = async (values: ApiEmployeesData) => {
+    const cookie = getCookie("token");
     try {
-      const res = await axiosPost('registrar/', values)
-      console.log(res)
-      setShowModal(false)
+        const res = await axios.post('https://172.18.44.10:5005/api/v1/rrhh/empleados/registrar/', values, {
+            headers: {
+                "Content-type": "multipart/form-data",
+                "Authorization": 'Bearer ' + cookie
+            }
+      })
+        setShowModal(false)
+        Swal.fire(
+            'Exito!',
+            'Usuario creado!',
+            'success'
+        )
     }
     catch (err) {
-      console.log(err)
+      Swal.fire(
+            'Error!',
+            'Usuario no creado!',
+            'error'
+        )
     }
   }
 
@@ -103,7 +119,6 @@ const ModelPopup = ({ setShowModal }: any) => {
         turno: Turno,
         image: FotoNueva,
       });
-      console.log("Fotonueva>>>", formData);
     }
   };
   

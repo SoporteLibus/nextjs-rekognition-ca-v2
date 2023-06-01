@@ -27,15 +27,15 @@ const MainSection = () => {
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      const res = await axiosGet(`buscar?keyword=${search}`)
-      if (res.data.data) {
+      if (search) {
+        const res = await axiosGet(`buscar?keyword=${search}`)
         setEmployees(res.data.data)
       } else {
         getAllEmployee()
       }
     }
     catch (err) {
-      console.log(err)
+      console.log("Error en la busqueda de empleados")
     }
   }
 

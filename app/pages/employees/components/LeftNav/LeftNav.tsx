@@ -15,6 +15,7 @@ const LeftNav: React.FC<EmployeeId> = ({ employeeDocket }) => {
     try {
       const res = await axiosGet(`listar/legajo/${employeeDocket}`)
       setEmpByDocket(res.data.data)
+      console.log(empByDocket)
     }
     catch (err) {
       console.log(err)
@@ -29,6 +30,7 @@ const LeftNav: React.FC<EmployeeId> = ({ employeeDocket }) => {
       <img src={empByDocket.foto}/>
       <h1>{Capitalize(empByDocket.nombre)} {Capitalize(empByDocket.apellido)}</h1>
       <p>Email: {empByDocket.email}</p>
+      <p>Direccion: {`${empByDocket.calle} N°${empByDocket.numero}`}</p>
       <p>Telefono: {empByDocket.telefono}</p>
       <p>Dni: {empByDocket.dni}</p>
       <p className={style.date}>Legajo: {empByDocket.legajo}</p>
