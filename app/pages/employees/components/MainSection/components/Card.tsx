@@ -24,7 +24,6 @@ const Card: React.FC<Card> = ({ empData, handleReRender }) => {
     catch(err){
       console.log(err)
     }
-    
   }
   return (
   <>

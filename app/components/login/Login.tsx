@@ -22,6 +22,7 @@ const Login: React.FC<LoginProp> = ({ setAuth }) => {
 				setCookie("token", res.data.token);
 				setCookie("user", JSON.stringify(res.data.user));
 				setAuth && setAuth(true)
+				window.location.reload()
 			}
 			
 		} catch (error) {

@@ -1,11 +1,12 @@
 import React, { SetStateAction, useState } from 'react'
 import style from '../../styles/modelpopup.module.css'
-import { axiosPut } from '@/app/services';
 import { ApiEmployeesData } from '@/app/types';
 import Widget from './components/Widget';
 import Image from 'next/image';
 import InputForm from './components/InputForm';
 import InputCheckBoxForm from './components/InputCheckBoxForm';
+import { getCookie } from 'cookies-next';
+import axios from 'axios';
 
 interface EditDetailsModalProps {
     empById: ApiEmployeesData
@@ -19,7 +20,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         sexo, email, telefono, telefono_urgencias, calle, numero, dpto, piso,
         pais, provincia, localidad, codigo_postal, nivel_de_educacion, activo, fecha_egreso,
         estado_ambiental, examen_preocupacional, tipo_liquidacion, rotacion, turno,
-        grupo, observaciones, foto} = empById
+        grupo, observaciones, foto, image} = empById
     const [loading, setLoading] = useState(false)
     const [Legajo, setLegajo] = useState(legajo)
     const [Apellido, setApellido] = useState(apellido)
@@ -57,37 +58,43 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
     const [Turno, setTurno] = useState(turno)
     const [Grupo, setGrupo] = useState(grupo)
     const [Foto, setFoto] = useState(foto)
-    const [FotoNueva, setFotoNueva] = useState<string | null>(null)
+    const [FotoNueva, setFotoNueva] = useState<File | null>(image)
     const [Observaciones, setObservaciones] = useState(observaciones)
 
-    const handleEdit = async () => {
+    const handleEdit = async (values: any) => {
         setLoading(true)
+        const cookie = getCookie("token");
         try {
-            await axiosPut(`actualizar/${legajo}`, {
-                nombre: Nombre, apellido: Apellido, area: Area, activo: Activo, calle: Calle,
-                categoria: Categoria, centro_de_costo: CentroCosto, localidad: Localidad,
-                codigo_postal: CodigoPostal, contratacion: Contratacion, convenio: Convenio,
-                cuil: Cuil, dpto: Dpto, dni: Dni, email: Email,
-                estado_ambiental: EstadoAmbiental, examen_preocupacional: EPreocupacional,
-                fecha_egreso: FechaEgreso, fecha_ingreso: FechaIngreso, fecha_nacimiento: FechaNacimiento,
-                gerencia: Gerencia, grupo: Grupo, legajo: Legajo,
-                nivel_de_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
-                pais: Pais, piso: Piso, provincia: Provincia, rotacion: Rotacion, sector: Sector,
-                sexo: Sexo, telefono: Telefono, telefono_urgencias: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
-                turno: Turno
+            const res = await axios.put(`https://172.18.44.10:5005/api/v1/rrhh/empleados/actualizar/${legajo}`, values, {
+                headers: {
+                    "Content-type": "multipart/form-data",
+                    "Authorization": 'Bearer ' + cookie
+                }
             })
             setLoading(false)
             setEditModal(false)
             window.location.reload()
         }
         catch (err) {
-            console.log(err)
+            console.log("Peticion de creacion de usuario con errores...")
         }
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        handleEdit()
+        handleEdit({
+            nombre: Nombre, apellido: Apellido, area: Area, activo: Activo, calle: Calle,
+            categoria: Categoria, centro_de_costo: CentroCosto, localidad: Localidad,
+            codigo_postal: CodigoPostal, contratacion: Contratacion, convenio: Convenio,
+            cuil: Cuil, dpto: Dpto, dni: Dni, email: Email,
+            estado_ambiental: EstadoAmbiental, examen_preocupacional: EPreocupacional,
+            fecha_egreso: FechaEgreso, fecha_ingreso: FechaIngreso, fecha_nacimiento: FechaNacimiento,
+            gerencia: Gerencia, grupo: Grupo, legajo: Legajo,
+            nivel_de_educacion: NivelEducacion, numero: Numero, observaciones: Observaciones,
+            pais: Pais, piso: Piso, provincia: Provincia, rotacion: Rotacion, sector: Sector,
+            sexo: Sexo, telefono: Telefono, telefono_urgencias: TelUrgencia, tipo_liquidacion: TipoLiquidacion,
+            turno: Turno, image: FotoNueva
+        })
     }
 
     return (
@@ -356,12 +363,12 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                         <InputForm title="Cargar Foto Nueva"
                             required={false}
                             type="file"
-                            onChange={e => e.target.files && e.target.files.length > 0 && setFotoNueva(URL.createObjectURL(e.target.files[0]))}
+                            onChange={e => e.target.files && e.target.files.length > 0 && setFotoNueva(e.target.files[0])}
                         />
                         {FotoNueva && <>
                             <br/>
                                 <center>
-                                    <div><Image width={250} height={250} src={FotoNueva} alt="Imagen seleccionada" /></div>
+                                    <div><Image width={250} height={250} src={URL.createObjectURL(FotoNueva)} alt="Imagen seleccionada" /></div>
                                 </center>
                         </>}
                         <InputForm title="Observaciones"

@@ -1,10 +1,12 @@
 import { CardItems, CardList } from '@/app/types';
 import style from '../../style/cards.module.css'
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
-const CardComponent: React.FC<CardList> = ({numbers, text, icon}) => {
+const CardComponent: React.FC<CardList> = ({ numbers, text, icon, link }) => {
+  const router = useRouter()
   return (
-    <div className={style.card}>
+    <div className={style.card} onClick={() => router.push(`${link}`)}>
       <div className={style.iconBx}>{icon}</div>
       <div>
         <div className={style.numbers}>{numbers}</div>
@@ -23,6 +25,7 @@ const Card: React.FC<CardItems> = ({items}) => {
             icon={item.icon}
             text={item.text}
             numbers={item.numbers}
+            link={item.link}
           />
         ))}
     </div>

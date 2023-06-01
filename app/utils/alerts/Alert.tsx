@@ -39,12 +39,11 @@ export const alertDeleteEmployee = (firstname: string, lastname: string, id: str
   confirmButtonText: 'Eliminar',
   confirmButtonColor: '#c00738'
   }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      const res: any = axiosDelete(`eliminar/${id}`)
-      if (res.data) {
+      try {
+        axiosDelete(`eliminar/${id}`)
         Swal.fire('Empleado eliminado!', '', 'success')
-      } else {
+      } catch (error) {
         Swal.fire('Error!', 'La peticion no se pudo realizar!', 'info')
       }
     }

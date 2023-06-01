@@ -1,48 +1,12 @@
-import { List, ProfileList } from "@/app/components";
-import Card from "@/app/pages/dashboard/components/card/Card";
-import { TbUserOff, TbUserX, TbUserCheck, TbUserPlus, TbUser, TbTools, TbTool, TbUsers } from 'react-icons/tb'
-import moment from "moment";
+"use client"
 import { axiosGet } from "@/app/services";
+import List from "../components/List/List"
+import { EmpProp } from "../types";
 import { useEffect, useState } from "react";
+import moment from "moment";
 
-const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
-
-interface EmpProp {
-  foto: string
-  nombre: string;
-  apellido: string;
-  legajo: string;
-  _id: string;
-  jornada: Jornada[]
-  length: string
-}
-
-interface Jornada {
-  descanso: true
-  entrada: null | Date | string
-  entrada_descanso: null | Date | string
-  entrada_horas_extra: null | Date | string
-  fecha: string
-  feriado: boolean
-  habilitado_horas_extra: boolean
-  horas_diurnas: number
-  horas_diurnas_50: number
-  horas_diurnas_100: number
-  horas_nocturnas: number
-  horas_nocturnas_50: number
-  horas_nocturnas_100: number
-  licencia: string
-  observaciones: string
-  salida: null | Date | string
-  salida_descanso: null | Date | string
-  salida_horas_extra: null | Date | string
-  suspendido: boolean
-  _id: string
-}
-
-const Dashboard = () => {
+const Mantenimiento = () => {
   const [employees, setEmployees] = useState([])
-  const { length } = employees
   let myarray: any[] = [];
   let status = "";
   let myarraypres: any[] = [];
@@ -62,6 +26,8 @@ const Dashboard = () => {
       console.log(err)
     }
   }
+
+  const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
 
   const Emp = employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada !== null) // Filtrar los empleados con entrada no nula
@@ -131,36 +97,19 @@ const Dashboard = () => {
       }
     myarraypres.push({ image: foto, name: emp.nombre, lastname: emp.apellido, status: statuspres });
     return myarraypres;
-  });
-
-  const cardList = [
-    { icon: <TbUserOff size={55} />, numbers: ausents, text: "Empleados ausentes", link: "" },
-    { icon: <TbUser size={55} />, numbers: length - ausents, text: "Empleados presentes", link: "" },
-    { icon: <TbUserX size={55} />, numbers: late, text: "Llegadas tardes", link: "" },
-    { icon: <TbUserCheck size={55} />, numbers: puntual, text: "Llegadas puntuales", link: "" },
-    { icon: <TbUserPlus size={55} />, numbers: extras, text: "Horas extra", link: "" },
-    { icon: <TbTools size={50} />, numbers: extras, text: "Empleados matriceria", link: "" },
-    { icon: <TbTool size={55} />, numbers: extras, text: "Empleados mantenimiento", link: "pages/dashboard/mantenimiento/" },
-    { icon: <TbUsers size={55} />, numbers: extras, text: "Empleados produccion", link: "" },
-  ]
+    });
   
   useEffect(() => {
     hoursData()
   }, [])
-  
   return (
-    <>
-      <Card items={cardList} />
-      <div className="details">
-        <List
+    <div className="details">
+      <List
           title='Fichadas'
           titlelist={titleList}
           items={myarray}
-        />
-        <ProfileList title="Ausencias/Presencias" body={myarraypres} />
-      </div>
-    </>
+      />
+    </div>
   )
 }
-
-export default Dashboard;
+export default Mantenimiento

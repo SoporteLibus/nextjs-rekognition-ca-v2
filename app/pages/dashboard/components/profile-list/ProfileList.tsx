@@ -28,7 +28,7 @@ const Profile: React.FC<Prof> = ({name,lastname,image,status}) => {
 }
 
 const ProfileList: React.FC<ProfList> = ({title,body}) => {
-  return (
+return (
     <div className={style.recentCustomers}>
         <div className={style.cardHeader}>
             <h2>{title}</h2>

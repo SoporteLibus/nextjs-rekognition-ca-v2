@@ -31,65 +31,11 @@ body {
   font-family: poppins;
 }
 
-/* ====================== Responsive Design ========================== */
-@media (max-width: 991px) {
-  .navigation {
-    left: -300px;
-  }
-  .navigationactive {
-    width: 300px;
-    left: 0;
-  }
-  .main {
-    width: 100%;
-    left: 0;
-  }
-  .mainactive {
-    left: 300px;
-  }
-  .cardBox {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .details {
-    grid-template-columns: 1fr;
-  }
-  .recentOrders {
-    overflow-x: auto;
-  }
-  .statusinProgress {
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .cardBox {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .cardHeader h2 {
-    font-size: 20px;
-  }
-  .user {
-    min-width: 40px;
-  }
-  .navigation {
-    width: 100%;
-    left: -100%;
-    z-index: 1000;
-  }
-  .navigationactive {
-    width: 100%;
-    left: 0;
-  }
-  .toggle {
-    z-index: 10001;
-  }
-  .mainactive .toggle {
-    color: #fff;
-    position: fixed;
-    right: 0;
-    left: initial;
-  }
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
