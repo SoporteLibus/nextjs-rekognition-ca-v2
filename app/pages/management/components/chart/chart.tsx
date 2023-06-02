@@ -50,18 +50,15 @@ ChartJS.register(
           backgroundColor: 'green',
           categoryPercentage: 0.8,
           barPercentage:0.4
-  
-
-  
-
           
+ 
         },
       ],
     };
     return (
           <>
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-              <Bar options={options} data={data} height={30} width={300}/>
+              <Bar options={options} data={data} height={3} width={17} style={{paddingBottom: "18px"}}/>
             </div>
               
           </>

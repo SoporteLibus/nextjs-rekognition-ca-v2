@@ -4,7 +4,7 @@ import { ApiEmployeesData } from '../types';
 
 const cookie = getCookie("token");
 
-export const baseURL = 'https://172.18.44.10:5005/api/v1/rrhh/empleados/'
+export const baseURL = 'https://172.18.0.167:5006/api/v1/rrhh/empleados/'
 
 export const Authorization = {
     "Content-type": "application/json; charset=UTF-8",

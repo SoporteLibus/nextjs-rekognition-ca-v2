@@ -77,19 +77,8 @@
 }
 
 .details .recentOrders table tr td {
-    padding: 10px;
-}
-
-.details .recentOrders table tr td:last-child {
-    text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(2) {
-    text-align: end;
-}
-
-.details .recentOrders table tr td:nth-child(3) {
     text-align: center;
+    padding: 10px;
 }
 
 .statusdelivered {

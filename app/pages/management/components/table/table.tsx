@@ -8,23 +8,26 @@ export interface Tr {
     name: string
     docket: string
     lastname: string
-    status: string
+    total_horas:string,horas_diurnas:string,horas_nocturnas:string
 }
 
 export interface ListObjects {
     title: string
     titlelist: string[]
-    items: { name: string, docket: string, lastname: string, status: string }[];
+    items: { name: string, docket: string, lastname: string,total_horas:string,horas_diurnas:string,horas_nocturnas:string }[];
     
 }
 
-const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
+const TR: React.FC<Tr> = ({ name, lastname, docket, total_horas,horas_diurnas,horas_nocturnas }) => {
     return (
         <tr>
             <td>{name}</td>
             <td>{lastname}</td>
             <td>{docket}</td>
-            <td>
+            <td>{total_horas}</td>
+            <td>{horas_diurnas}</td>
+            <td>{horas_nocturnas}</td>
+            <td className={style.semana}>
                 <ChartTsx />
             </td>
         </tr>
@@ -37,7 +40,11 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
           <div className={style.recentOrders}>
               <div className={style.cardHeader}>
                     <h2>{title}</h2>
-                  <a href="#" className={style.btn}>PDF</a>
+                    <select>
+                        <option value="opcion1">Produccion</option>
+                        <option value="opcion2">Matriceria</option>
+                        <option value="opcion3">Mantenimiento</option>
+                    </select>
               </div>
   
               <table>
@@ -56,7 +63,9 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                               name={item.name}
                               lastname={item.lastname}
                               docket={item.docket}
-                              status={item.status}
+                              total_horas={item.total_horas}
+                              horas_diurnas={item.horas_diurnas}
+                              horas_nocturnas={item.horas_nocturnas}
                           />
                       ))}
                   </tbody>
