@@ -48,17 +48,13 @@ ChartJS.register(
 
           data: labels.map(() => Math.floor(Math.random() * (12 - 1) + 1)),
           backgroundColor: 'green',
-          categoryPercentage: 0.8,
-          barPercentage:0.4
-          
- 
         },
       ],
     };
     return (
           <>
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-              <Bar options={options} data={data} height={3} width={17} style={{paddingBottom: "18px"}}/>
+              <Bar options={options} data={data} style={{paddingBottom: "18px", width:"10px",height:"2px"}}/>
             </div>
               
           </>

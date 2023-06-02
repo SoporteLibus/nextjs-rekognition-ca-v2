@@ -44,6 +44,8 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                         <option value="opcion1">Produccion</option>
                         <option value="opcion2">Matriceria</option>
                         <option value="opcion3">Mantenimiento</option>
+                        <option value="calidad">Calidad</option>
+                        <option value="deposito">Deposito</option>
                     </select>
               </div>
   
