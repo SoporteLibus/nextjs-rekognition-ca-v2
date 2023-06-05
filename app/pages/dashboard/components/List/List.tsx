@@ -3,12 +3,13 @@ import { ListObjects, Tr } from "@/app/types"
 import React from "react"
 import style from '../../style/list.module.css'
 
-const TR: React.FC<Tr> = ({ name, lastname, docket, status }) => {
+const TR: React.FC<Tr> = ({ name, lastname, docket, hours, status }) => {
     return (
         <tr>
             <td>{name}</td>
             <td>{lastname}</td>
             <td>{docket}</td>
+            <td>{hours}</td>
             <td>
                 {status ? <span className={style.statusdelivered}>Puntual</span> :
                 !status ? <span className={style.statuspending}>Tarde</span> :
@@ -43,6 +44,7 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                         lastname={item.lastname}
                         docket={item.docket}
                         status={item.status}
+                        hours={item.hours}
                     />
                 ))}
             </tbody>
