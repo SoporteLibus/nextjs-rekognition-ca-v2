@@ -5,8 +5,6 @@ import moment from "moment";
 import { axiosGet } from "@/app/services";
 import { useEffect, useState } from "react";
 
-const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
-
 interface EmpProp {
   foto: string
   nombre: string;
@@ -66,7 +64,9 @@ const Dashboard = () => {
   const Emp = employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada !== null) // Filtrar los empleados con entrada no nula
     .map((emp: EmpProp) => {
+      console.log("datos>>>",emp)
       const entradaDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
+      const hoursMinutes = `${entradaDate.getHours()}:${entradaDate.getMinutes()}`
       if (
         (entradaDate.getHours() === 5 || entradaDate?.getHours() === 6) &&
         entradaDate.getMinutes() <= 5
@@ -106,7 +106,7 @@ const Dashboard = () => {
       ) {
         late = late + 1
       }
-      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, status: status });
+      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, hours: hoursMinutes, status: status });
       return myarray;
     });
   
@@ -143,6 +143,8 @@ const Dashboard = () => {
     { icon: <TbTool size={55} />, numbers: extras, text: "Empleados mantenimiento", link: "pages/dashboard/mantenimiento/" },
     { icon: <TbUsers size={55} />, numbers: extras, text: "Empleados produccion", link: "" },
   ]
+
+  const titleList = ["Nombre", "Apellido", "Legajo", "Fichada", "Estado"]
   
   useEffect(() => {
     hoursData()
