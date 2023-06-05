@@ -8,17 +8,29 @@ export interface Tr {
     name: string
     docket: string
     lastname: string
-    total_horas:string,horas_diurnas:string,horas_nocturnas:string
+    total_horas:string,
+    horas_diurnas:string,
+    horas_nocturnas:string,
+    data:any
 }
 
 export interface ListObjects {
     title: string
     titlelist: string[]
-    items: { name: string, docket: string, lastname: string,total_horas:string,horas_diurnas:string,horas_nocturnas:string }[];
+    items: { 
+        name: string, 
+        docket: string, 
+        lastname: string,
+        total_horas:string,
+        horas_diurnas:string,
+        horas_nocturnas:string,
+     }[],
+     data:any
     
 }
 
-const TR: React.FC<Tr> = ({ name, lastname, docket, total_horas,horas_diurnas,horas_nocturnas }) => {
+
+const TR: React.FC<Tr> = ({ name, lastname, docket, total_horas,horas_diurnas,horas_nocturnas,data}) => {
     return (
         <tr>
             <td>{name}</td>
@@ -27,26 +39,18 @@ const TR: React.FC<Tr> = ({ name, lastname, docket, total_horas,horas_diurnas,ho
             <td>{total_horas}</td>
             <td>{horas_diurnas}</td>
             <td>{horas_nocturnas}</td>
-            <td className={style.semana}>
-                <ChartTsx />
-            </td>
+            <td><ChartTsx info={data}/></td>
         </tr>
     )
 }
 
-const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
+const List: React.FC<ListObjects>= ({title, titlelist, items,data}) => {
     return (
       <div className={style.details}>
           <div className={style.recentOrders}>
               <div className={style.cardHeader}>
                     <h2>{title}</h2>
-                    <select>
-                        <option value="opcion1">Produccion</option>
-                        <option value="opcion2">Matriceria</option>
-                        <option value="opcion3">Mantenimiento</option>
-                        <option value="calidad">Calidad</option>
-                        <option value="deposito">Deposito</option>
-                    </select>
+                    
               </div>
   
               <table>
@@ -60,6 +64,8 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
   
                   <tbody>
                       {items.map((item, index) => (
+                          
+
                           <TR
                               key={index}
                               name={item.name}
@@ -68,6 +74,7 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                               total_horas={item.total_horas}
                               horas_diurnas={item.horas_diurnas}
                               horas_nocturnas={item.horas_nocturnas}
+                              data={data[index]}
                           />
                       ))}
                   </tbody>

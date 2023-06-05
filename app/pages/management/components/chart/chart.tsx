@@ -14,6 +14,7 @@ ChartJS.register(
   const ChartTsx = (info: any) => {
     const options: ChartOptions<'bar'> = {
       responsive: true,
+      maintainAspectRatio:false,
       indexAxis: 'x',
       plugins: {
         legend: {
@@ -31,30 +32,42 @@ ChartJS.register(
           display: false,
         },
       },
-      elements: {
-        bar: {
-          borderWidth: 0.5, // Ajusta el ancho de las líneas
-        },
-      },
-
-
     };
-  
-    const labels: string[] = ['', '', '', '', '', '', '','', '', '', '', '', '', '','', '', '', '', '', '', '','', '', '', '', '', '', '',];
+    let labels: string[] = [];
+    
+    var dat=info.info.jornada.length
+    var dato=info.info.jornada;
+      for (let i=1; i<dat+1;i++){
+          labels.push(`${i}`)        
+      } 
+    let valor:Array<number>=[]
+    var datos=labels.map((obj:any)=>{ 
+      dato.map((obj:any)=>{
+        if(obj.entrada==null||obj.salida==null){
+          valor.push(0)
+        }else if (obj.entrada && obj.salida){
+          valor.push(8)
+        }
+      })
+    })
+
     const data: ChartData<'bar', number[], string> = {
       labels,
       datasets: [
         {
-
-          data: labels.map(() => Math.floor(Math.random() * (12 - 1) + 1)),
+          data: valor,
           backgroundColor: 'green',
+          borderRadius:6,
+          barThickness:6,
+          borderWidth:0.09
         },
       ],
+      
     };
     return (
           <>
-            <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-              <Bar options={options} data={data} style={{paddingBottom: "18px", width:"10px",height:"2px"}}/>
+            <div className="chart-container">
+              <Bar options={options} data={data} width={"50px"} height={"70px"} />
             </div>
               
           </>
