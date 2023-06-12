@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import style from '../style/editdetailmodal.module.css'
 
+let width = window.innerWidth
 const buttonWidth = 185;
+const buttonWidthMobile = 130;
 const tabWidth = 608;
+const tabWidthMobile = 393;
 
 interface WidgetProps {
     children: React.ReactNode
@@ -30,7 +33,11 @@ const Widget: React.FC<WidgetProps> = ({children, tabHeaders}) => {
         <div
           className={style.underline}
           style={{
-            translate: `${activeIndex ? activeIndex * buttonWidth : 0}px 0`,
+            translate: `${(activeIndex && width > 393) ? 
+              activeIndex * buttonWidth : 
+              (activeIndex && width <= 393) ? 
+              activeIndex * buttonWidthMobile : 
+              0}px 0`,
           }}
         ></div>
       </header>
@@ -38,7 +45,11 @@ const Widget: React.FC<WidgetProps> = ({children, tabHeaders}) => {
         <div
           className={style.contentinner}
           style={{
-            translate: `-${activeIndex ? activeIndex * tabWidth : 0}px 0`,
+            translate: `-${(activeIndex && width > 393) ? 
+              activeIndex * tabWidth : 
+              (activeIndex && width <= 393) ? 
+              activeIndex * tabWidthMobile : 
+              0}px 0`,
           }}>
             {children}
         </div>

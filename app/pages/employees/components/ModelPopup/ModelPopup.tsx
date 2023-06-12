@@ -127,7 +127,7 @@ const ModelPopup = ({ setShowModal }: any) => {
             <form onSubmit={handleSubmit}>
                 <div className={style.modalBox}>
                     <div className={style.modalHeader}>
-                        <h2>Registrar Nuevo Empleado</h2>
+                        <h2>Registrar Nuevo Empleado + {window.innerWidth}</h2>
                     </div>
                     <div className={style.modalInner}>
                     <Widget tabHeaders={["Informacion", "Contratacion", "Observaciones"]} >

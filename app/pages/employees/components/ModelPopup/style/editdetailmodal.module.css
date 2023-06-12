@@ -4,7 +4,7 @@
 
 .widget {
     background: #ffffff;
-    width: var(--tab-width);
+    width: 608;
     border-radius: 8px;
     width: 100%;
     overflow-y: scroll;
@@ -57,7 +57,7 @@
     left: 0;
     display: flex;
     align-items: flex-start;
-    width: calc(var(--tab-width) * 3);
+    width: calc(608 * 3);
     transition: 0.3s;
 }
 
@@ -85,4 +85,55 @@
 .contentinner>div {
     width: 608px;
     margin-right: 3rem;
+}
+
+@media (max-width: 700px) {
+    .widget {
+        background: #ffffff;
+        width: 370;
+        border-radius: 8px;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .contentinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-start;
+        width: calc(370 * 3);
+        transition: 0.3s;
+    }
+    .contentinner>div {
+        width: 370px;
+        margin-right: 25px;
+    }
+    .content {
+        position: relative;
+        height: 550px;
+    }
+    .widget>header>button {
+        font-size: 15px;
+        width: 120px;
+        cursor: pointer;
+        background: transparent;
+        color: #918db7;
+        border: 0;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+    .widget>header>button.active {
+        color: var(--red);
+        width: 120px;
+    }
+    .underline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 120px;
+        height: 3px;
+        background: var(--red);
+        transition: 0.2s;
+    }
 }

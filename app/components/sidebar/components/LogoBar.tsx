@@ -6,8 +6,8 @@ const LogoBar = () => {
   return (
     <div className={styles.logosidebar}>
       <Image src={argullogo}
-        height={25}
-        width={25}
+        height={35}
+        width={35}
         alt='Argul logo'
         priority={true}
       />

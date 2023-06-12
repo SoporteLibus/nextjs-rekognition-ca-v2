@@ -18,9 +18,9 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
     <>
       {/* =============== Navigation ================ */}
     <div className={`${hide ? styles.navigationactive : styles.navigation}`}>
-      <ul>
+      <ul onClick={() => window.location.reload()}>
         <li>
-          <Link href='/'>
+          <Link href='#'>
             <span className={styles.icon}><LogoBar /></span>
             <span className={styles.titlelogo}>Argul y Cia</span>
           </Link>
@@ -51,7 +51,6 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
         </div>
 
           <div className={styles.user}>
-            
             <Image
               src="/argulycia.jpg"
               alt="User image"
