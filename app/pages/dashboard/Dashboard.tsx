@@ -139,9 +139,9 @@ const Dashboard = () => {
     { icon: <TbUserX size={55} />, numbers: late, text: "Llegadas tardes", link: "" },
     { icon: <TbUserCheck size={55} />, numbers: puntual, text: "Llegadas puntuales", link: "" },
     { icon: <TbUserPlus size={55} />, numbers: extras, text: "Horas extra", link: "" },
-    { icon: <TbTools size={50} />, numbers: extras, text: "Empleados matriceria", link: "" },
-    { icon: <TbTool size={55} />, numbers: extras, text: "Empleados mantenimiento", link: "pages/dashboard/mantenimiento/" },
-    { icon: <TbUsers size={55} />, numbers: extras, text: "Empleados produccion", link: "" },
+    { icon: <TbTools size={50} />, numbers: extras, text: "Empleados matriceria", link: "/pages/dashboard/matriceria/" },
+    { icon: <TbTool size={55} />, numbers: extras, text: "Empleados mantenimiento", link: "/pages/dashboard/mantenimiento/" },
+    { icon: <TbUsers size={55} />, numbers: extras, text: "Empleados produccion", link: "/pages/dashboard/produccion/" },
   ]
 
   const titleList = ["Nombre", "Apellido", "Legajo", "Fichada", "Estado"]

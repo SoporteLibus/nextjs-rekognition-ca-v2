@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: var(--blue);
+    width: auto;
 }
 
 .cardHeader h2 {

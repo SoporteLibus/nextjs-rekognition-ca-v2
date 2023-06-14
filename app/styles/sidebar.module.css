@@ -46,7 +46,6 @@
 .navigation ul li:nth-child(1),
 .navigationactive ul li:nth-child(1) {
     margin-bottom: 40px;
-    pointer-events: none;
 }
 
 .navigation ul li a,
@@ -130,6 +129,20 @@
     border-radius: 50%;
     box-shadow: 35px -35px 0 10px var(--white);
     pointer-events: none;
+}
+
+.navigation ul li:hover:nth-child(1) a::before,
+.navigation ul li .hovered:nth-child(1) a::before,
+.navigationactive ul li:hover:nth-child(1) a::before,
+.navigationactive ul li .hovered:nth-child(1) a::before {
+    display: none;
+}
+
+.navigation ul li:hover:nth-child(1) a::after,
+.navigation ul li .hovered:nth-child(1) a::after,
+.navigationactive ul li:hover:nth-child(1) a::after,
+.navigationactive ul li .hovered:nth-child(1) a::after {
+    display: none;
 }
 
 /* ===================== Main ===================== */
@@ -297,11 +310,26 @@
         border-bottom-right-radius: 30px;
     }
 
+    .navigation ul li:nth-child(1),
+    .navigationactive ul li:nth-child(1) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        background-color: transparent;
+    }
+
     .navigation ul li:hover,
     .navigation ul li.hovered,
     .navigationactive ul li:hover,
     .navigationactive ul li.hovered {
         background-color: var(--white);
+    }
+
+    .navigation ul li:nth-child(1):hover,
+    .navigation ul li:nth-child(1).hovered,
+    .navigationactive ul li:nth-child(1):hover,
+    .navigationactive ul li:nth-child(1).hovered {
+        background-color: transparent;
     }
 
     .navigation ul li a,
@@ -374,6 +402,7 @@
     .logosidebar {
         border-radius: 0;
         margin: 10px;
+
     }
     .logosidebar img {
         position: absolute;

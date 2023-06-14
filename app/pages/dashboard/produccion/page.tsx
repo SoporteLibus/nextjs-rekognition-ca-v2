@@ -7,7 +7,7 @@ import { TbUserOff, TbUserX, TbUserCheck, TbUserPlus, TbUser } from 'react-icons
 import moment from "moment";
 import Card from "../components/card/Card";
 
-const Mantenimiento = () => {
+const Produccion = () => {
   const [employees, setEmployees] = useState([])
   let myarray: any[] = [];
   let status = "";
@@ -18,7 +18,7 @@ const Mantenimiento = () => {
 
   const getEmpGroup = async () => {
     try {
-      const res = await axiosGet("area/mantenimiento")
+      const res = await axiosGet("area/produccion")
       setEmployees(res.data.data)
     }
     catch (err) {
@@ -26,7 +26,7 @@ const Mantenimiento = () => {
     }
   }
 
-  const titleList = ["Nombre", "Apellido", "Legajo", "Horario", "Estado"]
+  const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Estado"]
 
   employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
@@ -90,15 +90,15 @@ const Mantenimiento = () => {
   
   return (
     <>
-    <Card items={cardList} />
-    <div className="details">
+      <Card items={cardList} />
+      <div className="details">
       <List
-          title='Fichadas'
-          titlelist={titleList}
-          items={myarray}
+        title='Fichadas'
+        titlelist={titleList}
+        items={myarray}
       />
-    </div>
+      </div>
     </>
     )
 }
-export default Mantenimiento
+export default Produccion

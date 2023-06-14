@@ -18,12 +18,12 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
     <>
       {/* =============== Navigation ================ */}
     <div className={`${hide ? styles.navigationactive : styles.navigation}`}>
-      <ul onClick={() => window.location.reload()}>
+      <ul>
         <li>
-          <Link href='#'>
-            <span className={styles.icon}><LogoBar /></span>
+          <a href='#'>
+            <span className={styles.icon} onClick={() => window.location.reload()}><LogoBar /></span>
             <span className={styles.titlelogo}>Argul y Cia</span>
-          </Link>
+          </a>
         </li>
         {items.map((item, index) => (
           <MenuItem

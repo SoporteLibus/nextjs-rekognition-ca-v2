@@ -1,7 +1,8 @@
 .recentOrders {
     position: relative;
-    flex: 1 1 500px;
+    flex: 1 1 300px;
     height: 500px;
+    width: 100%;
     background: var(--white);
     padding-left: 20px;
     padding-right: 20px;
@@ -19,13 +20,18 @@
 .cardHeader {
     position: sticky;
     top: 0;
+    left: -20px;
     padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
     padding-bottom: 10px;
     background-color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: var(--blue);
+    min-width: 350px;
+    max-width: 100%;
 }
 
 .cardHeader h2 {
@@ -46,6 +52,7 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    overflow-x: scroll;
 }
 
 .table thead td {
