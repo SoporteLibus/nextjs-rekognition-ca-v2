@@ -26,8 +26,6 @@ const Produccion = () => {
     }
   }
 
-  const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Estado"]
-
   employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
     .map((emp: EmpProp) => {
@@ -72,7 +70,7 @@ const Produccion = () => {
       ) {
         late = late + 1
       }
-      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, hours: hoursMinutes, status: status });
+      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, entrada: hoursMinutes, exit: "0:0", status: status });
       return myarray;
     });
   
@@ -84,6 +82,8 @@ const Produccion = () => {
     { icon: <TbUserPlus size={55} />, numbers: extras, text: "Horas extra", link: "" },
   ]
   
+  const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
+
   useEffect(() => {
     getEmpGroup()
   }, [])

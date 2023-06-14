@@ -26,7 +26,7 @@ const Mantenimiento = () => {
     }
   }
 
-  const titleList = ["Nombre", "Apellido", "Legajo", "Horario", "Estado"]
+  const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
 
   employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
@@ -72,7 +72,7 @@ const Mantenimiento = () => {
       ) {
         late = late + 1
       }
-      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, hours: hoursMinutes, status: status });
+      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, entrance: hoursMinutes, exit: "0:0", status: status });
       return myarray;
     });
   

@@ -33,16 +33,17 @@ return (
         <div className={style.cardHeader}>
             <h2>{title}</h2>
         </div>
-
-        {body.map((item, index) => (
-            <Profile
-                key={index}
-                name={item.name}
-                lastname={item.lastname}
-                image={item.image}
-                status={item.status}
-            />
-        ))}
+        <div className={style.divMedium}>
+            {body.map((item, index) => (
+                <Profile
+                    key={index}
+                    name={item.name}
+                    lastname={item.lastname}
+                    image={item.image}
+                    status={item.status}
+                />
+            ))}
+        </div>
     </div>
   )
 }

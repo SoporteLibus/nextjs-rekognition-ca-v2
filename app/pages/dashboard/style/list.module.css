@@ -4,34 +4,40 @@
     height: 500px;
     width: 100%;
     background: var(--white);
+    padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
     border-radius: 20px;
-    overflow-y: scroll;
     box-shadow:  -5px -5px 10px #a8a8a8,
              5px 5px 10px #ffffff;
 }
 
-.recentOrders::-webkit-scrollbar {
+.divMedium {
+    width: 100%;
+    max-height: 410px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.divMedium::-webkit-scrollbar {
     display: none;
 }
 
 .cardHeader {
     position: sticky;
     top: 0;
-    left: -20px;
+    left: 0;
+    right: 0;
     padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 10px;
+    border-radius: 20px;
     background-color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: var(--blue);
-    min-width: 350px;
-    max-width: 100%;
+    width: 100%;
 }
 
 .cardHeader h2 {
@@ -50,43 +56,69 @@
 
 .table {
     width: 100%;
+    height: max-content;
     border-collapse: collapse;
-    margin-top: 10px;
-    overflow-x: scroll;
 }
 
 .table thead td {
+    position: sticky;
+    top: 0;
     font-weight: 600;
+    background-color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr {
     color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr:last-child {
     border-bottom: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tbody tr:hover {
     background: var(--blue);
     color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr td {
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr td:last-child {
     text-align: end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr td:nth-child(2) {
     text-align: end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .recentOrders table tr td:nth-child(3) {
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .statusdelivered {

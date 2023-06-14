@@ -106,7 +106,7 @@ const Dashboard = () => {
       ) {
         late = late + 1
       }
-      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, hours: hoursMinutes, status: status });
+      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, entrance: hoursMinutes, exit: "0:0", status: status });
       return myarray;
     });
   
@@ -144,7 +144,7 @@ const Dashboard = () => {
     { icon: <TbUsers size={55} />, numbers: extras, text: "Empleados produccion", link: "/pages/dashboard/produccion/" },
   ]
 
-  const titleList = ["Nombre", "Apellido", "Legajo", "Fichada", "Estado"]
+  const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
   
   useEffect(() => {
     hoursData()
