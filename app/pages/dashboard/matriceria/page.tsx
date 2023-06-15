@@ -29,48 +29,57 @@ const Matriceria = () => {
   employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
     .map((emp: EmpProp) => {
-      const entradaDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
-      const hoursMinutes = `${entradaDate.getHours()}:${entradaDate.getMinutes()}`
+      const entranceDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
+      const exitDate = moment.utc(emp.jornada[0].salida, "YYYY-MM-DD HH:mm:ss").local().toDate();
+      const entranceTime = `${entranceDate.getHours()}:${entranceDate.getMinutes()}:${entranceDate.getSeconds()}`
+      const exitTime = `${exitDate.getHours()}:${exitDate.getMinutes()}:${exitDate.getSeconds()}`
       if (
-        (entradaDate.getHours() === 5 || entradaDate?.getHours() === 6) &&
-        entradaDate.getMinutes() <= 5
+        (entranceDate.getHours() === 5 || entranceDate?.getHours() === 6) &&
+        entranceDate.getMinutes() <= 5
       ) {
         status = "ok"
         puntual = puntual + 1
       }
       if (
-        entradaDate?.getHours() >= 6 &&
-        entradaDate.getMinutes() >= 5
+        entranceDate?.getHours() >= 6 &&
+        entranceDate.getMinutes() >= 5
       ) {
         late = late + 1
       }
       if (
-        (entradaDate?.getHours() === 13 || entradaDate?.getHours() === 14) &&
-        entradaDate.getMinutes() <= 5
+        (entranceDate?.getHours() === 13 || entranceDate?.getHours() === 14) &&
+        entranceDate.getMinutes() <= 5
       ) {
         status = "ok"
         puntual = puntual + 1
       }
       if (
-        entradaDate?.getHours() >= 14 &&
-        entradaDate.getMinutes() >= 5
+        entranceDate?.getHours() >= 14 &&
+        entranceDate.getMinutes() >= 5
       ) {
         late = late + 1
       }
       if (
-        (entradaDate?.getHours() === 21 || entradaDate?.getHours() === 22) &&
-        entradaDate.getMinutes() <= 5
+        (entranceDate?.getHours() === 21 || entranceDate?.getHours() === 22) &&
+        entranceDate.getMinutes() <= 5
       ) {
         status = "ok"
         puntual = puntual + 1
       }
       if (
-        entradaDate?.getHours() >= 22 &&
-        entradaDate.getMinutes() >= 5
+        entranceDate?.getHours() >= 22 &&
+        entranceDate.getMinutes() >= 5
       ) {
         late = late + 1
       }
-      myarray.push({ name: emp.nombre, lastname: emp.apellido, docket: emp.legajo, entrance: hoursMinutes, exit: "0:0", status: status });
+      myarray.push({
+        name: emp.nombre,
+        lastname: emp.apellido,
+        docket: emp.legajo,
+        entrance: (entranceTime == "NaN:NaN:NaN") ? "--:--:--" : entranceTime,
+        exit: (exitTime == "NaN:NaN:NaN") ? "--:--:--" : exitTime,
+        status: status
+      });
       return myarray;
     });
   
