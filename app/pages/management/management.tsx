@@ -1,4 +1,4 @@
-import { axiosGet } from "@/app/services";
+import { axiosGet, axiosPost, axiosPostAny } from "@/app/services";
 import CalendarTsx from "./components/calendar/calendar";
 import HorizontalBar from "./components/cards/card"
 import List from "./components/table/table";
@@ -16,8 +16,11 @@ const Management=async ()=>{
       setSelectedValue(event.target.value);
     };
     let data;
-    if(!selectedValue)data=await axiosGet(`dias-area/produccion`)
-    else data=await axiosGet(`dias-area/${selectedValue}`)
+    const comienzo=moment().startOf("month").format("YYYY-MM-DD");
+    const fin=moment().endOf("month").format("YYYY-MM-DD");
+    console.log([comienzo,fin])
+    if(!selectedValue)data=await axiosPostAny(`dias-area/produccion`,[comienzo,fin]);
+    else data=await axiosPostAny(`dias-area/${selectedValue}`,[comienzo,fin])
 
     const info=data.data.data;
 

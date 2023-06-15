@@ -11,6 +11,12 @@ export const Authorization = {
     "Authorization": 'Bearer ' + cookie
 }
 
+export const AuthorizationMultipart = {
+    "Content-type": "multipart/form-data; charset=UTF-8",
+    "Authorization": 'Bearer ' + cookie
+}
+
+
 export const axiosGet = (url: string) =>{
     return axios.get(`${baseURL}${url}`, {
         headers: Authorization
@@ -29,5 +35,23 @@ export const axiosDelete = (url: string) =>{
 export const axiosPut = (url: string, data: ApiEmployeesData) =>{
     return axios.put(`${baseURL}${url}`, data,{
         headers: Authorization
+    })
+}
+
+export const axiosPostAny = (url: string, data: any) =>{
+    return axios.post(`${baseURL}${url}`, data,{
+        headers: Authorization
+    })
+}
+
+export const axiosPostMultipart = (url: string, data: ApiEmployeesData) =>{
+    return axios.post(`${baseURL}${url}`, data, {
+        headers: AuthorizationMultipart
+    })
+}
+
+export const axiosPutMultipart = (url: string, data: ApiEmployeesData) =>{
+    return axios.put(`${baseURL}${url}`, data, {
+        headers: AuthorizationMultipart
     })
 }

@@ -8,6 +8,7 @@ import InputCheckBoxForm from "./components/InputCheckBoxForm";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 import Swal from "sweetalert2";
+import { axiosPostMultipart } from "@/app/services";
 
 const ModelPopup = ({ setShowModal }: any) => {
   const [loading, setLoading] = useState(false)
@@ -53,12 +54,16 @@ const ModelPopup = ({ setShowModal }: any) => {
     const createEmployee = async (values: ApiEmployeesData) => {
     const cookie = getCookie("token");
     try {
-        const res = await axios.post('https://172.18.44.10:5005/api/v1/rrhh/empleados/registrar/', values, {
-            headers: {
-                "Content-type": "multipart/form-data",
-                "Authorization": 'Bearer ' + cookie
-            }
-      })
+    
+        const res = axiosPostMultipart("/registrar",values)
+    
+    
+    //await axios.post('https://172.18.44.10:5005/api/v1/rrhh/empleados/registrar/', values, {
+    //         headers: {
+    //             "Content-type": "multipart/form-data",
+    //             "Authorization": 'Bearer ' + cookie
+    //         }
+    //   })
         setShowModal(false)
         Swal.fire(
             'Exito!',

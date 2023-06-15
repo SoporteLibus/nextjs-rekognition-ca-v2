@@ -7,6 +7,7 @@ import InputForm from './components/InputForm';
 import InputCheckBoxForm from './components/InputCheckBoxForm';
 import { getCookie } from 'cookies-next';
 import axios from 'axios';
+import { axiosPutMultipart } from '@/app/services';
 
 interface EditDetailsModalProps {
     empById: ApiEmployeesData
@@ -65,12 +66,14 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         setLoading(true)
         const cookie = getCookie("token");
         try {
-            const res = await axios.put(`https://172.18.44.10:5005/api/v1/rrhh/empleados/actualizar/${legajo}`, values, {
-                headers: {
-                    "Content-type": "multipart/form-data",
-                    "Authorization": 'Bearer ' + cookie
-                }
-            })
+            const res = await axiosPutMultipart(`actualizar/${legajo}`,values)
+            
+            // await axios.put(`https://172.18.44.10:5005/api/v1/rrhh/empleados/actualizar/${legajo}`, values, {
+            //     headers: {
+            //         "Content-type": "multipart/form-data",
+            //         "Authorization": 'Bearer ' + cookie
+            //     }
+            // })
             setLoading(false)
             setEditModal(false)
             window.location.reload()
@@ -338,12 +341,6 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 type="text"
                                 onChange={e => setRotacion(e.target.value)}
                                 value={Rotacion}
-                            />
-                            <InputForm title="Turno"
-                                required={true}
-                                type="text"
-                                onChange={e => setTurno(e.target.value)}
-                                value={Turno}
                             />
                         </div>
                         <InputForm title="Grupo"
