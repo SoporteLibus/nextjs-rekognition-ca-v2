@@ -1,0 +1,29 @@
+.divselect {
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    color: #fff;
+    background-image: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* Remove IE arrow */
+.divselect::-ms-expand {
+    display: none;
+}
+
+/* Custom Select wrapper */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+    cursor: pointer;
+}

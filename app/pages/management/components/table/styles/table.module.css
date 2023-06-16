@@ -1,41 +1,43 @@
-.details {
+.recentOrders {
     position: relative;
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.details .recentOrders {
-    position: relative;
-    flex: 1 1 500px;
+    flex: 1 1 300px;
     height: 500px;
+    width: 100%;
     background: var(--white);
+    padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 20px;
     border-radius: 20px;
-    overflow-y: scroll;
-    box-shadow:  -5px -5px 10px #a8a8a8,
-             5px 5px 10px #ffffff;
+    box-shadow: -5px -5px 10px #a8a8a8,
+        5px 5px 10px #ffffff;
 }
 
-.details .recentOrders::-webkit-scrollbar {
+.divMedium {
+    width: 100%;
+    max-height: 410px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.divMedium::-webkit-scrollbar {
     display: none;
 }
-
-.details .cardHeader {
+ 
+.cardHeader {
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     padding-top: 20px;
     padding-bottom: 10px;
+    border-radius: 20px;
     background-color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: auto;
+    border-bottom: var(--blue);
+    width: 100%;
 }
 
 .cardHeader h2 {
@@ -52,33 +54,72 @@
     border-radius: 6px;
 }
 
-.details table {
+.table {
     width: 100%;
+    height: max-content;
     border-collapse: collapse;
-    margin-top: 10px;
 }
 
-.details table thead td {
+.table thead td {
+    position: sticky;
+    top: 0;
     font-weight: 600;
+    background-color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.details .recentOrders table tr {
+.recentOrders table tr {
     color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.details .recentOrders table tr:last-child {
+.recentOrders table tr:last-child {
     border-bottom: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.details .recentOrders table tbody tr:hover {
+.recentOrders table tbody tr:hover {
     background: var(--blue);
     color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.details .recentOrders table tr td {
+.recentOrders table tr td {
     text-align: center;
     padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr td:last-child {
+    text-align: end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr td:nth-child(1) {
+    text-align: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr td:nth-child(2) {
+    text-align: end;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .statusdelivered {

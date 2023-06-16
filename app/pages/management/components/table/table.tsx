@@ -46,14 +46,13 @@ const TR: React.FC<Tr> = ({ name, lastname, docket, total_horas,horas_diurnas,ho
 
 const List: React.FC<ListObjects>= ({title, titlelist, items,data}) => {
     return (
-      <div className={style.details}>
+      <div className="details">
           <div className={style.recentOrders}>
               <div className={style.cardHeader}>
                     <h2>{title}</h2>
-                    
               </div>
-  
-              <table>
+            <div className={style.divMedium}>
+              <table className={style.table}>
                   <thead>
                       <tr>
                           {titlelist.map((item, index) => (
@@ -78,7 +77,8 @@ const List: React.FC<ListObjects>= ({title, titlelist, items,data}) => {
                           />
                       ))}
                   </tbody>
-              </table>
+                </table>
+            </div>
           </div>
       </div>
     )
