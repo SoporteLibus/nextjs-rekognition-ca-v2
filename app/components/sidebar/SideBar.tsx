@@ -1,19 +1,26 @@
 "use client"
 import styles from '@/app/styles/sidebar.module.css'
-import React, { useState } from 'react'
-import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai'
+import React, { useContext, useEffect, useState } from 'react'
+import { AiOutlineMenu } from 'react-icons/ai'
 import { MenuProps } from '../../types';
 import Image from 'next/image';
-import Link from 'next/link';
 import LogoBar from './components/LogoBar';
 import MenuItem from './components/MenuItem';
+import { Context } from '@/app/utils/context/ContextProvider';
 
 const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
   const [hide, setHide] = useState<boolean>(true);
+  const { title, setTitle }: any = useContext(Context)
 
-  const toggleHideText = () => {
+  const toggleHideText = () => { 
     setHide(!hide);
   };
+
+  useEffect(() => {
+    setTitle("Panel Principal")
+  }, [])
+  
+
   return (
     <>
       {/* =============== Navigation ================ */}
@@ -45,8 +52,9 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
 
         <div className={styles.search}>
             <label>
-              <input type="text" placeholder="Buscar..." />
-              <button className={styles.searchbtn}><AiOutlineSearch /></button>
+              <h1>{ title }</h1>
+              {/* <input type="text" placeholder="Buscar..." />
+              <button className={styles.searchbtn}><AiOutlineSearch /></button> */}
             </label>
         </div>
 
