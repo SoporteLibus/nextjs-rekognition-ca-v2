@@ -11,6 +11,7 @@ import Loading from "./loading";
 import {AiOutlineClockCircle} from "react-icons/ai"
 import {SlSettings} from "react-icons/sl"
 import {TbReportAnalytics} from "react-icons/tb"
+import { ContextProvider } from "@/app/utils";
 
 const routes = [
   { icon: <AiOutlineHome size={25} />, text: 'Inicio', link: "/" },
@@ -45,9 +46,11 @@ const AuthLogin: FC<Auth> = ({children}) => {
         </>
     } else if (auth) {
         return (
-            <SideBar items={routes} setAuth={setAuth} >
-                {children}
-            </SideBar>
+            <ContextProvider>
+                <SideBar items={routes} setAuth={setAuth} >
+                    {children}
+                </SideBar>
+            </ContextProvider>
         )
     } else {
         return (

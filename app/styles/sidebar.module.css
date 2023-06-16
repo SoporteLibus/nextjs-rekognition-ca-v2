@@ -200,14 +200,13 @@
 
 .search {
     position: relative;
-    width: 400px;
     margin: 0 10px;
 }
 
 .search label {
     position: relative;
-    width: 100%;
     display: inline-flex;
+    color: var(--blue);
 }
 
 .search label input {
