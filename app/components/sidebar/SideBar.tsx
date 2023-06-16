@@ -53,8 +53,6 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
         <div className={styles.search}>
             <label>
               <h1>{ title }</h1>
-              {/* <input type="text" placeholder="Buscar..." />
-              <button className={styles.searchbtn}><AiOutlineSearch /></button> */}
             </label>
         </div>
 

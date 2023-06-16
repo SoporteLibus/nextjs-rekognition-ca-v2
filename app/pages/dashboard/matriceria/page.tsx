@@ -2,13 +2,15 @@
 import { axiosGet } from "@/app/services";
 import List from "../components/List/List"
 import { EmpProp } from "../types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TbUserOff, TbUserX, TbUserCheck, TbUserPlus, TbUser } from 'react-icons/tb'
 import moment from "moment";
 import Card from "../components/card/Card";
+import { Context } from '@/app/utils/context/ContextProvider';
 
 const Matriceria = () => {
   const [employees, setEmployees] = useState([])
+  const { setTitle }: any = useContext(Context)
   let myarray: any[] = [];
   let status = "";
   let ausents = 0;
@@ -95,6 +97,7 @@ const Matriceria = () => {
   
   useEffect(() => {
     getEmpGroup()
+    setTitle("Matriceria")
   }, [])
   
   return (

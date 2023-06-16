@@ -3,7 +3,8 @@ import Card from "@/app/pages/dashboard/components/card/Card";
 import { TbUserOff, TbUserX, TbUserCheck, TbUserPlus, TbUser, TbTools, TbTool, TbUsers } from 'react-icons/tb'
 import moment from "moment";
 import { axiosGet } from "@/app/services";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from '@/app/utils/context/ContextProvider';
 
 interface EmpProp {
   foto: string
@@ -40,6 +41,7 @@ interface Jornada {
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState([])
+  const { setTitle }: any = useContext(Context)
   const { length } = employees
   let myarray: any[] = [];
   let status = "";
@@ -156,6 +158,7 @@ const Dashboard = () => {
   
   useEffect(() => {
     hoursData()
+    setTitle("Panel Principal")
   }, [])
   
   return (
