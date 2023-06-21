@@ -15,7 +15,6 @@ const LeftNav: React.FC<EmployeeId> = ({ employeeDocket }) => {
     try {
       const res = await axiosGet(`listar/legajo/${employeeDocket}`)
       setEmpByDocket(res.data.data)
-      console.log(empByDocket)
     }
     catch (err) {
       console.log(err)
@@ -27,7 +26,10 @@ const LeftNav: React.FC<EmployeeId> = ({ employeeDocket }) => {
 
   return (
     <div className={style.employeeDetail}>
-      <img src={empByDocket.foto}/>
+      <img src={empByDocket.foto ? empByDocket.foto :
+        (empByDocket.sexo == "m" || empByDocket.sexo == "M") ?
+          "/avatar-h.jpeg" : "/avatar-m.webp"}
+      />
       <h1>{Capitalize(empByDocket.nombre)} {Capitalize(empByDocket.apellido)}</h1>
       <p>Email: {empByDocket.email}</p>
       <p>Direccion: {`${empByDocket.calle} N°${empByDocket.numero}`}</p>

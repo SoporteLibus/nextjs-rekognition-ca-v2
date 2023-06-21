@@ -23,16 +23,7 @@ export interface Tr {
 export interface ListObjects {
     title: string
     titlelist: string[]
-    // items: { 
-    //     name: string, 
-    //     docket: string, 
-    //     lastname: string,
-    //     total_horas:string,
-    //     horas_diurnas:string,
-    //     horas_nocturnas:string,
-    //     quincena_1:number,
-    //     quincena_2:number
-    //  }[],
+
 
     
 }
@@ -113,21 +104,21 @@ const List: React.FC<ListObjects>=({title, titlelist}) => {
     };
 
     return (
-      <div className={style.details}>
+      <div className="details">
           <div className={style.recentOrders}>
               <div className={style.cardHeader}>
                     <h2>{title}</h2>
-                    <select value={selectedValue} onChange={handleSelectChange}>
+                    <select  value={selectedValue} onChange={handleSelectChange}>
                         <option value="produccion">Produccion</option>
                         <option value="tecnico">Tecnico</option>
                         <option value="matriceria">Matriceria</option>
                         <option value="mantenimiento">Mantenimiento</option>
                         <option value="calidad">Calidad</option>
                         <option value="deposito">Deposito</option>
-            </select>
+                    </select>
               </div>
-  
-              <table>
+            <div className={style.divMedium}>
+              <table className={style.table}>
                   <thead>
                       <tr>
                           {titlelist.map((item, index) => (
@@ -138,8 +129,6 @@ const List: React.FC<ListObjects>=({title, titlelist}) => {
   
                   <tbody>
                       {data.map((item:any, index:any) => (
-                          
-
                           <TR
                               key={index}
                               name={item.name}
@@ -154,7 +143,8 @@ const List: React.FC<ListObjects>=({title, titlelist}) => {
                           />
                       ))}
                   </tbody>
-              </table>
+                </table>
+            </div>
           </div>
       </div>
     )
