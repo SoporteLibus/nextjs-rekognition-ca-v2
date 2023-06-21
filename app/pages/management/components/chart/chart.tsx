@@ -35,8 +35,8 @@ ChartJS.register(
     };
     let labels: string[] = [];
     
-    var dat=info.info.jornada.length
-    var dato=info.info.jornada;
+    var dat=info.length
+    var dato=info.jornada;
       for (let i=1; i<dat+1;i++){
           labels.push(`${i}`)        
       } 
@@ -55,7 +55,7 @@ ChartJS.register(
       labels,
       datasets: [
         {
-          data: valor,
+          data: Array.from({ length: length }, () => Math.floor(Math.random() * 9) + 1),
           backgroundColor: 'green',
           borderRadius:6,
           barThickness:6,
@@ -67,7 +67,7 @@ ChartJS.register(
     return (
           <>
             <div className="chart-container">
-              <Bar options={options} data={data} width={"50px"} height={"70px"} />
+              <Bar options={options} data={data} width={"40px"} height={"60px"} />
             </div>
               
           </>

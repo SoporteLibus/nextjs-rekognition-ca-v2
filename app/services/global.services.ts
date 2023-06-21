@@ -38,8 +38,8 @@ export const axiosPut = (url: string, data: ApiEmployeesData) =>{
     })
 }
 
-export const axiosPostAny = (url: string, data: any) =>{
-    return axios.post(`${baseURL}${url}`, data,{
+export const axiosPostAny = async (url: string, data: any) =>{
+    return await axios.post(`${baseURL}${url}`, data,{
         headers: Authorization
     })
 }
