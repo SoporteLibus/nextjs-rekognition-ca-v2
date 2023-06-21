@@ -11,9 +11,9 @@
     overflow-x: hidden;
 }
 
-/* .widget::-webkit-scrollbar {
+.widget::-webkit-scrollbar {
     display: none;
-} */
+}
 
 .widget>header {
     position: sticky;
@@ -83,11 +83,10 @@
 }
 
 .contentinner>div {
-    width: 608px;
-    margin-right: 3rem;
+    width: 576px;
 }
 
-@media (max-width: 700px) {
+@media (max-width:400px) {
     .widget {
         background: #ffffff;
         width: 370;
@@ -106,8 +105,7 @@
         transition: 0.3s;
     }
     .contentinner>div {
-        width: 370px;
-        margin-right: 25px;
+        width: 376px;
     }
     .content {
         position: relative;
