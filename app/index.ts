@@ -11,11 +11,11 @@ export { default as MainSection } from './pages/employees/components/MainSection
 export { default as Card } from './pages/employees/components/MainSection/components/Card';
 export { default as EditDetailsModal } from './pages/employees/components/ModelPopup/EditDetailsModal';
 export { default as ModelPopup } from './pages/employees/components/ModelPopup/ModelPopup';
-export { default as TopNav } from './pages/employees/components/TopNav/TopNav';
+// export { default as TopNav } from './pages/employees/components/TopNav/TopNav';
 export { default as Employees } from './pages/employees/page';
 export * from './pages/employees/types';
-export * from './pages/face-detect';
-export * from './pages/face-register';
+// export * from './pages/face-detect';
+// export * from './pages/face-register';
 export * from './pages';
 export * from './services';
 export * from './types';
