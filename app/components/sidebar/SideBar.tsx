@@ -1,25 +1,18 @@
 "use client"
 import styles from '@/app/styles/sidebar.module.css'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { MenuProps } from '../../types';
 import Image from 'next/image';
 import LogoBar from './components/LogoBar';
 import MenuItem from './components/MenuItem';
-import { Context } from '@/app/utils/context/ContextProvider';
 
 const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
   const [hide, setHide] = useState<boolean>(true);
-  const { title, setTitle }: any = useContext(Context)
 
   const toggleHideText = () => { 
     setHide(!hide);
   };
-
-  useEffect(() => {
-    setTitle("Panel Principal")
-  }, [])
-  
 
   return (
     <>
@@ -49,20 +42,13 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
         <button className={styles.toggle} onClick={() => toggleHideText()} >
           <AiOutlineMenu />
         </button>
-
-        <div className={styles.search}>
-            <label>
-              <h1>{ title }</h1>
-            </label>
-        </div>
-
-          <div className={styles.user}>
-            <Image
-              src="/argulycia.jpg"
-              alt="User image"
-              width={25}
-              height={25}
-            />
+        <div className={styles.user}>
+          <Image
+            src="/argulycia.jpg"
+            alt="User image"
+            width={25}
+            height={25}
+          />
         </div>
       </div>
       {children}

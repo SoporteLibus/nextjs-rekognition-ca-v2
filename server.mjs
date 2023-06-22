@@ -9,9 +9,9 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 const options = {
-  key: fs.readFileSync('/home/mateo/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.key'),
-  cert: fs.readFileSync('/home/mateo/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.crt'),
-  ca:[fs.readFileSync('/home/mateo/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.pem')]
+  key: fs.readFileSync('/home/angel/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.key'),
+  cert: fs.readFileSync('/home/angel/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.crt'),
+  ca:[fs.readFileSync('/home/angel/Desktop/nextjs-rekognition-ca-v2/cert/RootCA.pem')]
 };
 
 app.prepare().then(() => {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from '../../styles/mainsection.module.css'
 import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
@@ -6,16 +6,13 @@ import Card from "./components/Card";
 import ModelPopup from "../ModelPopup/ModelPopup";
 import { axiosGet } from "@/app/services";
 import Loading from "./components/loading";
-import { Context } from '@/app/utils/context/ContextProvider';
 
 const MainSection = () => {
   const [showModal, setShowModal] = useState(false)
   const [employees, setEmployees] = useState([])
-  const All = employees.length
   const [reRender, setReRender] = useState(false)
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState("")
-  const { setTitle }: any = useContext(Context)
 
   const getAllEmployee = async () => {
     try {
@@ -48,7 +45,6 @@ const MainSection = () => {
 
   useEffect(() => {
     getAllEmployee()
-    setTitle("Empleados")
     setTimeout(() => {
       setLoading(false)
     }, 5000);
@@ -62,7 +58,7 @@ const MainSection = () => {
       <div className={style.mainContainer}>
         <div className={style.mainWrapper}>
           <h1>
-            Encontrados: <span className={style.empcount}>{All}</span>
+            Encontrados: <span className={style.empcount}>{employees.length}</span>
           </h1>
           <div className={style.employeeHeader}>
             <div className={style.searchBox}>
