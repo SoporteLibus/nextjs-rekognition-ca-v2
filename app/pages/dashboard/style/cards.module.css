@@ -19,8 +19,7 @@
     width: 200px;
     cursor: pointer;
     border-radius: 20px;
-    box-shadow:  -5px -5px 10px #a8a8a8,
-             5px 5px 10px #ffffff;
+    box-shadow: var(--box-shadow);
 }
 
 .cardBox .card .numbers {
