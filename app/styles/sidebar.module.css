@@ -48,6 +48,13 @@
     margin-bottom: 40px;
 }
 
+.navigation ul li:nth-child(1):hover,
+.navigation ul li:nth-child(1).hovered,
+.navigationactive ul li:nth-child(1):hover,
+.navigationactive ul li:nth-child(1).hovered {
+    background-color: transparent;
+}
+
 .navigation ul li a,
 .navigationactive ul li a {
     position: relative;
