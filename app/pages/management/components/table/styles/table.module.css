@@ -56,8 +56,8 @@
 
 .table {
     width: 100%;
-    height: 100%;
-
+    height: max-content;
+    border-collapse: collapse;
 }
 
 .table thead td {
