@@ -21,7 +21,7 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
       <ul>
         <li>
           <a href='#'>
-            <span className={styles.icon} onClick={() => window.location.reload()}><LogoBar /></span>
+            <span className={styles.icon} onClick={() => window.location.replace("/")}><LogoBar /></span>
             <span className={styles.titlelogo}>Argul y Cia</span>
           </a>
         </li>
