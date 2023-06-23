@@ -1,0 +1,139 @@
+.wrapper {
+    height: 100%;
+}
+
+.widget {
+    background: #ffffff;
+    width: 608;
+    border-radius: 8px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+/* .widget::-webkit-scrollbar {
+    display: none;
+} */
+
+.widget>header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #e2e1ef;
+    width: 100%;
+    background-color: var(--white);
+    z-index: 999;
+}
+
+.widget>header>button {
+    font-size: 15px;
+    width: 165px;
+    cursor: pointer;
+    background: transparent;
+    color: #918db7;
+    border: 0;
+    font-size: 24px;
+    transition: 0.3s;
+}
+
+.widget>header>button:hover:not(.active) {
+    opacity: 1;
+}
+
+.widget>header>button.active {
+    color: var(--red);
+    width: 165px;
+}
+
+.content {
+    position: relative;
+    height: 500px;
+}
+
+.contentinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    width: calc(608 * 3);
+    transition: 0.3s;
+}
+
+.underline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 165px;
+    height: 3px;
+    background: var(--red);
+    transition: 0.2s;
+}
+
+.h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.contentinner>div {
+    width: 608px;
+    margin-right: 3rem;
+}
+
+@media (max-width: 700px) {
+    .widget {
+        background: #ffffff;
+        width: 370;
+        border-radius: 8px;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    .contentinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-start;
+        width: calc(370 * 3);
+        transition: 0.3s;
+    }
+    .contentinner>div {
+        width: 370px;
+        margin-right: 25px;
+    }
+    .content {
+        position: relative;
+        height: 550px;
+    }
+    .widget>header>button {
+        font-size: 15px;
+        width: 120px;
+        cursor: pointer;
+        background: transparent;
+        color: #918db7;
+        border: 0;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+    .widget>header>button.active {
+        color: var(--red);
+        width: 120px;
+    }
+    .underline {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 120px;
+        height: 3px;
+        background: var(--red);
+        transition: 0.2s;
+    }
+}
