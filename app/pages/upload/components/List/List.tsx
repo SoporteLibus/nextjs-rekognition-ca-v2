@@ -14,18 +14,18 @@ const TR: React.FC<Tr> = ({ name, lastname, docket, entrance, exit, setEmployee 
             <td>{entrance}</td>
             <td>{exit}</td>
             <td>
-                <button className={style.button} onClick={() => setEmployee(docket)} >{docket}</button>
+                <button className={style.button} onClick={() => setEmployee(docket)}>Modificar</button>
             </td>
         </tr>
     )
 }
 
-const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee}) => {
+const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee, showModal}) => {
   return (
       <div className={style.recentOrders}>
         <div className={style.cardHeader}>
             <h2>{title}</h2>
-            <a href="#" className={style.btn}>PDF</a>
+            <button className={style.button} onClick={() => showModal(true)}>+</button>
         </div>
           <div className={style.divMedium}>
             <table className={style.table}>

@@ -16,4 +16,5 @@ export interface ListObjects {
         exit: string, lastname: string, setEmployee: React.Dispatch<SetStateAction<string>>
     }[];
     setEmployee: React.Dispatch<SetStateAction<string>>;
+    showModal: React.Dispatch<SetStateAction<boolean>>;
 }

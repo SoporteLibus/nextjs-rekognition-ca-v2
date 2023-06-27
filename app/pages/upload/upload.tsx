@@ -81,14 +81,10 @@ const Upload = () => {
     
     const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
 
-    const prueba = [
-        { name: "Angel david", lastname: "Coceres", docket: "892", entrance: "00:00", exit: "00:00", button: "892" },
-    ]
-
     useEffect(() => {
         hoursData()
         employee && setShowModal(true)
-    }, [showModal, employee])
+    }, [employee])
     
     
     return (
@@ -98,7 +94,11 @@ const Upload = () => {
         }
             <Card items={cardList} />
             <div className="details">
-                <List title='Empleados con horas extra' titlelist={titleList} items={myarray} setEmployee={setEmployee} />
+                <List title='Empleados con horas extra'
+                    titlelist={titleList} items={myarray}
+                    setEmployee={setEmployee}
+                    showModal={setShowModal}
+                />
             </div>
         </>
     )
