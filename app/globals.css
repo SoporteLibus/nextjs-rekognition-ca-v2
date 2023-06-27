@@ -16,6 +16,10 @@
   --displacement: 3px;
   --displacementNegative: -3px;
   --primary: rgb(182, 157, 230);
+  --box-shadow: 5px 5px 16px #d6d6d6,
+    -5px -5px 16px #ffffff;
+  --box-shadow-opposite: -5px -5px 16px #d6d6d6,
+    5px 5px 16px #ffffff;
 }
 
 * {
