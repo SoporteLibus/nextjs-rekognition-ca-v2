@@ -32,7 +32,14 @@ export const axiosDelete = (url: string) =>{
         headers: Authorization
     })
 }
+
 export const axiosPut = (url: string, data: ApiEmployeesData) =>{
+    return axios.put(`${baseURL}${url}`, data,{
+        headers: Authorization
+    })
+}
+
+export const axiosPutExtras = (url: string, data: any[]) =>{
     return axios.put(`${baseURL}${url}`, data,{
         headers: Authorization
     })

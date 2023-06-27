@@ -1,0 +1,51 @@
+.addbtn {
+    background-color: var(--blue);
+    border: none;
+    font: inherit;
+    padding: 10px 16px;
+    cursor: pointer;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.employeeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.searchBox {
+    background-color: #ecedf6;
+    height: 2rem;
+    display: flex;
+    padding: 4px 12px;
+    border-radius: 8px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.searchBox form {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchBox form>input {
+    background-color: transparent;
+    font: inherit;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.searchBox form>input::placeholder {
+    color: #B3B4C0;
+}
+
+.searchBox form>input:focus {
+    outline: none;
+}

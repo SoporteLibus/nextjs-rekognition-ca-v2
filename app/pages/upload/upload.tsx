@@ -6,6 +6,9 @@ import ModelPopup from "./components/ModelPopup/ModelPopup";
 import { TbUserPlus } from 'react-icons/tb'
 import moment from "moment";
 import { axiosGet } from "@/app/services";
+import style from './style/uploads.module.css'
+import { BiSearch } from "react-icons/bi";
+import { IoMdAdd } from "react-icons/io";
 
 interface EmpProp {
   foto: string
@@ -43,9 +46,21 @@ interface Jornada {
 const Upload = () => {
     const [showModal, setShowModal] = useState(false)
     const [employees, setEmployees] = useState([])
-    const [employee, setEmployee] = useState("")
+    const [employee, setEmployee] = useState<any[]>(["", "", ""])
+    const [search, setSearch] = useState("")
     let myarray: any[] = [];
     let extras = 0;
+
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    try {
+        const res = await axiosGet(`buscar?keyword=${search}`)
+        setEmployees(res.data.data)
+    }
+    catch (err) {
+        console.log("Error en la busqueda de empleados")
+    }
+  }
 
     const hoursData = async () => {
         try {
@@ -58,19 +73,12 @@ const Upload = () => {
     }
 
     const Extras = employees
-    .filter((emp: EmpProp) => emp.jornada[0].habilitado_horas_extra == false) // Filtrar los empleados con entrada no nula
-        .map((emp: EmpProp) => {
-        const entranceDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
-        const exitDate = moment.utc(emp.jornada[0].salida, "YYYY-MM-DD HH:mm:ss").local().toDate();
-        const entranceTime = `${entranceDate.getHours()}:${entranceDate.getMinutes()}:${entranceDate.getSeconds()}`
-        const exitTime = `${exitDate.getHours()}:${exitDate.getMinutes()}:${exitDate.getSeconds()}`
+    .map((emp: EmpProp) => {
         extras = extras + 1
         myarray.push({
             name: emp.nombre,
             lastname: emp.apellido,
             docket: emp.legajo,
-            entrance: (entranceTime == "NaN:NaN:NaN") ? "--:--:--" : entranceTime,
-            exit: (exitTime == "NaN:NaN:NaN") ? "--:--:--" : exitTime,
       });
       return myarray;
     });
@@ -79,10 +87,10 @@ const Upload = () => {
         { icon: <TbUserPlus size={55} />, numbers: extras, text: "Cantidad total", link: "" },
     ]
     
-    const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
+    const titleList = ["Nombre", "Apellido", "Legajo", "Habilitado", "Estado"]
 
     useEffect(() => {
-        hoursData()
+        // hoursData()
         employee && setShowModal(true)
     }, [employee])
     
@@ -90,14 +98,32 @@ const Upload = () => {
     return (
         <>
         {
-            showModal && <ModelPopup setShowModal={setShowModal} docket={employee} />
+            showModal && <ModelPopup setShowModal={setShowModal} data={employee} />
         }
             <Card items={cardList} />
+            <div className={style.employeeHeader}>
+                <div className={style.searchBox}>
+                    <form onSubmit={handleSearch}>
+                        <input
+                        type="text"
+                        placeholder="Busqueda por nombre o legajo"
+                        onChange={e => setSearch(e.target.value)}
+                        />
+                        <button style={{ border: "none", cursor: "pointer" }}
+                        type="submit">
+                        <BiSearch size={20} />
+                        </button>
+                    </form>
+                </div>
+                {/* <button className={style.addbtn}
+                onClick={() => setShowModal(true)}>
+                    <IoMdAdd size="20" color="#fffff" />
+                </button> */}
+            </div>
             <div className="details">
                 <List title='Empleados con horas extra'
                     titlelist={titleList} items={myarray}
                     setEmployee={setEmployee}
-                    showModal={setShowModal}
                 />
             </div>
         </>

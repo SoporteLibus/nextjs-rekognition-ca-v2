@@ -3,29 +3,24 @@ import { ListObjects, Tr } from "../../types/list.types"
 import React from "react"
 import style from '../../style/list.module.css'
 
-// { nombre: "Angel david", lastname: "Coceres", docket: "892", entrance: "00:00", exit: "00:00", button: "892" }
-
-const TR: React.FC<Tr> = ({ name, lastname, docket, entrance, exit, setEmployee }) => {
+const TR: React.FC<Tr> = ({ name, lastname, docket, setEmployee }) => {
     return (
         <tr>
             <td>{name}</td>
             <td>{lastname}</td>
             <td>{docket}</td>
-            <td>{entrance}</td>
-            <td>{exit}</td>
             <td>
-                <button className={style.button} onClick={() => setEmployee(docket)}>Modificar</button>
+                <button className={style.button} onClick={() => setEmployee([ name, lastname, docket ])}>Agregar</button>
             </td>
         </tr>
     )
 }
 
-const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee, showModal}) => {
+const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee}) => {
   return (
       <div className={style.recentOrders}>
         <div className={style.cardHeader}>
             <h2>{title}</h2>
-            <button className={style.button} onClick={() => showModal(true)}>+</button>
         </div>
           <div className={style.divMedium}>
             <table className={style.table}>
@@ -44,8 +39,6 @@ const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee, show
                             name={item.name}
                             lastname={item.lastname}
                             docket={item.docket}
-                            entrance={item.entrance}
-                            exit={item.exit}
                             setEmployee={setEmployee}
                         />
                     ))}

@@ -413,7 +413,7 @@ const ModelPopup = ({ setShowModal }: any) => {
                     <div className={style.modalFooter}>
                         <button className={style.addbtn} type="submit">Guardar</button>
                         <button className={style.addbtn}
-                            type="submit"
+                            type="button"
                             onClick={() => setShowModal(false)}
                         >Cerrar</button>
                     </div>
