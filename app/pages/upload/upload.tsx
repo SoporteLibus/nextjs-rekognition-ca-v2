@@ -87,7 +87,7 @@ const Upload = () => {
         { icon: <TbUserPlus size={55} />, numbers: extras, text: "Cantidad total", link: "" },
     ]
     
-    const titleList = ["Nombre", "Apellido", "Legajo", "Habilitado", "Estado"]
+    const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
 
     useEffect(() => {
         // hoursData()
