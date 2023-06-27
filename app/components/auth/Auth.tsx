@@ -22,7 +22,7 @@ const routes = [
   { icon: <MdOutlineManageHistory size={25}/>, text:'Carga', link:"pages/upload"},
   { icon:<TbReportAnalytics size={25}/>, text:'Reportes',link:"pages/report"},
   { icon: <SlSettings size={25}/> ,text:'Configuracion', link:"pages/config"},
-  { icon: <IoExitOutline size={25} />, text: 'Salir', link: "/" },
+  { icon: <IoExitOutline size={25}/> , text: 'Salir', link: "/" },
 ];
 
 interface Auth {

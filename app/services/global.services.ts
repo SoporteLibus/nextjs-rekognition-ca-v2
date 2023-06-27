@@ -55,3 +55,9 @@ export const axiosPutMultipart = (url: string, data: ApiEmployeesData) =>{
         headers: AuthorizationMultipart
     })
 }
+
+export const axiosPutAny = (url: string, data: any) =>{
+    return axios.put(`${baseURL}${url}`, data,{
+        headers: Authorization
+    })
+}
