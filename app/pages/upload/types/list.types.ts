@@ -5,6 +5,9 @@ export interface Tr {
     docket: string;
     lastname: string;
     setEmployee: React.Dispatch<SetStateAction<any[]>>;
+    setShowModalExtras: React.Dispatch<SetStateAction<boolean>>;
+    setShowModalNormal: React.Dispatch<SetStateAction<boolean>>;
+    setShowModalLicencia: React.Dispatch<SetStateAction<boolean>>;
 }
 
 export interface ListObjects {
@@ -12,7 +15,13 @@ export interface ListObjects {
     titlelist: string[];
     items: {
         name: string, docket: string,
-        lastname: string, setEmployee: React.Dispatch<SetStateAction<any[]>>
+        lastname: string, setEmployee: React.Dispatch<SetStateAction<any[]>>,
+        setShowModalExtras: React.Dispatch<SetStateAction<boolean>>,
+        setShowModalNormal: React.Dispatch<SetStateAction<boolean>>,
+        setShowModalLicencia: React.Dispatch<SetStateAction<boolean>>
     }[];
     setEmployee: React.Dispatch<SetStateAction<string[]>>;
+    setShowModalExtras: React.Dispatch<SetStateAction<boolean>>;
+    setShowModalNormal: React.Dispatch<SetStateAction<boolean>>;
+    setShowModalLicencia: React.Dispatch<SetStateAction<boolean>>;
 }

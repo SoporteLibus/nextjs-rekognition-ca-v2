@@ -6,7 +6,7 @@ import InputCheckBoxForm from "./components/InputCheckBoxForm";
 import Swal from "sweetalert2";
 import { axiosPutExtras } from "@/app/services";
 
-const ModelPopup = ({ setShowModal, data }: any) => {
+const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
     const [Legajo, setLegajo] = useState(data[2])
     const [Apellido, setApellido] = useState(data[1])
     const [Nombre, setNombre] = useState(data[0])
@@ -35,7 +35,7 @@ const ModelPopup = ({ setShowModal, data }: any) => {
             <form onSubmit={handleSubmit}>
                 <div className={style.modalBox}>
                     <div className={style.modalHeader}>
-                        <h2>Habilitacion de Horas Extra</h2>
+                        <h2>Habilitacion de Licencias</h2>
                     </div>
                     <div className={style.modalInner}>
                     <Widget >
@@ -82,7 +82,7 @@ const ModelPopup = ({ setShowModal, data }: any) => {
                         <button className={style.addbtn} type="submit">Guardar</button>
                         <button className={style.addbtn}
                             type="button"
-                            onClick={() => setShowModal(false)}
+                            onClick={() => { setShowModal(false), setEmployee(["","",""]) }}
                         >Cerrar</button>
                     </div>
                 </div>
@@ -91,4 +91,4 @@ const ModelPopup = ({ setShowModal, data }: any) => {
     )
 };
 
-export default ModelPopup;
+export default ModalLicencia;

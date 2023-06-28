@@ -3,20 +3,35 @@ import { ListObjects, Tr } from "../../types/list.types"
 import React from "react"
 import style from '../../style/list.module.css'
 
-const TR: React.FC<Tr> = ({ name, lastname, docket, setEmployee }) => {
+const TR: React.FC<Tr> = ({ name, lastname, docket, setEmployee, setShowModalExtras,
+    setShowModalNormal, setShowModalLicencia }) => {
     return (
         <tr>
             <td>{name}</td>
             <td>{lastname}</td>
             <td>{docket}</td>
             <td>
-                <button className={style.button} onClick={() => setEmployee([ name, lastname, docket ])}>Agregar</button>
+                <button className={style.button} onClick={() => {
+                    setEmployee([name, lastname, docket]),
+                    setShowModalExtras(true)
+                }}>Extra</button>
+                <button className={style.button} onClick={() => {
+                    setEmployee([name, lastname, docket]),
+                    setShowModalLicencia(true)
+                }}>Licencia</button>
+                <button className={style.button} onClick={() => {
+                    setEmployee([name, lastname, docket]),
+                    setShowModalNormal(true)
+                }}>Normal</button>
             </td>
         </tr>
     )
 }
 
-const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee}) => {
+const List: React.FC<ListObjects> = ({
+    title, titlelist, items, setEmployee, setShowModalExtras,
+    setShowModalNormal, setShowModalLicencia
+}) => {
   return (
       <div className={style.recentOrders}>
         <div className={style.cardHeader}>
@@ -40,6 +55,9 @@ const List: React.FC<ListObjects> = ({title, titlelist, items, setEmployee}) => 
                             lastname={item.lastname}
                             docket={item.docket}
                             setEmployee={setEmployee}
+                            setShowModalExtras={item.setShowModalExtras}
+                            setShowModalNormal={item.setShowModalNormal}
+                            setShowModalLicencia={item.setShowModalLicencia}
                         />
                     ))}
                 </tbody>

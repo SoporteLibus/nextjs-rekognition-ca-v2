@@ -2,13 +2,15 @@
 import { useEffect, useState } from "react";
 import Card from './components/card/Card'
 import List from './components/List/List'
-import ModelPopup from "./components/ModelPopup/ModelPopup";
 import { TbUserPlus } from 'react-icons/tb'
 import moment from "moment";
 import { axiosGet } from "@/app/services";
 import style from './style/uploads.module.css'
 import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
+import ModalExtras from "./components/ModelPopup/ModalExtras";
+import ModalNormal from "./components/ModelPopup/ModalNormal";
+import ModalLicencia from "./components/ModelPopup/ModalLicencia";
 
 interface EmpProp {
   foto: string
@@ -44,7 +46,9 @@ interface Jornada {
 }
 
 const Upload = () => {
-    const [showModal, setShowModal] = useState(false)
+    const [showModalExtras, setShowModalExtras] = useState(false)
+    const [showModalNormal, setShowModalNormal] = useState(false)
+    const [showModalLicencia, setShowModalLicencia] = useState(false)
     const [employees, setEmployees] = useState([])
     const [employee, setEmployee] = useState<any[]>(["", "", ""])
     const [search, setSearch] = useState("")
@@ -88,18 +92,12 @@ const Upload = () => {
     ]
     
     const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
-
-    useEffect(() => {
-        // hoursData()
-        employee && setShowModal(true)
-    }, [employee])
-    
     
     return (
         <>
-        {
-            showModal && <ModelPopup setShowModal={setShowModal} data={employee} />
-        }
+            {showModalExtras && <ModalExtras setShowModal={setShowModalExtras} data={employee} setEmployee={setEmployee} />}
+            {showModalNormal && <ModalNormal setShowModal={setShowModalNormal} data={employee} setEmployee={setEmployee} />}
+            {showModalLicencia && <ModalLicencia setShowModal={setShowModalLicencia} data={employee} setEmployee={setEmployee} />}
             <Card items={cardList} />
             <div className={style.employeeHeader}>
                 <div className={style.searchBox}>
@@ -124,6 +122,9 @@ const Upload = () => {
                 <List title='Empleados con horas extra'
                     titlelist={titleList} items={myarray}
                     setEmployee={setEmployee}
+                    setShowModalExtras={setShowModalExtras}
+                    setShowModalLicencia={setShowModalLicencia}
+                    setShowModalNormal={setShowModalNormal}
                 />
             </div>
         </>
