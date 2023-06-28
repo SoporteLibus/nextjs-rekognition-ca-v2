@@ -7,6 +7,8 @@ import Image from 'next/image';
 import LogoBar from './components/LogoBar';
 import MenuItem from './components/MenuItem';
 
+declare var window: any
+
 const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
   const [hide, setHide] = useState<boolean>(true);
 

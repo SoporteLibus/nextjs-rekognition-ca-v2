@@ -1,7 +1,8 @@
 import React from "react";
 import style from '../style/editdetailmodal.module.css'
 
-let width = window.innerWidth
+declare var window: any
+
 const tabWidth = 576;
 const tabWidthMobile = 376;
 
@@ -9,7 +10,9 @@ interface WidgetProps {
   children: React.ReactNode;
 }
 
-const Widget: React.FC<WidgetProps> = ({children}) => {
+const Widget: React.FC<WidgetProps> = ({ children }) => {
+  const width: number = window.innerWidth;
+  
   return (
     <div className={style.widget}>
       <div className={style.content}>

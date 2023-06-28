@@ -5,6 +5,8 @@ import { axiosLogin } from '@/app/services'
 import Swal from 'sweetalert2'
 import { setCookie } from 'cookies-next'
 
+declare var window: any
+
 interface LoginProp {
 	setAuth?: React.Dispatch<SetStateAction<boolean>>;
 }

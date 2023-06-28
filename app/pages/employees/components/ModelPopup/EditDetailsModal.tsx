@@ -9,6 +9,8 @@ import { getCookie } from 'cookies-next';
 import axios from 'axios';
 import { axiosPutMultipart } from '@/app/services';
 
+declare var window: any
+
 interface EditDetailsModalProps {
     empById: ApiEmployeesData
     setEditModal: React.Dispatch<SetStateAction<boolean>>

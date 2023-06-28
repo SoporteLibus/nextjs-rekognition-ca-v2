@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import style from '../style/editdetailmodal.module.css'
 
-let width = window.innerWidth
+declare var window: any
+
+let width: number = window.innerWidth
 const buttonWidth = 185;
 const buttonWidthMobile = 130;
 const tabWidth = 608;

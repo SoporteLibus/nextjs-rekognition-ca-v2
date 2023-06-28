@@ -55,9 +55,9 @@ const List: React.FC<ListObjects> = ({
                             lastname={item.lastname}
                             docket={item.docket}
                             setEmployee={setEmployee}
-                            setShowModalExtras={item.setShowModalExtras}
-                            setShowModalNormal={item.setShowModalNormal}
-                            setShowModalLicencia={item.setShowModalLicencia}
+                            setShowModalExtras={setShowModalExtras}
+                            setShowModalNormal={setShowModalNormal}
+                            setShowModalLicencia={setShowModalLicencia}
                         />
                     ))}
                 </tbody>
