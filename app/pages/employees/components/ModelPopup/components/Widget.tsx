@@ -3,7 +3,6 @@ import style from '../style/editdetailmodal.module.css'
 
 declare var window: any
 
-let width: number = window.innerWidth
 const buttonWidth = 185;
 const buttonWidthMobile = 130;
 const tabWidth = 608;
@@ -16,6 +15,7 @@ interface WidgetProps {
 
 const Widget: React.FC<WidgetProps> = ({children, tabHeaders}) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const width: number = window.innerWidth;
 
   return (
     <div className={style.widget}>
