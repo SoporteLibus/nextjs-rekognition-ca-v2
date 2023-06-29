@@ -1,6 +1,6 @@
 "use client"
 import { axiosGet } from "@/app/services";
-import List from "../components/List/List"
+import List from "./component/List/List"
 import { EmpProp } from "../types";
 import { useEffect, useState } from "react";
 import { TbUserOff, TbUserX, TbUserCheck, TbUserPlus, TbUser } from 'react-icons/tb'
@@ -9,6 +9,7 @@ import Card from "../components/card/Card";
 
 const Produccion = () => {
   const [employees, setEmployees] = useState([])
+  const [selectedValue, setSelectedValue] = useState('');
   let myarray: any[] = [];
   let status = "";
   let ausents = 0;
@@ -28,7 +29,9 @@ const Produccion = () => {
 
   employees
     .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
+
     .map((emp: EmpProp) => {
+      console.log(emp)
       const entranceDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
       const exitDate = moment.utc(emp.jornada[0].salida, "YYYY-MM-DD HH:mm:ss").local().toDate();
       const entranceTime = `${entranceDate.getHours()}:${entranceDate.getMinutes()}:${entranceDate.getSeconds()}`
@@ -110,4 +113,5 @@ const Produccion = () => {
     </>
     )
 }
+
 export default Produccion
