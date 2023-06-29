@@ -5,8 +5,8 @@ declare var window: any
 
 const buttonWidth = 185;
 const buttonWidthMobile = 130;
-const tabWidth = 608;
-const tabWidthMobile = 393;
+const tabWidth = 576;
+const tabWidthMobile = 376;
 
 interface WidgetProps {
     children: React.ReactNode
