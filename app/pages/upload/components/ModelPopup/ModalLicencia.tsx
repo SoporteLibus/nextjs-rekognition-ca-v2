@@ -2,23 +2,32 @@ import React, { useState } from "react";
 import style from './style/modelpopup.module.css'
 import Widget from "./components/Widget";
 import InputForm from "./components/InputForm";
-import InputCheckBoxForm from "./components/InputCheckBoxForm";
 import Swal from "sweetalert2";
 import { axiosPutExtras } from "@/app/services";
+import InputSelect from "./components/InputSelect";
+import moment from "moment";
 
 const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
     const [Legajo, setLegajo] = useState(data[2])
     const [Apellido, setApellido] = useState(data[1])
     const [Nombre, setNombre] = useState(data[0])
-    const [FechaExtra, setFechaExtra] = useState<Date>(new Date())
+    const [FechaLicencia, setFechaLicencia] = useState<Date>(new Date())
     const [Activo, setActivo] = useState(false)
+    const [SelectedValue, setSelectedValue] = useState(data[0])
     
     const setExtras = async() => {
         try {
-            const res = await axiosPutExtras(`habilitar/${data[2]}`, [
-                FechaExtra.toISOString().split('T')[0],
-                Activo
+            const res = await axiosPutExtras(`cargar/${data[2]}`, [
+                "licencia",
+                FechaLicencia.toISOString().split('T')[0],
+                
             ])
+            // [
+            //     "normal",
+            //     "2023-06-13",
+            //     "2023-06-13T13:58:03.000",
+            //     "2023-06-13T22:01:05.000"
+            // ]
         }
         catch (err) {
         console.log("No se pudieron obtener los empleados")
@@ -61,20 +70,31 @@ const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
                                 onChange={e => setLegajo(e.target.value)}
                                 value={Legajo}
                             />
-                            <InputCheckBoxForm checked={Activo}
-                                ResponseFalse="Inhabilitado"
-                                responseTrue="Habilitado"
-                                onChange={() => setActivo(!Activo)}
-                            />
                         </div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Fecha de hora extra"
-                                required={true}
-                                type="date"
-                                onChange={(e) => setFechaExtra(new Date(e.target.value))}
-                                value={FechaExtra.toISOString().split('T')[0]}
+                            <InputSelect
+                                onChange={e => setSelectedValue(e.target.value)}
+                                value={SelectedValue}
                             />
                         </div>
+                        {/* <div className={style.inputcontainer}>
+                            <InputForm title="Inicio de licencia"
+                                required={true}
+                                type="datetime-local"
+                                onChange={(e) => setFechaLicencia(new Date(e.target.value))}
+                                value={FechaLicencia.toISOString().split('T')[0]}
+                            />
+                        </div> */}
+                        <div className={style.inputcontainer}>
+                            <InputForm title="Fin de licencia"
+                                required={true}
+                                type="datetime-local"
+                                    onChange={(e) => setFechaLicencia(new Date(e.target.value))}
+                                    value={`${FechaLicencia.toISOString().split("T")[0]} ${FechaLicencia.toISOString().split("T")[1].slice(0, 5)}`}
+                            />
+                            </div>
+                            <p>Fecha: {`${FechaLicencia.toLocaleDateString()}`}</p>
+                            <p>Fecha: {moment(FechaLicencia).set({hour:0,minute:0,second:0,millisecond:0}).toDate().toISOString()}</p>
                     </div>
                     </Widget>
                     </div>

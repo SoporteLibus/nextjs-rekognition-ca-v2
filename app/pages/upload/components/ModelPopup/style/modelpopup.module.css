@@ -85,6 +85,23 @@
     z-index: 10;
 }
 
+.inputbox select {
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid black;
+    color: #23242a;
+    background-color: #918db7;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+    border-radius: 4px;
+}
+
 .inputbox span {
     position: absolute;
     left: 0;
