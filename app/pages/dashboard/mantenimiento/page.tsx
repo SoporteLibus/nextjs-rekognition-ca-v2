@@ -29,7 +29,7 @@ const Mantenimiento = () => {
   const titleList = ["Nombre", "Apellido", "Legajo", "Entrada", "Salida", "Estado"]
 
   employees
-    .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
+    .filter((emp: EmpProp) => emp.jornada[0].entrada !== null) // Filtrar los empleados con entrada no nula
     .map((emp: EmpProp) => {
       const entranceDate = moment.utc(emp.jornada[0].entrada, "YYYY-MM-DD HH:mm:ss").local().toDate();
       const exitDate = moment.utc(emp.jornada[0].salida, "YYYY-MM-DD HH:mm:ss").local().toDate();

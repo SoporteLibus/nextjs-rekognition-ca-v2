@@ -64,17 +64,24 @@
     margin-top: 20px;
 }
 
+.inputboxselect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 .inputbox p {
     position: absolute;
     left: 70px;
     color: var(--gray-popup);
 }
 
-.inputbox input {
+.inputbox input,
+.inputboxselect input {
     position: relative;
     width: 100%;
     padding: 20px 10px 10px;
-    background: transparent;
     outline: none;
     box-shadow: none;
     border: none;
@@ -83,16 +90,20 @@
     letter-spacing: 0.05em;
     transition: 0.5s;
     z-index: 10;
+    background-color: #918db7;
+    border-radius: 4px;
 }
 
+.inputboxselect select,
 .inputbox select {
     position: relative;
     width: 100%;
-    padding: 20px 10px 10px;
+    height: 46px;
+    padding: 15px 5px 5px;
     background: transparent;
     outline: none;
     box-shadow: none;
-    border: 1px solid black;
+    border: none;
     color: #23242a;
     background-color: #918db7;
     font-size: 1em;
@@ -100,6 +111,7 @@
     transition: 0.5s;
     z-index: 10;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .inputbox span {
@@ -139,7 +151,7 @@
 }
 
 .addbtn {
-    background-color: #577BFA;
+    background-color: var(--blue);
     border: none;
     font: inherit;
     padding: 10px 16px;

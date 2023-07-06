@@ -122,7 +122,7 @@
 }
 
 .addbtn {
-    background-color: #577BFA;
+    background-color: var(--blue);
     border: none;
     font: inherit;
     padding: 10px 16px;

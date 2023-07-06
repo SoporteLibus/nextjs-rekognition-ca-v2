@@ -12,6 +12,7 @@ const InputSelect: React.FC<InputSelectProps> = ({ onChange, value}) => {
                 onChange={onChange}>
                 <option value="">Tipo de licencia</option>
                 <option value="diurna enfermedad">Diurna enfermedad</option>
+                <option value="tarde enfermedad">Tarde enfermedad</option>
                 <option value="nocturna enfermedad">Nocturna enfermedad</option>
                 <option value="licencia gremial">Licencia gremial</option>
                 <option value="diurna feriado ley">Diurna feriado ley</option>

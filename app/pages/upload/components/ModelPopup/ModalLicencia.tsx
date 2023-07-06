@@ -5,38 +5,38 @@ import InputForm from "./components/InputForm";
 import Swal from "sweetalert2";
 import { axiosPutExtras } from "@/app/services";
 import InputSelect from "./components/InputSelect";
-import moment from "moment";
 
 const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
-    const [Legajo, setLegajo] = useState(data[2])
-    const [Apellido, setApellido] = useState(data[1])
-    const [Nombre, setNombre] = useState(data[0])
     const [FechaLicencia, setFechaLicencia] = useState<Date>(new Date())
-    const [Activo, setActivo] = useState(false)
-    const [SelectedValue, setSelectedValue] = useState(data[0])
-    
-    const setExtras = async() => {
+    const [SelectedValue, setSelectedValue] = useState("")
+
+    const setExtras = async () => {
         try {
             const res = await axiosPutExtras(`cargar/${data[2]}`, [
                 "licencia",
                 FechaLicencia.toISOString().split('T')[0],
-                
+                SelectedValue
             ])
-            // [
-            //     "normal",
-            //     "2023-06-13",
-            //     "2023-06-13T13:58:03.000",
-            //     "2023-06-13T22:01:05.000"
-            // ]
+            Swal.fire(
+                'Peticion realizada!',
+                `${res.data.data.mensaje}`,
+                'success'
+            )
         }
         catch (err) {
-        console.log("No se pudieron obtener los empleados")
+            console.log("No se pudieron obtener los empleados")
+            Swal.fire(
+                'Error!',
+                'Peticion no realizada!',
+                'error'
+            )
         }
     }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setExtras();
+      setShowModal(false);
   };
   
   return (
@@ -50,25 +50,22 @@ const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
                     <Widget >
                     <div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Apellido"
-                                required={true}
-                                type="text"
-                                onChange={e => setApellido(e.target.value)}
-                                value={Apellido}
-                            />
                             <InputForm title="Nombre"
                                 required={true}
                                 type="text"
-                                onChange={e => setNombre(e.target.value)}
-                                value={Nombre}
+                                defaultValue={data[0]}
+                            />
+                            <InputForm title="Apellido"
+                                required={true}
+                                type="text"
+                                defaultValue={data[1]}
                             />
                         </div>
                         <div className={style.inputcontainer}>
                             <InputForm title="Legajo"
                                 required={true}
                                 type="text"
-                                onChange={e => setLegajo(e.target.value)}
-                                value={Legajo}
+                                defaultValue={data[2]}
                             />
                         </div>
                         <div className={style.inputcontainer}>
@@ -77,24 +74,14 @@ const ModalLicencia = ({ setShowModal, data, setEmployee }: any) => {
                                 value={SelectedValue}
                             />
                         </div>
-                        {/* <div className={style.inputcontainer}>
-                            <InputForm title="Inicio de licencia"
+                        <div className={style.inputcontainer}>
+                            <InputForm title="Fecha de licencia"
                                 required={true}
-                                type="datetime-local"
+                                type="date"
                                 onChange={(e) => setFechaLicencia(new Date(e.target.value))}
                                 value={FechaLicencia.toISOString().split('T')[0]}
                             />
-                        </div> */}
-                        <div className={style.inputcontainer}>
-                            <InputForm title="Fin de licencia"
-                                required={true}
-                                type="datetime-local"
-                                    onChange={(e) => setFechaLicencia(new Date(e.target.value))}
-                                    value={`${FechaLicencia.toISOString().split("T")[0]} ${FechaLicencia.toISOString().split("T")[1].slice(0, 5)}`}
-                            />
-                            </div>
-                            <p>Fecha: {`${FechaLicencia.toLocaleDateString()}`}</p>
-                            <p>Fecha: {moment(FechaLicencia).set({hour:0,minute:0,second:0,millisecond:0}).toDate().toISOString()}</p>
+                        </div>
                     </div>
                     </Widget>
                     </div>

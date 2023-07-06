@@ -28,6 +28,7 @@ const ModelPopup = ({ setShowModal, data, setEmployee }: any) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setExtras();
+      setShowModal(false);
   };
   
   return (

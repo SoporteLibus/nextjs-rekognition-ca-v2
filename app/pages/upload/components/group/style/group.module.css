@@ -1,0 +1,231 @@
+.recentOrders {
+    position: relative;
+    flex: 1 1 300px;
+    height: 200px;
+    width: 100%;
+    background: var(--white);
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.divMedium {
+    width: 100%;
+    max-height: 410px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.divMedium::-webkit-scrollbar {
+    display: none;
+}
+
+.cardHeader {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: var(--blue);
+    width: 100%;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.cardHeader .btn {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.button {
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%;
+    height: max-content;
+    border-collapse: collapse;
+    font-family: poppins;
+}
+
+.table thead tr th {
+    position: sticky;
+    top: 0;
+    font-weight: 600;
+    background-color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: start;
+}
+
+.table thead tr th:last-child {
+    text-align: end;
+}
+
+.recentOrders table tr {
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr:first-child {
+    border-bottom: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr th {
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tbody tr {
+    padding: 10px;
+}
+
+.recentOrders table tbody tr td {
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentOrders table tr td:last-child {
+    text-align: end;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.statusdelivered {
+    padding: 2px 4px;
+    background: #8de02c;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statuspending {
+    padding: 2px 4px;
+    background: #e9b10a;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusreturn {
+    padding: 2px 4px;
+    background: #f00;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.statusinProgress {
+    padding: 2px 4px;
+    background: #1795ce;
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.recentCustomers {
+    position: relative;
+    flex: 1 1 300px;
+    height: 500px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow-y: scroll;
+    box-shadow: var(--box-shadow);
+}
+
+.recentCustomers::-webkit-scrollbar {
+    display: none;
+}
+
+.recentCustomers .divBox .imgBx img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recentCustomers .divBox {
+    padding: 5px;
+    display: inline-flex;
+    width: 100%;
+    gap: 5px;
+}
+
+.recentCustomers .divBox img {
+    border-radius: 50%;
+}
+
+.recentCustomers .divBox h4 {
+    margin-left: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2rem;
+    width: 100%;
+}
+
+.recentCustomers .divBox .present {
+    color: green;
+}
+
+.recentCustomers .divBox .ausent {
+    color: red;
+}
+
+.recentCustomers .divBox h4 span {
+    font-size: 14px;
+    color: var(--black2);
+}
+
+.recentCustomers .divBox:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+.recentCustomers .divBox:hover h4 span {
+    color: var(--white);
+}

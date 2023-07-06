@@ -1,16 +1,15 @@
 "use client"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Card from './components/card/Card'
 import List from './components/List/List'
 import { TbUserPlus } from 'react-icons/tb'
-import moment from "moment";
 import { axiosGet } from "@/app/services";
-import style from './style/uploads.module.css'
-import { BiSearch } from "react-icons/bi";
-import { IoMdAdd } from "react-icons/io";
 import ModalExtras from "./components/ModelPopup/ModalExtras";
 import ModalNormal from "./components/ModelPopup/ModalNormal";
 import ModalLicencia from "./components/ModelPopup/ModalLicencia";
+import InputSearch from "./components/search/InputSearch";
+import Group from "./components/group/Group";
+import Individual from "./components/individual/Individual";
 
 interface EmpProp {
   foto: string
@@ -51,20 +50,8 @@ const Upload = () => {
     const [showModalLicencia, setShowModalLicencia] = useState(false)
     const [employees, setEmployees] = useState([])
     const [employee, setEmployee] = useState<any[]>(["", "", ""])
-    const [search, setSearch] = useState("")
     let myarray: any[] = [];
     let extras = 0;
-
-    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    try {
-        const res = await axiosGet(`buscar?keyword=${search}`)
-        setEmployees(res.data.data)
-    }
-    catch (err) {
-        console.log("Error en la busqueda de empleados")
-    }
-  }
 
     const hoursData = async () => {
         try {
@@ -87,37 +74,29 @@ const Upload = () => {
       return myarray;
     });
 
-    const cardList = [
-        { icon: <TbUserPlus size={55} />, numbers: extras, text: "Cantidad total", link: "" },
-    ]
+    // const cardList = [
+    //     { icon: <TbUserPlus size={55} />, numbers: extras, text: "Cantidad total", link: "" },
+    // ]
     
     const titleList = ["Nombre", "Apellido", "Legajo", "Estado"]
+
+    const groupList = ["Nombre de grupo", "Turno de grupo", "Fecha de inicio", "Fecha de fin", "Cargar"]
     
+    const individualList = ["Legajo", "Turno de grupo", "Fecha de inicio", "Fecha de fin", "Cargar"]
+
     return (
         <>
             {showModalExtras && <ModalExtras setShowModal={setShowModalExtras} data={employee} setEmployee={setEmployee} />}
             {showModalNormal && <ModalNormal setShowModal={setShowModalNormal} data={employee} setEmployee={setEmployee} />}
             {showModalLicencia && <ModalLicencia setShowModal={setShowModalLicencia} data={employee} setEmployee={setEmployee} />}
-            <Card items={cardList} />
-            <div className={style.employeeHeader}>
-                <div className={style.searchBox}>
-                    <form onSubmit={handleSearch}>
-                        <input
-                        type="text"
-                        placeholder="Busqueda por nombre o legajo"
-                        onChange={e => setSearch(e.target.value)}
-                        />
-                        <button style={{ border: "none", cursor: "pointer" }}
-                        type="submit">
-                        <BiSearch size={20} />
-                        </button>
-                    </form>
-                </div>
-                {/* <button className={style.addbtn}
-                onClick={() => setShowModal(true)}>
-                    <IoMdAdd size="20" color="#fffff" />
-                </button> */}
+            {/* <Card items={cardList} /> */}
+            <div className="details">
+                <Group title="Modificar turnos de Grupos" titlelist={groupList} />
             </div>
+            <div className="details">
+                <Individual title="Modificar turno Individual" titlelist={individualList} />
+            </div>
+            <InputSearch setEmployees={setEmployees} />
             <div className="details">
                 <List title='Empleados con horas extra'
                     titlelist={titleList} items={myarray}

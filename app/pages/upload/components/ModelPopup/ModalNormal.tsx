@@ -2,32 +2,49 @@ import React, { useState } from "react";
 import style from './style/modelpopup.module.css'
 import Widget from "./components/Widget";
 import InputForm from "./components/InputForm";
-import InputCheckBoxForm from "./components/InputCheckBoxForm";
 import Swal from "sweetalert2";
 import { axiosPutExtras } from "@/app/services";
 
 const ModalNormal = ({ setShowModal, data, setEmployee }: any) => {
-    const [Legajo, setLegajo] = useState(data[2])
-    const [Apellido, setApellido] = useState(data[1])
-    const [Nombre, setNombre] = useState(data[0])
-    const [FechaExtra, setFechaExtra] = useState<Date>(new Date())
-    const [Activo, setActivo] = useState(false)
+    const [Inicio, setInicio] = useState<Date>(new Date())
+    const [Fin, setFin] = useState<Date>(new Date())
     
-    const setExtras = async() => {
+    const DateTime = (data: any) => {
+        const fullDate = `${data.toISOString().split("T")[0]}`
+        const hour = `${+data.toISOString().split("T")[1].slice(0, 2) - 3}`
+        const minutes = `${data.toISOString().split("T")[1].slice(2, 8)}`
+
+        return `${fullDate} ${(hour.length == 1) ? "0" + hour : hour}${minutes}`
+    }
+
+    const setExtras = async () => {
         try {
-            const res = await axiosPutExtras(`habilitar/${data[2]}`, [
-                FechaExtra.toISOString().split('T')[0],
-                Activo
+            const res = await axiosPutExtras(`cargar/${data[2]}`, [
+                "normal",
+                Inicio.toISOString().split('T')[0],
+                Inicio.toISOString().slice(0, -1),
+                Fin.toISOString().slice(0,-1)
             ])
+            Swal.fire(
+                'Peticion realizada!',
+                `${res.data.data.mensaje}`,
+                'success'
+            )
         }
         catch (err) {
-        console.log("No se pudieron obtener los empleados")
+            console.log("No se pudieron obtener los empleados")
+            Swal.fire(
+                'Error!',
+                'Peticion no realizada!',
+                'error'
+            )
         }
     }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       setExtras();
+      setShowModal(false);
   };
   
   return (
@@ -35,44 +52,44 @@ const ModalNormal = ({ setShowModal, data, setEmployee }: any) => {
             <form onSubmit={handleSubmit}>
                 <div className={style.modalBox}>
                     <div className={style.modalHeader}>
-                        <h2>Habilitacion de Horas Normales</h2>
+                        <h2>Habilitacion de Licencias</h2>
                     </div>
                     <div className={style.modalInner}>
                     <Widget >
                     <div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Apellido"
-                                required={true}
-                                type="text"
-                                onChange={e => setApellido(e.target.value)}
-                                value={Apellido}
-                            />
                             <InputForm title="Nombre"
                                 required={true}
                                 type="text"
-                                onChange={e => setNombre(e.target.value)}
-                                value={Nombre}
+                                defaultValue={data[0]}
+                            />
+                            <InputForm title="Apellido"
+                                required={true}
+                                type="text"
+                                defaultValue={data[1]}
                             />
                         </div>
                         <div className={style.inputcontainer}>
                             <InputForm title="Legajo"
                                 required={true}
                                 type="text"
-                                onChange={e => setLegajo(e.target.value)}
-                                value={Legajo}
-                            />
-                            <InputCheckBoxForm checked={Activo}
-                                ResponseFalse="Inhabilitado"
-                                responseTrue="Habilitado"
-                                onChange={() => setActivo(!Activo)}
+                                defaultValue={data[2]}
                             />
                         </div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Fecha de hora extra"
+                            <InputForm title="Fecha de entrada"
                                 required={true}
-                                type="date"
-                                onChange={(e) => setFechaExtra(new Date(e.target.value))}
-                                value={FechaExtra.toISOString().split('T')[0]}
+                                type="datetime-local"
+                                onChange={(e) => setInicio(new Date(e.target.value))}
+                                value={DateTime(Inicio)}
+                            />
+                        </div>
+                        <div className={style.inputcontainer}>
+                            <InputForm title="Fecha de salida"
+                                required={true}
+                                type="datetime-local"
+                                onChange={(e) => setFin(new Date(e.target.value))}
+                                value={DateTime(Fin)}
                             />
                         </div>
                     </div>
@@ -82,7 +99,7 @@ const ModalNormal = ({ setShowModal, data, setEmployee }: any) => {
                         <button className={style.addbtn} type="submit">Guardar</button>
                         <button className={style.addbtn}
                             type="button"
-                          onClick={() => { setShowModal(false), setEmployee(["","",""]) }}
+                            onClick={() => { setShowModal(false), setEmployee(["","",""] ) }}
                         >Cerrar</button>
                     </div>
                 </div>

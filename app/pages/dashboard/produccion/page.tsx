@@ -28,7 +28,7 @@ const Produccion = () => {
   }
 
   employees
-    .filter((emp: EmpProp) => emp.jornada[0].entrada == null) // Filtrar los empleados con entrada no nula
+    .filter((emp: EmpProp) => emp.jornada[0].entrada !== null) // Filtrar los empleados con entrada no nula
 
     .map((emp: EmpProp) => {
       console.log(emp)
