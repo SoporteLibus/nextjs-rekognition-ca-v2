@@ -9,6 +9,7 @@ export interface EmpProp {
 }
 
 interface Jornada {
+  turno: string
   descanso: true
   entrada: null | Date | string
   entrada_descanso: null | Date | string

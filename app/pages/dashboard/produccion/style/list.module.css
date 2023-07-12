@@ -106,18 +106,12 @@
     text-overflow: ellipsis;
 }
 
-.recentOrders table tr td:nth-child(2) {
-    text-align: end;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.greenCell {
+    color: green;
 }
 
-.recentOrders table tr td:nth-child(3) {
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.redCell {
+    color: red;
 }
 
 .statusdelivered {

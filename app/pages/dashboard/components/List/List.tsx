@@ -38,7 +38,7 @@ const List: React.FC<ListObjects> = ({title, titlelist, items}) => {
                 </thead>
 
                 <tbody>
-                    {items.map((item, index) => (
+                    {items && items.map((item, index) => (
                         <TR
                             key={index}
                             name={item.name}

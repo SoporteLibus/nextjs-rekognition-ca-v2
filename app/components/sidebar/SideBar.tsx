@@ -11,6 +11,7 @@ declare var window: any
 
 const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
   const [hide, setHide] = useState<boolean>(true);
+  const year = new Date().getFullYear();
 
   const toggleHideText = () => { 
     setHide(!hide);
@@ -53,7 +54,12 @@ const SideBar: React.FC<MenuProps> = ({ children, items, setAuth }) => {
           />
         </div>
       </div>
-      {children}
+        <div className={styles.children}>
+          {children}
+        </div>
+      <div className={styles.footer}>
+        Copyright &copy;{year} Argul y Cia.
+      </div>
     </div>
     </>
   )
