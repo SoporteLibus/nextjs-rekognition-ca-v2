@@ -8,6 +8,7 @@ import InputCheckBoxForm from './components/InputCheckBoxForm';
 import { getCookie } from 'cookies-next';
 import axios from 'axios';
 import { axiosPutMultipart } from '@/app/services';
+import InputSelect from './components/InputSelect';
 
 declare var window: any
 
@@ -23,7 +24,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
         sexo, email, telefono, telefono_urgencias, calle, numero, dpto, piso,
         pais, provincia, localidad, codigo_postal, nivel_de_educacion, activo, fecha_egreso,
         estado_ambiental, examen_preocupacional, tipo_liquidacion, rotacion, turno,
-        grupo, observaciones, foto, image} = empById
+        grupo, observaciones, image} = empById
     const [loading, setLoading] = useState(false)
     const [Legajo, setLegajo] = useState(legajo)
     const [Apellido, setApellido] = useState(apellido)
@@ -60,7 +61,6 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
     const [Rotacion, setRotacion] = useState(rotacion)
     const [Turno, setTurno] = useState(turno)
     const [Grupo, setGrupo] = useState(grupo)
-    const [Foto, setFoto] = useState(foto)
     const [FotoNueva, setFotoNueva] = useState<File | null>(image)
     const [Observaciones, setObservaciones] = useState(observaciones)
 
@@ -139,12 +139,16 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 onChange={e => setDni(e.target.value)}
                                 value={Dni}
                             />
-                            <InputForm title="Sexo"
-                                required={true}
-                                type="text"
+                            
+                            <InputSelect value={Sexo}
                                 onChange={e => setSexo(e.target.value)}
-                                value={Sexo}
-                            />
+                                required
+                            >
+                                <option value="">Sexo</option>
+                                <option value="H">Masculino</option>
+                                <option value="M">Femenino</option>
+                                <option value="O">Otro</option>
+                            </InputSelect>
                         </div>
                         <div className={style.inputcontainer}>
                             <InputForm title="Fecha de Nacimiento"
@@ -247,12 +251,16 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 onChange={e => setLegajo(e.target.value)}
                                 value={Legajo}
                             />
-                            <InputForm title="Contratacion"
-                                required={true}
-                                type="text"
+                            <InputSelect value={Contratacion}
                                 onChange={e => setContratacion(e.target.value)}
-                                value={Contratacion}
-                            />
+                                required
+                            >
+                                <option value="">Contratacion:</option>
+                                <option value="eventual">Eventual</option>
+                                <option value="agencia">Agencia</option>
+                                <option value="efectivo">Efectivo</option>
+                                <option value="externo">Externo</option>
+                            </InputSelect>
                         </div>
                         <div className={style.inputcontainer}>
                             <InputForm title="Fecha de Ingreso"
@@ -289,20 +297,39 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 onChange={e => setCentroCosto(e.target.value)}
                                 value={CentroCosto}
                             />
-                            <InputForm title="Convenio"
-                                required={true}
-                                type="text"
+                            <InputSelect value={Convenio}
                                 onChange={e => setConvenio(e.target.value)}
-                                value={Convenio}
-                            />
+                                required
+                            >
+                                <option value="">Convenio:</option>
+                                <option value="plastico">Plastico</option>
+                                <option value="fuera de convenio">Fuera de convenio</option>
+                            </InputSelect>
                         </div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Categoria"
-                                required={true}
-                                type="text"
+                            <InputSelect value={Categoria}
                                 onChange={e => setCategoria(e.target.value)}
-                                value={Categoria}
-                            />
+                                required
+                            >
+                                <option value="">Categoria:</option>
+                                <option value="operario">Operario</option>
+                                <option value="auxiliar">Auxiliar</option>
+                                <option value="operador">Operador</option>
+                                <option value="operador calificado">Operador calificado</option>
+                                <option value="operador especializado">Operador especializado</option>
+                                <option value="oficial especializado">Oficial especializado</option>
+                                <option value="medio oficial mantenimiento">Medio oficial mantenimiento</option>
+                                <option value="oficial de mantenimiento">Oficial de mantenimiento</option>
+                                <option value="nivel 1">Nivel 1</option>
+                                <option value="nivel 2">Nivel 2</option>
+                                <option value="nivel 3">Nivel 3</option>
+                                <option value="nivel 4">Nivel 4</option>
+                                <option value="nivel 5">Nivel 5</option>
+                                <option value="capataz">Capataz</option>
+                                <option value="ayudante de chofer">Ayudante de chofer</option>
+                                <option value="conductor de autoelevador">Conductor de autoelevador</option>
+                                <option value="proveedor">Proveedor</option>
+                            </InputSelect>
                             <InputCheckBoxForm checked={Activo}
                                 ResponseFalse="Inactivo"
                                 responseTrue="Activo"
@@ -330,37 +357,51 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                                 onChange={e => setEPreocupacional(e.target.value)}
                                 value={EPreocupacional}
                             />
-                            <InputForm title="Tipo de Liquidacion"
-                                required={true}
-                                type="text"
+                            <InputSelect value={TipoLiquidacion}
                                 onChange={e => setTipoLiquidacion(e.target.value)}
-                                value={TipoLiquidacion}
-                            />
+                                required
+                            >
+                                <option value="">Tipo de liquidacion:</option>
+                                <option value="jornal">Jornal</option>
+                                <option value="mensual">Mensual</option>
+                            </InputSelect>
                         </div>
                         <div className={style.inputcontainer}>
-                            <InputForm title="Rotacion"
-                                required={true}
-                                type="text"
+                            <InputSelect value={Rotacion}
                                 onChange={e => setRotacion(e.target.value)}
-                                value={Rotacion}
-                            />
+                                required
+                            >
+                                <option value="">Rotacion:</option>
+                                <option value="fijo">Fijo</option>
+                                <option value="6x1">6x1</option>
+                            </InputSelect>
+                            <InputSelect value={Turno}
+                                onChange={e => setTurno(e.target.value)}
+                                required
+                            >
+                                <option value="">Turno:</option>
+                                <option value="mañana">Mañana</option>
+                                <option value="tarde">Tarde</option>
+                                <option value="noche">Noche</option>
+                                <option value="fijo">Fijo</option>
+                            </InputSelect>
                         </div>
-                        <InputForm title="Grupo"
-                            required={true}
-                            type="text"
-                            onChange={e => setGrupo(e.target.value)}
-                            value={Grupo}
-                        />
+                        <div className={style.inputcontainer}>
+                            <InputSelect value={Grupo}
+                                onChange={e => setGrupo(e.target.value)}
+                                required
+                            >
+                                <option value="">Grupo:</option>
+                                <option value="A">Grupo A</option>
+                                <option value="B">Grupo B</option>
+                                <option value="C">Grupo C</option>
+                                <option value="-">Ninguno</option>
+                            </InputSelect>
+                        </div>
                     </div>
                     <div>
-                        <InputForm title="Foto"
-                            required={false}
-                            type="text"
-                            onChange={e => setFoto(e.target.value)}
-                            value={Foto}
-                        />
                         <InputForm title="Cargar Foto Nueva"
-                            required={false}
+                            required={true}
                             type="file"
                             onChange={e => e.target.files && e.target.files.length > 0 && setFotoNueva(e.target.files[0])}
                         />
@@ -382,7 +423,7 @@ const EditDetailsModal: React.FC<EditDetailsModalProps> = ({ empById, setEditMod
                     <div className={style.modalFooter}>
                         <button className={style.addbtn} type="submit">{loading ? 'Editando' : 'Guardar'}</button>
                         <button className={style.addbtn}
-                            type="submit"
+                            type="button"
                             onClick={() => setModal(false)}
                         >Cerrar</button>
                     </div>

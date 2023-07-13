@@ -64,6 +64,13 @@
     margin-top: 20px;
 }
 
+.inputboxselect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
 .inputbox p {
     position: absolute;
     left: 70px;
@@ -83,6 +90,26 @@
     letter-spacing: 0.05em;
     transition: 0.5s;
     z-index: 10;
+}
+
+.inputboxselect select,
+.inputbox select {
+    position: relative;
+    width: 100%;
+    height: 44px;
+    padding: 15px 5px 5px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #23242a;
+    background-color: #918db7;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+    z-index: 10;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 .inputbox span {
